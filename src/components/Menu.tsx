@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SlNotebook } from 'react-icons/sl';
 import { FaComputer } from 'react-icons/fa6';
 import { TbReportSearch } from 'react-icons/tb';
@@ -13,10 +13,16 @@ import Link from 'next/link';
 const Menu = () => {
   const [close, setClose] = React.useState(false);
   const [hover, setHover] = React.useState(false);
+  const [animate, setAnimate] = React.useState(false);
+  const [loaded, setLoaded] = React.useState(false);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
 
   return (
     <div
-      className={cn('fixed bottom-5 right-5 z-40 h-20 w-20', close && 'close')}
+      className={cn('fixed bottom-5 right-5 z-40 h-20 w-20', close && 'close',!loaded && 'unloaded')}
       id='menu'
     >
       <button
@@ -24,12 +30,19 @@ const Menu = () => {
         onClick={() => setClose(!close)}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        onAnimationStart={() => setHover(false)}
+        onAnimationStart={() => {
+          setAnimate(true);
+          setHover(false);
+        }}
+        onAnimationEnd={() => {
+          setAnimate(false);
+          setHover(false);
+        }}
         className={cn(
-          'mb-5 flex h-20 w-20 flex-col items-center justify-center bg-sky-400 duration-400 [&.hovered]:bg-amber-400',
+          'relative mb-5 flex h-20 w-20 flex-col items-center justify-center bg-sky-400 duration-400 [&.hovered]:bg-amber-400',
           close && 'close bg-amber-400 [&.hovered]:bg-sky-400',
-          hover && 'hovered',
-          !(close && hover) && (close || hover) ? 'change' : null,
+          hover && !animate && 'hovered',
+          animate ? close && 'change' : !(close && hover) && (close || hover) && 'change',
         )}
       >
         <svg className='select-none fill-zinc-600' viewBox='0 0 100 100' width='250'>
@@ -53,7 +66,12 @@ const Menu = () => {
         </svg>
       </button>
       <nav className='relative left-[140%] h-[60px] w-[60px]'>
-        <Tooltip placement='left-start' content='Home' color='success'>
+        <Tooltip
+          placement='left-start'
+          content='Home'
+          color='success'
+          isOpen={animate ? false : undefined}
+        >
           <Link
             href='/'
             className='circle-link bg-success-400'
@@ -64,7 +82,12 @@ const Menu = () => {
             <FaHome className='text-xl' />
           </Link>
         </Tooltip>
-        <Tooltip placement='left-start' content='My skill' color='primary'>
+        <Tooltip
+          placement='left-start'
+          content='My skill'
+          color='primary'
+          isOpen={animate ? false : undefined}
+        >
           <Link
             href='/skill'
             className='circle-link bg-primary-400'
@@ -75,7 +98,12 @@ const Menu = () => {
             <FaBusinessTime className='text-xl' />
           </Link>
         </Tooltip>
-        <Tooltip placement='left-start' content='About me' color='warning'>
+        <Tooltip
+          placement='left-start'
+          content='About me'
+          color='warning'
+          isOpen={animate ? false : undefined}
+        >
           <Link
             href='/about'
             className='circle-link bg-warning-400'
@@ -86,7 +114,12 @@ const Menu = () => {
             <TbReportSearch className='text-xl' />
           </Link>
         </Tooltip>
-        <Tooltip placement='top-end' content='My work' color='danger'>
+        <Tooltip
+          placement='top-end'
+          content='My work'
+          color='danger'
+          isOpen={animate ? false : undefined}
+        >
           <Link
             href='/work'
             className='circle-link bg-danger-400'
@@ -97,7 +130,12 @@ const Menu = () => {
             <FaComputer className='text-xl' />
           </Link>
         </Tooltip>
-        <Tooltip placement='top-end' content='My note' color='secondary'>
+        <Tooltip
+          placement='top-end'
+          content='My note'
+          color='secondary'
+          isOpen={animate ? false : undefined}
+        >
           <Link
             href='/note'
             className='circle-link bg-secondary-400'
