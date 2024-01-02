@@ -1,10 +1,40 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import {
+  Inter as Font_Sans,
+  M_PLUS_Rounded_1c,
+  Noto_Sans_JP,
+  Noto_Serif_JP,
+} from 'next/font/google';
 import { Providers } from './provider';
 import './globals.css';
-import Menu from '@/components/Menu';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { cn } from '@/lib/utils';
 
-const inter = Inter({ subsets: ['latin'] });
+const NotoSansJP = Noto_Sans_JP({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-NotoSansJP',
+  display: 'swap',
+});
+
+const NotoSerifJP = Noto_Serif_JP({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-NotoSerifJP',
+  display: 'swap',
+});
+
+const MPlusRounded1c = M_PLUS_Rounded_1c({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-MPlusRounded1c',
+  display: 'swap',
+});
+
+const FontSans = Font_Sans({
+  subsets: ['latin'],
+});
 
 export const metadata: Metadata = {
   title: 'Portfolio',
@@ -14,9 +44,23 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className={inter.className}>
-        <Providers>{children}</Providers>
-        <Menu />
+      <body
+        className={cn(
+          'bg-background min-h-screen pt-[var(--header-height)] font-sans antialiased',
+          FontSans.className,
+          NotoSansJP.variable,
+          NotoSerifJP.variable,
+          MPlusRounded1c.variable,
+        )}
+        style={{
+          ['--header-height' as string]: '50px',
+        }}
+      >
+        <Providers>
+          <Header />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

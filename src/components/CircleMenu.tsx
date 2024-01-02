@@ -9,6 +9,7 @@ import { FaHome } from 'react-icons/fa';
 import { cn } from '@/utils/util';
 import { Tooltip } from '@nextui-org/react';
 import Link from 'next/link';
+import './CircleMenu.css';
 
 const Menu = () => {
   const [close, setClose] = React.useState(false);
@@ -22,7 +23,11 @@ const Menu = () => {
 
   return (
     <div
-      className={cn('fixed bottom-5 right-5 z-40 h-20 w-20', close && 'close',!loaded && 'unloaded')}
+      className={cn(
+        'fixed bottom-5 right-5 z-40 h-20 w-20',
+        close && 'close',
+        !loaded && 'unloaded',
+      )}
       id='menu'
     >
       <button
