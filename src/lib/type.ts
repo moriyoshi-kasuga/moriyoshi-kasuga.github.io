@@ -2,11 +2,10 @@
 type Project = {
   name: string;
   title: string;
-  description?: string;
-  cretedAt?: string;
+  description: string;
+  cretedAt: string;
   developmentType?: string;
-  genre?: string;
-  persona?: string;
+  genre: string;
   github?: string;
   site?: string;
   technology: string[];
@@ -14,5 +13,5 @@ type Project = {
   background: string;
   commitment: string;
   content: string;
-  gallery?: string[];
+  gallery: string[];
 };
