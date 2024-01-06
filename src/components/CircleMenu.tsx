@@ -1,33 +1,65 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import React, { useEffect } from 'react';
-import { SlNotebook } from 'react-icons/sl';
-import { FaComputer } from 'react-icons/fa6';
-import { TbReportSearch } from 'react-icons/tb';
-import { FaBusinessTime } from 'react-icons/fa';
-import { FaHome } from 'react-icons/fa';
-import { cn } from '@/utils/util';
+import { cn } from '@/lib/utils';
 import { Tooltip } from '@nextui-org/react';
 import Link from 'next/link';
 import './CircleMenu.css';
 
-const Menu = () => {
+type OverlayPlacement =
+  | 'top'
+  | 'bottom'
+  | 'right'
+  | 'left'
+  | 'top-start'
+  | 'top-end'
+  | 'bottom-start'
+  | 'bottom-end'
+  | 'left-start'
+  | 'left-end'
+  | 'right-start'
+  | 'right-end';
+
+type CircleLink = {
+  href: string;
+  content: React.ReactNode;
+  icon: React.ReactNode;
+  placement?: OverlayPlacement;
+  tooltipColor:
+    | 'default'
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'warning'
+    | 'danger'
+    | 'foreground'
+    | undefined;
+  linkClass?: string;
+};
+
+const Menu = ({
+  links,
+  range,
+  startAngle,
+}: {
+  links: CircleLink[];
+  range?: number;
+  startAngle?: number;
+}) => {
   const [close, setClose] = React.useState(false);
   const [hover, setHover] = React.useState(false);
   const [animate, setAnimate] = React.useState(false);
-  const [loaded, setLoaded] = React.useState(false);
-
-  useEffect(() => {
-    setLoaded(true);
-  }, []);
 
   return (
     <div
       className={cn(
         'fixed bottom-5 right-5 z-40 h-20 w-20',
         close && 'close',
-        !loaded && 'unloaded',
       )}
+      style={{
+        ['--numberOfElement' as string]: links.length,
+        ['--range' as string]: `${range || 90}deg`,
+        ['--startAngle' as string]: `${startAngle || 187}deg`,
+      }}
       id='menu'
     >
       <button
@@ -71,86 +103,29 @@ const Menu = () => {
         </svg>
       </button>
       <nav className='relative left-[140%] h-[60px] w-[60px]'>
-        <Tooltip
-          placement='left-start'
-          content='Home'
-          color='success'
-          isOpen={animate ? false : undefined}
-        >
-          <Link
-            href='/'
-            className='circle-link bg-success-400'
-            style={{
-              ['--index' as any]: 0,
-            }}
-          >
-            <FaHome className='text-xl' />
-          </Link>
-        </Tooltip>
-        <Tooltip
-          placement='left-start'
-          content='My skill'
-          color='primary'
-          isOpen={animate ? false : undefined}
-        >
-          <Link
-            href='/skill'
-            className='circle-link bg-primary-400'
-            style={{
-              ['--index' as any]: 1,
-            }}
-          >
-            <FaBusinessTime className='text-xl' />
-          </Link>
-        </Tooltip>
-        <Tooltip
-          placement='left-start'
-          content='About me'
-          color='warning'
-          isOpen={animate ? false : undefined}
-        >
-          <Link
-            href='/about'
-            className='circle-link bg-warning-400'
-            style={{
-              ['--index' as any]: 2,
-            }}
-          >
-            <TbReportSearch className='text-xl' />
-          </Link>
-        </Tooltip>
-        <Tooltip
-          placement='top-end'
-          content='My work'
-          color='danger'
-          isOpen={animate ? false : undefined}
-        >
-          <Link
-            href='/work'
-            className='circle-link bg-danger-400'
-            style={{
-              ['--index' as any]: 3,
-            }}
-          >
-            <FaComputer className='text-xl' />
-          </Link>
-        </Tooltip>
-        <Tooltip
-          placement='top-end'
-          content='My note'
-          color='secondary'
-          isOpen={animate ? false : undefined}
-        >
-          <Link
-            href='/note'
-            className='circle-link bg-secondary-400'
-            style={{
-              ['--index' as any]: 4,
-            }}
-          >
-            <SlNotebook className='text-xl' />
-          </Link>
-        </Tooltip>
+        {links.map((link, index) => {
+          return (
+            <Tooltip
+              key={link.href}
+              placement={link.placement ?? 'left-start'}
+              content={link.content}
+              color={link.tooltipColor ?? 'default'}
+              isOpen={animate ? false : undefined}
+              delay={0}
+              closeDelay={100}
+            >
+              <Link
+                href={link.href}
+                className={cn('circle-link', link.linkClass)}
+                style={{
+                  ['--index' as string]: index,
+                }}
+              >
+                {link.icon}
+              </Link>
+            </Tooltip>
+          );
+        })}
       </nav>
     </div>
   );

@@ -1,37 +1,42 @@
+import { SlNotebook } from 'react-icons/sl';
+import { FaComputer } from 'react-icons/fa6';
+import { AiFillLike } from 'react-icons/ai';
+import { FaSearch } from 'react-icons/fa';
+import { List,Item } from '@/components/List';
 export default function Page() {
   return (
     <>
-      <div className='container mx-auto mt-20 flex flex-col items-center justify-center'>
-        <h1 className='decoration-3 animate-bounce font-mono text-5xl font-bold text-warning underline decoration-warning decoration-dashed underline-offset-8'>
+      <div className='min-h-all flex flex-col items-center py-10'>
+        <h1 className='flex animate-bounce items-center gap-x-2 font-mono text-5xl font-bold text-warning underline decoration-warning decoration-dashed underline-offset-8'>
+          <FaSearch />
           About me
         </h1>
         <div className='mb-7 mt-14 flex gap-x-8'>
-          <button className='rounded-2xl bg-danger-300 px-8 py-3 font-mono text-xl font-bold text-default-900 transition duration-500 hover:bg-default-900 hover:text-danger-300'>
+          <a href='/about/likes' className='btn bg-danger-300 hover:text-danger-300'>
+            <AiFillLike />
             Likes
-          </button>
-          <button className='rounded-2xl bg-success-300 px-8 py-3 font-mono text-xl font-bold text-default-900 transition duration-500 hover:bg-default-900 hover:text-success-300'>
-            History
-          </button>
-          <button className='rounded-2xl bg-primary-300 px-8 py-3 font-mono text-xl font-bold text-default-900 transition duration-500 hover:bg-default-900 hover:text-primary-300'>
+          </a>
+          <a href='/about/links' className='btn bg-success-300 hover:text-success-300'>
+            <SlNotebook />
+            Links
+          </a>
+          <a href='/skills' className='btn bg-primary-300 hover:text-primary-300'>
+            <FaComputer />
             Skills
-          </button>
+          </a>
         </div>
-        <div className='flex w-full flex-col gap-x-8 gap-y-4'>
-          <div className='flex w-full items-center gap-x-2'>
-            <h2 className='w-1/2 text-right text-2xl font-bold'>名前</h2>
-            <p className='w-1/2 text-left font-mono text-xl font-semibold'>もーりー</p>
-          </div>
-          <div className='flex w-full items-center gap-x-2'>
-            <h2 className='w-1/2 text-right text-2xl font-bold'>年齢</h2>
-            <p className='w-1/2 text-left font-mono text-xl font-semibold'>16</p>
-          </div>
-          <div className='flex w-full items-center gap-x-2'>
-            <h2 className='w-1/2 text-right text-2xl font-bold'>誕生日</h2>
-            <p className='w-1/2 text-left font-mono text-xl font-semibold'>
-              2007年12月18日
-            </p>
-          </div>
-        </div>
+        <List>
+          <Item id='名前' value='Mori' />
+          <Item id='年齢' value='16' />
+          <Item id='誕生日' value='2007/12/18' />
+          <Item id='言語' value='Python・JavaScript・TypeScript・Java' />
+          <Item id='ツール' value='WSL2,macOs,Neovim' />
+        </List>
+        {/* <div className='mt-10 flex w-full flex-col items-center font-mono-jp text-2xl container break-words'> */}
+        {/*   高校生のただのプログラマーです、まだ普通の学生なのでプログラミングをしています。 */}
+        {/*   最近はPythonのframeworkのDjango,Flaskを学んだり、このポートフォリオではNext.jsというReactのframeworkを使用しています。 */}
+        {/*   一番驚いたことは、Reactはframeworkではなくlibraryということです。 */}
+        {/* </div> */}
       </div>
     </>
   );

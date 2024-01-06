@@ -10,8 +10,8 @@ const showProjects = ['dotfiles', 'ryama-v1', 'portfolio-v1'];
 
 export default function Home() {
   return (
-    <div className='flex w-full flex-col items-center bg-primary-300 py-10 text-default-50'>
-      <div className='flex min-h-[calc(100vh-var(--header-height))] flex-col items-center'>
+    <div className='flex w-full flex-col items-center py-10 text-default-50 bg-primary-300'>
+      <div className='flex min-h-content flex-col items-center'>
         <h1 className='font-mono-jp text-7xl font-semibold'>MoriLab</h1>
         <h2 className='font-mono text-3xl'>Mori Programmer Lab</h2>
         <div className='mt-6 flex space-x-2'>
@@ -84,6 +84,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      {/* TODO: すこし見やすく、言語とかは色付けたりunderlineつけてもいいかも */}
       <div className='flex w-2/3 min-w-unit-md flex-col items-center justify-center'>
         <h2 className='mb-10 w-full text-center font-mono text-5xl'>About me</h2>
         <div className='flex items-center gap-x-3'>
@@ -97,7 +98,7 @@ export default function Home() {
           <div>
             <p className='text-balance text-center font-mono-jp text-lg'>
               高校生のただのプログラマー、本格的にプログラミングを学び始めたのは高校に入った2023年春ぐらいから、
-              それまでは中一から中三の間はマイクラのプラグインを(Javaで)作っていました。
+              それまでは中学生の時にマイクラのプラグインを(Javaで)作っていました。
               最近はpython(django,flask),typescript(react,nextjs) などを触っています
             </p>
             <div className='mt-5 flex items-center justify-center'>

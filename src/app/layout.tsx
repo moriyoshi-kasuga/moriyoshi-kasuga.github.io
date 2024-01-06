@@ -46,15 +46,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang='en' suppressHydrationWarning>
       <body
         className={cn(
-          'bg-background min-h-screen pt-[var(--header-height)] font-sans antialiased',
+          'min-h-screen bg-background pt-[var(--header-height)] font-sans antialiased',
+          '[--header-height:50px]',
+          '[--footer-height:40px]',
           FontSans.className,
           NotoSansJP.variable,
           NotoSerifJP.variable,
           MPlusRounded1c.variable,
         )}
-        style={{
-          ['--header-height' as string]: '50px',
-        }}
       >
         <Providers>
           <Header />
