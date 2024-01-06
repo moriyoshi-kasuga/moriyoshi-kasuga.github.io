@@ -15,6 +15,15 @@ export default function Page() {
             href='https://github.com/craftzdog/solarized-osaka.nvim'
             value='solarized-osaka'
           />
+          <Item id='キーバインド' value='Vim' />
+          <Item id='SNS' value='Youtube' />
+          <Item id='飲み物' value='カフェラテ,緑茶,ウーロン茶' />
+          <Item id='漫画' value='葬送のフリーレン' />
+          <Item
+            id='フォント'
+            href='https://github.com/ryanoasis/nerd-fonts'
+            value='Ubuntu Nerd Font Mono'
+          />
         </List>
       </div>
     </>
