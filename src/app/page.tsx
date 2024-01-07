@@ -5,6 +5,7 @@ import { IoIosGitBranch } from 'react-icons/io';
 import { Tooltip } from '@nextui-org/react';
 import Link from 'next/link';
 import Image from 'next/image';
+import projects from '@/projects/projects';
 
 const showProjects = ['dotfiles', 'ryama-v1', 'portfolio-v1'];
 
@@ -49,29 +50,32 @@ export default function Home() {
         <div className='container mt-20 flex max-w-[1200px] flex-wrap'>
           <h2 className='mb-10 w-full text-center font-mono text-5xl'>Projects</h2>
           <div className='flex w-1/2 flex-wrap items-center justify-center md:w-4/5'>
-            {showProjects.map((project) => (
-              <Link
-                key={project}
-                href={`/projects/${project}`}
-                className='group md:w-1/3'
-              >
-                <div className='mx-4 my-2 flex flex-col items-center justify-center rounded-2xl bg-primary-400 p-4'>
-                  <Image
-                    src={`/projects/${project}/image.png`}
-                    alt={`${project} image`}
-                    className='aspect-square h-40 w-40 rounded-lg object-cover'
-                    width={160}
-                    height={160}
-                  />
-                  <p className="text-lg font-bold transition-all group-hover:scale-110 group-hover:before:content-['>'] group-hover:after:content-['<'] md:text-xl">
-                    {project}
-                  </p>
-                </div>
-              </Link>
-            ))}
+            {showProjects.map((p) => {
+              const project = projects.find((v) => v.name === p)!;
+              return (
+                <Link
+                  key={project.name}
+                  href={`/projects/${p}`}
+                  className='group md:w-1/3'
+                >
+                  <div className='mx-4 my-2 flex flex-col items-center justify-center rounded-2xl'>
+                    <Image
+                      src={`/projects/${p}/image.png`}
+                      alt={`${p} image`}
+                      className='aspect-square h-40 w-40 rounded-lg object-cover'
+                      width={160}
+                      height={160}
+                    />
+                    <p className="text-md text-nowrap font-mono-jp font-semibold transition-all group-hover:scale-110 group-hover:before:content-['>'] group-hover:after:content-['<'] md:text-lg">
+                      {project.title}
+                    </p>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
           <div className='flex w-1/2 flex-col items-center justify-center md:w-1/5'>
-            <p className='mb-2 text-center font-mono-jp text-2xl font-medium'>
+            <p className='mb-2 text-center font-mono-jp text-2xl font-semibold'>
               つくったもの
             </p>
             <div className='flex items-center justify-center'>
@@ -96,7 +100,7 @@ export default function Home() {
             height={150}
           />
           <div>
-            <p className='text-balance text-center font-mono-jp text-lg'>
+            <p className='text-balance text-center font-sans-jp text-xl font-semibold'>
               高校生のただのプログラマー、本格的にプログラミングを学び始めたのは高校に入った2023年春ぐらいから、
               それまでは中学生の時にマイクラのプラグインを(Javaで)作っていました。
               最近はpython(django,flask),typescript(react,nextjs) などを触っています
