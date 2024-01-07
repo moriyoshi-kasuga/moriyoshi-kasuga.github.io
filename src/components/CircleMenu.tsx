@@ -1,9 +1,9 @@
 'use client';
-import React, { useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Tooltip } from '@nextui-org/react';
 import Link from 'next/link';
 import './CircleMenu.css';
+import { useState } from 'react';
 
 type OverlayPlacement =
   | 'top'
@@ -45,16 +45,13 @@ const Menu = ({
   range?: number;
   startAngle?: number;
 }) => {
-  const [close, setClose] = React.useState(false);
-  const [hover, setHover] = React.useState(false);
-  const [animate, setAnimate] = React.useState(false);
+  const [close, setClose] = useState(false);
+  const [hover, setHover] = useState(false);
+  const [animate, setAnimate] = useState(false);
 
   return (
     <div
-      className={cn(
-        'fixed bottom-5 right-5 z-40 h-20 w-20',
-        close && 'close',
-      )}
+      className={cn('fixed bottom-5 right-5 z-40 h-20 w-20', close && 'close')}
       style={{
         ['--numberOfElement' as string]: links.length,
         ['--range' as string]: `${range || 90}deg`,

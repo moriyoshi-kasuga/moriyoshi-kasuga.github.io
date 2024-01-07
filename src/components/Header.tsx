@@ -1,11 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import {
-  FaHome,
-  FaProjectDiagram,
-  FaRegCommentAlt,
-  FaSearch,
-} from 'react-icons/fa';
+import { FaHome, FaProjectDiagram, FaRegCommentAlt, FaSearch } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaComputer } from 'react-icons/fa6';

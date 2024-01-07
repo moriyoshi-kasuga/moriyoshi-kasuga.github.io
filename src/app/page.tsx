@@ -10,8 +10,8 @@ const showProjects = ['dotfiles', 'ryama-v1', 'portfolio-v1'];
 
 export default function Home() {
   return (
-    <div className='flex w-full flex-col items-center py-10 text-default-50 bg-primary-300'>
-      <div className='flex min-h-content flex-col items-center'>
+    <div className='flex w-full flex-col items-center bg-primary-300 py-10 text-default-50'>
+      <div className='min-h-content flex flex-col items-center'>
         <h1 className='font-mono-jp text-7xl font-semibold'>MoriLab</h1>
         <h2 className='font-mono text-3xl'>Mori Programmer Lab</h2>
         <div className='mt-6 flex space-x-2'>

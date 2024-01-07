@@ -1,4 +1,4 @@
-import projects from "@/projects/projects";
+import projects from '@/projects/projects';
 
 export default function Page({ params: { name } }: { params: { name: string } }) {
   const project = projects.find((project) => project.name == name);

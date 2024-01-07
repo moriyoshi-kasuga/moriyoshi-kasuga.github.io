@@ -7,12 +7,15 @@ const projects: Project[] = [
     developmentType: '個人開発',
     genre: 'Web Site',
     github: 'https://github.com/moriyoshi-kasuga/portfolio',
-    technology: ['Next.js','TypeScript'],
+    technology: ['Next.js', 'TypeScript'],
     objective: 'Moriってこんな人を知ってもらうため',
-    background: 'まだウェブサイトなどを作った経験が少ないためあまりサイトのスタイルに自信がないですけど、とりあえず自分が納得できるようにして作り切りました',
-    commitment: 'hoverしたときなどに軽くアニメーションというか動きをつけてふわっとした感じにしました',
+    background:
+      'まだウェブサイトなどを作った経験が少ないためあまりサイトのスタイルに自信がないですけど、とりあえず自分が納得できるようにして作り切りました',
+    commitment:
+      'hoverしたときなどに軽くアニメーションというか動きをつけてふわっとした感じにしました',
     gallery: ['main.png'],
-    content: 'Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.'
+    content:
+      'Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.',
   },
   {
     name: 'ryama-v1',
@@ -23,11 +26,15 @@ const projects: Project[] = [
     genre: 'Web App',
     github: 'https://github.com/moriyoshi-kasuga/RYAMA',
     technology: ['Django', 'Python', 'Javascript', 'HTML', 'CSS'],
-    objective: '自分が最初にwebappをDjangoで作るときにMarkdownでメモを書くことにはまっていたため、マークダウンに関するwebappを作ることにしてこれを作りました。',
-    background: 'DjangoではReactのように動的更新ができないため、javascriptを頑張って書きました。(今はNext.jsでryama-v2を作ろうとしています)',
-    commitment: 'javascriptでページを更新しなくてもファイルの作成などの動的更新を再現しました',
+    objective:
+      '自分が最初にwebappをDjangoで作るときにMarkdownでメモを書くことにはまっていたため、マークダウンに関するwebappを作ることにしてこれを作りました。',
+    background:
+      'DjangoではReactのように動的更新ができないため、javascriptを頑張って書きました。(今はNext.jsでryama-v2を作ろうとしています)',
+    commitment:
+      'javascriptでページを更新しなくてもファイルの作成などの動的更新を再現しました',
     gallery: ['main.png'],
-    content: 'Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.'
+    content:
+      'Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.',
   },
   {
     name: 'dotfiles',

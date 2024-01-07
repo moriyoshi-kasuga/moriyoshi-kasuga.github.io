@@ -1,10 +1,8 @@
 import CircleMenu from '@/components/CircleMenu';
-import { SlNotebook } from "react-icons/sl";
+import { SlNotebook } from 'react-icons/sl';
 import { FaComputer } from 'react-icons/fa6';
 import { AiFillLike } from 'react-icons/ai';
-import {
-  FaSearch,
-} from 'react-icons/fa';
+import { FaSearch } from 'react-icons/fa';
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
@@ -31,7 +29,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             icon: <SlNotebook />,
             tooltipColor: 'success',
             linkClass: 'bg-success-400',
-            placement: 'top-end'
+            placement: 'top-end',
           },
           {
             href: '/skills',
@@ -39,7 +37,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             icon: <FaComputer />,
             tooltipColor: 'primary',
             linkClass: 'bg-primary-400',
-            placement: 'top-end'
+            placement: 'top-end',
           },
         ]}
       />

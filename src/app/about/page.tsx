@@ -2,7 +2,8 @@ import { SlNotebook } from 'react-icons/sl';
 import { FaComputer } from 'react-icons/fa6';
 import { AiFillLike } from 'react-icons/ai';
 import { FaSearch } from 'react-icons/fa';
-import { List,Item } from '@/components/List';
+import { List, Item } from '@/components/List';
+import Link from 'next/link';
 export default function Page() {
   return (
     <>
@@ -12,18 +13,18 @@ export default function Page() {
           About me
         </h1>
         <div className='mb-7 mt-14 flex gap-x-8'>
-          <a href='/about/likes' className='btn bg-danger-300 hover:text-danger-300'>
+          <Link href='/about/likes' className='btn bg-danger-300 hover:text-danger-300'>
             <AiFillLike />
             Likes
-          </a>
-          <a href='/about/links' className='btn bg-success-300 hover:text-success-300'>
+          </Link>
+          <Link href='/about/links' className='btn bg-success-300 hover:text-success-300'>
             <SlNotebook />
             Links
-          </a>
-          <a href='/skills' className='btn bg-primary-300 hover:text-primary-300'>
+          </Link>
+          <Link href='/skills' className='btn bg-primary-300 hover:text-primary-300'>
             <FaComputer />
             Skills
-          </a>
+          </Link>
         </div>
         <List>
           <Item id='名前' value='Mori' />
