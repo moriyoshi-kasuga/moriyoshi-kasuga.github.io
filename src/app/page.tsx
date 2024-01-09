@@ -7,7 +7,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import projects from '@/projects/projects';
 
-const showProjects = ['dotfiles', 'ryama-v1', 'portfolio-v1'];
+const showProjects = ['portfolio-v1', 'dotfiles', 'ryama-v1'];
 
 export default function Home() {
   return (
@@ -44,7 +44,7 @@ export default function Home() {
             </Link>
           </Tooltip>
         </div>
-        <div className='my-20 text-center font-mono text-xl font-bold'>
+        <div className='my-20 text-center font-mono-jp text-2xl'>
           毎日手をつけようと頑張っているこの頃
         </div>
         <div className='container mt-20 flex max-w-[1200px] flex-wrap'>
@@ -66,7 +66,7 @@ export default function Home() {
                       width={160}
                       height={160}
                     />
-                    <p className="text-md relative before:absolute after:absolute before:-left-3 text-nowrap font-mono-jp font-semibold transition-all group-hover:scale-110 group-hover:before:content-['>'] group-hover:after:content-['<'] md:text-lg">
+                    <p className="text-md relative text-nowrap font-mono-jp font-semibold transition-all before:absolute before:-left-3 after:absolute group-hover:scale-110 group-hover:before:content-['>'] group-hover:after:content-['<'] md:text-lg">
                       {project.title}
                     </p>
                   </div>
@@ -89,9 +89,9 @@ export default function Home() {
         </div>
       </div>
       {/* TODO: すこし見やすく、言語とかは色付けたりunderlineつけてもいいかも */}
-      <div className='flex w-2/3 min-w-unit-md flex-col items-center justify-center'>
+      <div className='mt-8 flex w-2/3 flex-col items-center justify-center'>
         <h2 className='mb-10 w-full text-center font-mono text-5xl'>About me</h2>
-        <div className='flex items-center gap-x-3'>
+        <div className='flex flex-wrap items-center justify-center gap-x-3 md:flex-nowrap'>
           <Image
             src={'/mori.png'}
             alt='My Avatar'
@@ -100,7 +100,7 @@ export default function Home() {
             height={150}
           />
           <div>
-            <p className='text-balance text-center font-sans-jp text-xl font-semibold'>
+            <p className='max-w-xl font-sans-jp font-semibold sm:text-lg md:text-xl'>
               高校生のただのプログラマー、本格的にプログラミングを学び始めたのは高校に入った2023年春ぐらいから、
               それまでは中学生の時にマイクラのプラグインを(Javaで)作っていました。
               最近はpython(django,flask),typescript(react,nextjs) などを触っています
