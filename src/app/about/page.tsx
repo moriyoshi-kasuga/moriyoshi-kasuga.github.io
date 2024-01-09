@@ -8,7 +8,7 @@ export default function Page() {
   return (
     <>
       <div className='min-h-all flex flex-col items-center py-10'>
-        <h1 className='flex animate-bounce items-center gap-x-2 font-mono text-5xl font-bold text-warning underline decoration-warning decoration-dashed underline-offset-8'>
+        <h1 className='flex animate-bounce items-center gap-x-2 font-mono text-5xl font-bold text-warning'>
           <FaSearch />
           About me
         </h1>

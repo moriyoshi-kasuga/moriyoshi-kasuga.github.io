@@ -4,7 +4,7 @@ export default function Page() {
   return (
     <>
       <div className='min-h-all flex flex-col items-center py-10'>
-        <h1 className='mb-10 flex animate-bounce items-center gap-x-2 font-mono text-5xl font-bold text-danger underline decoration-danger decoration-dashed underline-offset-8'>
+        <h1 className='mb-10 flex animate-bounce items-center gap-x-2 font-mono text-5xl font-bold text-danger'>
           <AiFillLike />
           Likes
         </h1>
