@@ -66,7 +66,7 @@ export default function Home() {
                       width={160}
                       height={160}
                     />
-                    <p className="text-md text-nowrap font-mono-jp font-semibold transition-all group-hover:scale-110 group-hover:before:content-['>'] group-hover:after:content-['<'] md:text-lg">
+                    <p className="text-md relative before:absolute after:absolute before:-left-3 text-nowrap font-mono-jp font-semibold transition-all group-hover:scale-110 group-hover:before:content-['>'] group-hover:after:content-['<'] md:text-lg">
                       {project.title}
                     </p>
                   </div>
