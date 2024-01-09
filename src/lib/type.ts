@@ -13,5 +13,5 @@ type Project = {
   background: string;
   commitment: string;
   content: string;
-  gallery: string[];
+  gallery?: string[];
 };
