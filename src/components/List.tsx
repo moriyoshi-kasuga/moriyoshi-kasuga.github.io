@@ -19,7 +19,7 @@ const Item = ({
       {href ? (
         <Link
           href={href}
-          className='w-2/3 md:w-1/2 break-words text-left font-mono-jp text-xl font-semibold text-primary-600 underline underline-offset-[3px]'
+          className='w-2/3 md:w-1/2 break-words text-left font-mono-jp text-xl font-semibold link-style'
           target='_blank'
         >
           {value}

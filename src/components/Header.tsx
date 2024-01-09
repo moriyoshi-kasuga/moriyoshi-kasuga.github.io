@@ -3,7 +3,6 @@ import { FaHome, FaProjectDiagram, FaRegCommentAlt, FaSearch } from 'react-icons
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaComputer } from 'react-icons/fa6';
-import './Header.css';
 
 export default function Header() {
   return (
@@ -11,7 +10,7 @@ export default function Header() {
       <nav className='container relative mx-auto flex items-center justify-between'>
         <Link
           href='/'
-          className='absolute left-[50%] aspect-square h-full scale-125 transition-transform hover:scale-150 md:left-[unset]'
+          className='absolute aspect-square h-full scale-125 transition-transform hover:scale-150 max-md:left-[50%]'
         >
           <Image
             src={'/mori.png'}
@@ -23,19 +22,19 @@ export default function Header() {
         </Link>
 
         <div className='ml-auto hidden items-center space-x-6 font-mono text-xl md:flex'>
-          <Link href='/' className='linkHover'>
+          <Link href='/' className='link-hover-animation'>
             <FaHome className='mr-1' />
             <span>Home</span>
           </Link>
-          <Link href='/about' className='linkHover'>
+          <Link href='/about' className='link-hover-animation'>
             <FaSearch className='mr-1' />
             <span>About</span>
           </Link>
-          <Link href='/projects' className='linkHover'>
+          <Link href='/projects' className='link-hover-animation'>
             <FaProjectDiagram className='mr-1' />
             <span>Projects</span>
           </Link>
-          <Link href='/skills' className='linkHover'>
+          <Link href='/skills' className='link-hover-animation'>
             <FaComputer className='mr-1' />
             <span>Skills</span>
           </Link>
