@@ -1,7 +1,7 @@
 import CircleMenu from '@/components/CircleMenu';
 import { SlNotebook } from 'react-icons/sl';
 import { FaComputer } from 'react-icons/fa6';
-import { AiFillLike } from 'react-icons/ai';
+import { AiOutlineLike } from 'react-icons/ai';
 import { FaSearch } from 'react-icons/fa';
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -19,7 +19,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           {
             href: '/about/likes',
             content: 'Likes',
-            icon: <AiFillLike />,
+            icon: <AiOutlineLike />,
             tooltipColor: 'danger',
             linkClass: 'bg-danger-400',
           },

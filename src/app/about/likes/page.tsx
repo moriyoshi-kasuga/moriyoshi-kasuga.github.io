@@ -1,11 +1,11 @@
 import { Item, List } from '@/components/List';
-import { AiFillLike } from 'react-icons/ai';
+import { AiOutlineLike } from 'react-icons/ai';
 export default function Page() {
   return (
     <>
       <div className='min-h-all flex flex-col items-center py-10'>
         <h1 className='mb-10 flex animate-bounce items-center gap-x-2 font-mono text-5xl font-bold text-danger'>
-          <AiFillLike />
+          <AiOutlineLike />
           Likes
         </h1>
         <List>
