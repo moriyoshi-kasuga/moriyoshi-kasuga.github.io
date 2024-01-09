@@ -2,10 +2,10 @@ import React from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { IoIosGitBranch } from 'react-icons/io';
-import { Tooltip } from '@nextui-org/react';
 import Link from 'next/link';
 import Image from 'next/image';
 import projects from '@/projects/projects';
+import IconButton from '@/components/IconButton';
 
 const showProjects = ['portfolio-v1', 'dotfiles', 'ryama-v1'];
 
@@ -16,33 +16,9 @@ export default function Home() {
         <h1 className='font-mono-jp text-7xl font-semibold'>MoriLab</h1>
         <h2 className='font-mono text-3xl'>Mori Programmer Lab</h2>
         <div className='mt-6 flex space-x-2'>
-          <Tooltip delay={0} closeDelay={100} content='My Github Profile'>
-            <Link
-              href={'https://github.com/moriyoshi-kasuga'}
-              target='_blank'
-              className='rounded-lg bg-default-700 p-2 transition-transform hover:scale-110'
-            >
-              <FaGithub className='text-4xl' />
-            </Link>
-          </Tooltip>
-          <Tooltip delay={0} closeDelay={100} content='This Portfolio Repository'>
-            <Link
-              href={'https://github.com/moriyoshi-kasuga/portfolio'}
-              target='_blank'
-              className='rounded-lg bg-default-700 p-2 transition-transform hover:scale-110'
-            >
-              <IoIosGitBranch className='text-4xl' />
-            </Link>
-          </Tooltip>
-          <Tooltip delay={0} closeDelay={100} content='My Twitter Profile'>
-            <Link
-              href={'https://twitter.com/MoriyoshiKasuga'}
-              target='_blank'
-              className='rounded-lg bg-default-700 p-2 transition-transform hover:scale-110'
-            >
-              <FaXTwitter className='text-4xl' />
-            </Link>
-          </Tooltip>
+          <IconButton content='My Github Profile' url='https://github.com/moriyoshi-kasuga' icon=<FaGithub /> />
+          <IconButton content='This Portfolio Repository' url='https://github.com/moriyoshi-kasuga/portfolio' icon=<IoIosGitBranch /> />
+          <IconButton content='My Twitter Profile' url='https://twitter.com/MoriyoshiKasuga' icon=<FaXTwitter /> />
         </div>
         <div className='my-20 text-center font-mono-jp text-2xl'>
           毎日手をつけようと頑張っているこの頃
