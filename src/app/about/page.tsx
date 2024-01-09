@@ -12,7 +12,7 @@ export default function Page() {
           <FaSearch />
           About me
         </h1>
-        <div className='mb-7 mt-14 flex gap-x-8'>
+        <div className='mb-7 mt-14 flex gap-8 max-md:flex-col'>
           <Link href='/about/likes' className='btn bg-danger-300 hover:text-danger-300'>
             <AiOutlineLike />
             Likes

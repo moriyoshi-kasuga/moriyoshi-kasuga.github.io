@@ -15,17 +15,17 @@ const Item = ({
 }) => {
   return (
     <div className='flex w-full items-center gap-x-2'>
-      <h2 className='w-1/3 text-right font-mono-jp text-2xl font-bold'>{id}</h2>
+      <h2 className='w-1/3 md:w-1/2 text-right font-mono-jp text-2xl font-bold'>{id}</h2>
       {href ? (
         <Link
           href={href}
-          className='w-2/3 break-words text-left font-mono-jp text-xl font-semibold text-primary-600 underline underline-offset-[3px]'
+          className='w-2/3 md:w-1/2 break-words text-left font-mono-jp text-xl font-semibold text-primary-600 underline underline-offset-[3px]'
           target='_blank'
         >
           {value}
         </Link>
       ) : (
-        <p className='w-2/3 break-words text-left font-mono-jp text-xl font-semibold'>
+        <p className='w-2/3 md:w-1/2 break-words text-left font-mono-jp text-xl font-semibold'>
           {value}
         </p>
       )}
