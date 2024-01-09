@@ -1,34 +1,13 @@
 'use client';
-import React, { useEffect, useState } from 'react';
 import { FaHome, FaProjectDiagram, FaRegCommentAlt, FaSearch } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaComputer } from 'react-icons/fa6';
-import { cn } from '@/lib/utils';
 import './Header.css';
 
 export default function Header() {
-  const [isTop, setIsTop] = useState(true);
-
-  const handleScroll = () => {
-    if (window.scrollY > 20) {
-      setIsTop(false);
-    } else {
-      setIsTop(true);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <header
-      className={cn(
-        'fixed top-0 z-50 flex h-[var(--header-height)] w-screen items-center py-2 transition-colors-opacity',
-        isTop || 'backdrop-blur-md',
-      )}
-    >
+    <header className='fixed top-0 z-50 flex h-[var(--header-height)] w-screen items-center py-2 backdrop-blur-md transition-colors-opacity'>
       <nav className='container relative mx-auto flex items-center justify-between'>
         <Link
           href='/'
