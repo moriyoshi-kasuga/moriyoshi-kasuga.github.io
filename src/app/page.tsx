@@ -12,7 +12,7 @@ const showProjects = ['portfolio-v1', 'dotfiles', 'ryama-v1'];
 export default function Home() {
   return (
     <div className='flex w-full flex-col items-center bg-primary-300 py-10 text-default-50'>
-      <div className='min-h-content flex flex-col items-center'>
+      <div className='flex flex-col items-center'>
         <h1 className='font-mono-jp text-7xl font-semibold'>MoriLab</h1>
         <h2 className='font-mono text-3xl'>Mori Programmer Lab</h2>
         <div className='mt-6 flex space-x-2'>
@@ -20,10 +20,10 @@ export default function Home() {
           <IconButton content='This Portfolio Repository' url='https://github.com/moriyoshi-kasuga/portfolio' icon=<IoIosGitBranch /> />
           <IconButton content='My Twitter Profile' url='https://twitter.com/MoriyoshiKasuga' icon=<FaXTwitter /> />
         </div>
-        <div className='my-20 text-center font-mono-jp text-2xl'>
+        <div className='my-20 text-center font-mono-jp text-2xl container'>
           毎日手をつけようと頑張っているこの頃
         </div>
-        <div className='container mt-20 flex max-w-[1200px] flex-wrap'>
+        <div className='container mt-10 flex max-w-[1200px] flex-wrap'>
           <h2 className='mb-10 w-full text-center font-mono text-5xl'>Projects</h2>
           <div className='flex w-1/2 flex-wrap items-center justify-center md:w-4/5'>
             {showProjects.map((p) => {
