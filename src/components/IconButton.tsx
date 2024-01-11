@@ -15,7 +15,7 @@ const IconButton = ({
       <Link
         href={url}
         target='_blank'
-        className='rounded-lg bg-default-700 p-2 text-4xl transition-transform hover:scale-110'
+        className='rounded-lg bg-default-700 p-2 text-4xl transition-transform hover:scale-110 text-white'
       >
         {icon}
       </Link>
