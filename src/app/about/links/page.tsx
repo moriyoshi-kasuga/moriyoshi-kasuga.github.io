@@ -11,7 +11,7 @@ export default function Page() {
           <SlNotebook />
           Links
         </h1>
-        <h2 className='my-10 font-mono font-bold text-3xl'>SNS</h2>
+        <h2 className='my-10 font-mono text-3xl font-bold'>SNS</h2>
         <div className='flex space-x-2'>
           <IconButton
             content='My Github Profile'
@@ -24,12 +24,12 @@ export default function Page() {
             icon=<FaXTwitter />
           />
         </div>
-        <h2 className='my-10 font-mono font-bold text-3xl'>Site</h2>
+        <h2 className='my-10 font-mono text-3xl font-bold'>Site</h2>
         <div className='flex space-x-2'>
           <IconButton
-          content='This Portfolio'
-          url="#" // FIX: 決まったらここにURLを入力
-          icon=<IoIosGitBranch />
+            content='This Portfolio'
+            url='#' // FIX: 決まったらここにURLを入力
+            icon=<IoIosGitBranch />
           />
         </div>
       </div>

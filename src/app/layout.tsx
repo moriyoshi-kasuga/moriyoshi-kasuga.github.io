@@ -37,8 +37,8 @@ const FontSans = Font_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Portfolio',
-  description: 'moriyohis-kasuga Portfolio',
+  title: 'MoriLab',
+  description: "Mori's Lab",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

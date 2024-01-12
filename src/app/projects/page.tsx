@@ -11,7 +11,7 @@ export default function Page() {
           <FaProjectDiagram />
           Projects
         </h1>
-        <div className='my-8 container mx-auto grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 md:gap-8 lg:grid-cols-3 lg:gap-10 xl:gap-12'>
+        <div className='container mx-auto my-8 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 md:gap-8 lg:grid-cols-3 lg:gap-10 xl:gap-12'>
           {projects.map((project) => (
             <Link
               href={`/projects/${project.name}`}
@@ -30,7 +30,7 @@ export default function Page() {
                   sizes='(100%,100%)'
                 />
               </div>
-              <div className='flex flex-wrap gap-x-2 text-lg items-start'>
+              <div className='flex flex-wrap items-start gap-x-2 text-lg'>
                 {project.technology.map((tag) => (
                   <span
                     key={tag}
@@ -40,7 +40,7 @@ export default function Page() {
                   </span>
                 ))}
               </div>
-              <div className='px-4 py-2 break-words font-sans-jp text-xl'>
+              <div className='break-words px-4 py-2 font-sans-jp text-xl'>
                 {project.objective}
               </div>
               <span className='ml-auto font-serif-jp font-semibold'>

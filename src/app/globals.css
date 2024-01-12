@@ -39,5 +39,5 @@
 }
 
 .link-style {
-  @apply text-primary-600 underline underline-offset-[3px]
+  @apply text-primary-600 underline underline-offset-[3px];
 }
