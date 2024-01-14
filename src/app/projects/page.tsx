@@ -15,7 +15,7 @@ export default function Page() {
           {projects.map((project) => (
             <Link
               href={`/projects/${project.name}`}
-              className='flex h-fit w-full flex-col rounded-2xl bg-primary-300 px-8 py-2'
+              className='hover:ring-3 flex h-fit w-full flex-col rounded-2xl px-8 py-2 ring-2 ring-primary-300 transition-all hover:scale-105 hover:ring-primary-500'
               key={project.name}
             >
               <h2 className='text-center font-mono-jp text-2xl font-bold'>
@@ -34,13 +34,13 @@ export default function Page() {
                 {project.technology.map((tag) => (
                   <span
                     key={tag}
-                    className='rounded-xl bg-warning-300 px-2 py-1 font-mono-jp font-thin text-default-900'
+                    className='rounded-xl bg-warning-300 px-2 py-1 font-sans-jp font-thin text-default-900'
                   >
                     {tag}
                   </span>
                 ))}
               </div>
-              <div className='break-words px-4 py-2 font-sans-jp text-xl'>
+              <div className='break-words py-2 font-sans-jp text-xl'>
                 {project.objective}
               </div>
               <span className='ml-auto font-serif-jp font-semibold'>

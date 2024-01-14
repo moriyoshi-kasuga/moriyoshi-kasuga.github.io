@@ -10,10 +10,6 @@
   min-height: calc(100vh - var(--header-height));
 }
 
-.btn {
-  @apply flex items-center gap-x-2 rounded-2xl px-8 py-3 font-mono text-xl font-bold text-default-900 transition duration-500 hover:bg-default-900;
-}
-
 .link-hover-animation {
   position: relative;
   display: flex;
@@ -40,4 +36,16 @@
 
 .link-style {
   @apply text-primary-600 underline underline-offset-[3px];
+}
+
+@layer base {
+  .base-btn {
+    @apply flex items-center gap-x-2 rounded-2xl px-8 py-3 font-mono text-xl font-bold;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply base-btn text-default-900 transition duration-500 hover:bg-default-900;
+  }
 }

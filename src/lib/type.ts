@@ -4,7 +4,6 @@ type Project = {
   title: string;
   description: string;
   cretedAt: string;
-  developmentType?: string;
   genre: string;
   github?: string;
   site?: string;
