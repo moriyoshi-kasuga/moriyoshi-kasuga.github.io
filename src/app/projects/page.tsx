@@ -15,7 +15,7 @@ export default function Page() {
           {projects.map((project) => (
             <Link
               href={`/projects/${project.name}`}
-              className='hover:ring-3 flex h-fit w-full flex-col rounded-2xl px-8 py-2 ring-2 ring-primary-300 transition-all hover:scale-105 hover:ring-primary-500'
+              className='flex h-fit w-full flex-col rounded-2xl px-8 py-2 ring-[3px] ring-primary-300 transition-all hover:scale-105 hover:ring-primary-500'
               key={project.name}
             >
               <h2 className='text-center font-mono-jp text-2xl font-bold'>
@@ -23,14 +23,15 @@ export default function Page() {
               </h2>
               <div className='relative my-2 aspect-square w-full'>
                 <Image
-                  src={`/projects/${project.name}/main.png`}
+                  // FIX: 本当は main.png だけど写真がないから今は image.png
+                  src={`/projects/${project.name}/image.png`}
                   alt={project.title}
                   className='w-full rounded-xl object-cover'
                   fill
                   sizes='(100%,100%)'
                 />
               </div>
-              <div className='flex flex-wrap items-start gap-x-2 text-lg'>
+              <div className='flex flex-wrap items-start gap-2 text-lg'>
                 {project.technology.map((tag) => (
                   <span
                     key={tag}

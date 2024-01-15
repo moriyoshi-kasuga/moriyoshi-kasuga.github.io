@@ -1,0 +1,56 @@
+@keyframes show {
+  0% {
+    --percent: 0;
+  }
+
+  10% {
+    --percent: calc(var(--learn) / 10);
+  }
+
+  20% {
+    --percent: calc(var(--learn) / 5);
+  }
+
+  30% {
+    --percent: calc(var(--learn) / 4);
+  }
+
+  40% {
+    --percent: calc(var(--learn) / 3);
+  }
+
+  50% {
+    --percent: calc(var(--learn) / 2);
+  }
+
+  60% {
+    --percent: calc(var(--learn) / 1.5);
+  }
+
+  70% {
+    --percent: calc(var(--learn) / 1.2);
+  }
+
+  80% {
+    --percent: calc(var(--learn) / 1.1);
+  }
+
+  90% {
+    --percent: calc(var(--learn) / 1.05);
+  }
+
+  to {
+    --percent: var(--learn);
+  }
+}
+
+.techStack {
+  --learn: 0;
+  --percent: 0;
+  animation: show 1s forwards;
+  background-image: conic-gradient(
+    hsl(var(--nextui-primary-200)),
+    hsl(var(--nextui-primary-200)) calc(var(--percent) * 1%),
+    hsl(var(--nextui-default-500)) calc(var(--percent) * 1.01%) 100%
+  );
+}
