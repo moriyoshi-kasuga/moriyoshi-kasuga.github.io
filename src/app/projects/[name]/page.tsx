@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { BiSolidCategoryAlt } from 'react-icons/bi';
 import { FaGithub } from 'react-icons/fa';
 import { FaProjectDiagram } from 'react-icons/fa';
+import Image from 'next/image';
 
 const ProjectLink = ({
   url,
@@ -87,7 +88,7 @@ export default function Page({ params: { name } }: { params: { name: string } })
       <Divider className='mx-auto mt-5 w-11/12' />
       <div className='container mx-auto my-5'>
         <h2 className='text-center font-serif-jp text-3xl'>技術</h2>
-        <div className='flex flex-wrap justify-center'>
+        <div className='flex flex-wrap justify-center font-sans-jp'>
           {project.technology.map((str) => {
             return (
               <p className='m-1 p-1' key={str}>
@@ -95,6 +96,55 @@ export default function Page({ params: { name } }: { params: { name: string } })
               </p>
             );
           })}
+        </div>
+        <div className='my-16 flex flex-wrap items-stretch justify-center gap-y-4'>
+          <div className='w-full md:w-1/2 lg:w-1/3'>
+            <div className='relative m-2 flex h-full border-2 border-dotted border-success-300'>
+              <p className='my-auto p-4'>{project.objective}</p>
+              <h3 className='absolute -top-6 left-4 rounded-xl bg-white p-2 text-lg'>
+                目的
+              </h3>
+            </div>
+          </div>
+          <div className='w-full md:w-1/2 lg:w-1/3'>
+            <div className='relative m-2 flex h-full border-2 border-dotted border-warning-300'>
+              <p className='my-auto p-4'>{project.background}</p>
+              <h3 className='absolute -top-6 left-4 rounded-xl bg-white p-2 text-lg'>
+                背景
+              </h3>
+            </div>
+          </div>
+          <div className='w-full md:w-1/2 lg:w-1/3'>
+            <div className='relative m-2 flex h-full border-2 border-dotted border-primary-300'>
+              <p className='my-auto p-4'>{project.commitment}</p>
+              <h3 className='absolute -top-6 left-4 rounded-xl bg-white p-2 text-lg'>
+                こだわり
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div className='w-full rounded-xl px-12 pb-4 pt-2 shadow-md'>
+          {project.content}
+        </div>
+        <div className='relative m-4 mb-40 mt-20 rounded-xl border-2 border-double border-black'>
+          <div className='absolute inset-x-0 -top-6 flex justify-center'>
+            <h3 className='rounded-2xl bg-white px-4 text-center font-mono-jp text-2xl'>
+              ギャラリー
+            </h3>
+          </div>
+          <div className='flex flex-wrap justify-center p-4'>
+            {project.gallery?.map((path) => {
+              return (
+                <Image
+                  src={`/projects/${project.name}/${path}`}
+                  alt={path}
+                  key={path}
+                  className='!relative rounded-xl object-contain p-2 md:!w-1/2'
+                  fill
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </>

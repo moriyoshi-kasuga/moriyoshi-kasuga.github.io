@@ -30,6 +30,7 @@ const projects: Project[] = [
     commitment: '本当にコマンドを一行一回たたくだけで自分の環境を構築できます。',
     content:
       'Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.',
+    gallery: ['image.png']
   },
   {
     name: 'ryama-v1',
