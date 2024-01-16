@@ -46,7 +46,6 @@ const Menu = ({
   startAngle?: number;
 }) => {
   const [close, setClose] = useState(false);
-  const [hover, setHover] = useState(false);
   const [animate, setAnimate] = useState(false);
 
   return (
@@ -62,21 +61,11 @@ const Menu = ({
       <button
         id='menu-button'
         onClick={() => setClose(!close)}
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-        onAnimationStart={() => {
-          setAnimate(true);
-          setHover(false);
-        }}
-        onAnimationEnd={() => {
-          setAnimate(false);
-          setHover(false);
-        }}
+        onAnimationStart={() => setAnimate(true)}
+        onAnimationEnd={() => setAnimate(false)}
         className={cn(
           'relative mb-5 flex h-20 w-20 flex-col items-center justify-center bg-sky-400 duration-400 [&.hovered]:bg-amber-400',
           close && 'close bg-amber-400 [&.hovered]:bg-sky-400',
-          hover && !animate && 'hovered',
-          animate ? close && 'change' : !(close && hover) && (close || hover) && 'change',
         )}
       >
         <svg className='select-none fill-zinc-600' viewBox='0 0 100 100' width='250'>

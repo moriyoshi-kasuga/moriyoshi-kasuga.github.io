@@ -42,26 +42,26 @@
   transform-origin: center;
 }
 
-#menu-button.change .line {
+#menu-button:not(.close) .line {
   transition:
     y var(--second) ease-in,
     rotate var(--second) ease-in var(--second),
     opacity 0ms var(--second);
 }
 
-#menu-button.change :is(.top, .bottom) {
+#menu-button:not(.close) :is(.top, .bottom) {
   y: 45;
 }
 
-#menu-button.change .top {
+#menu-button:not(.close) .top {
   rotate: 45deg;
 }
 
-#menu-button.change .middle {
+#menu-button:not(.close) .middle {
   opacity: 0;
 }
 
-#menu-button.change .bottom {
+#menu-button:not(.close) .bottom {
   rotate: -45deg;
 }
 
