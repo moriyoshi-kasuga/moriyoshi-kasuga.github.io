@@ -14,6 +14,7 @@ const projects: Project[] = [
       'hoverしたときなどに軽くアニメーションというか動きをつけてふわっとした感じにしました',
     content:
       'Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.',
+    gallery: ['image.png'],
   },
   {
     name: 'dotfiles',
@@ -30,7 +31,7 @@ const projects: Project[] = [
     commitment: '本当にコマンドを一行一回たたくだけで自分の環境を構築できます。',
     content:
       'Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.',
-    gallery: ['image.png']
+    gallery: ['image.png'],
   },
   {
     name: 'ryama-v1',
@@ -48,6 +49,7 @@ const projects: Project[] = [
       'javascriptでページを更新しなくてもファイルの作成などの動的更新を再現しました',
     content:
       'Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.',
+    gallery: ['image.png'],
   },
 ];
 

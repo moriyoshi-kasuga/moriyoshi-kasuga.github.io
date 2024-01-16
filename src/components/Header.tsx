@@ -1,8 +1,9 @@
 'use client';
-import { FaHome, FaProjectDiagram, FaRegCommentAlt, FaSearch } from 'react-icons/fa';
+import { FaHome, FaProjectDiagram, FaSearch } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaComputer } from 'react-icons/fa6';
+import { MobileMenu } from './MobileMenu';
 
 export default function Header() {
   return (
@@ -10,7 +11,7 @@ export default function Header() {
       <nav className='container relative mx-auto flex items-center justify-between'>
         <Link
           href='/'
-          className='absolute aspect-square h-full scale-125 transition-transform hover:scale-150 max-md:left-[50%]'
+          className='absolute aspect-square h-[36px] transition-transform hover:scale-110 max-md:left-[50%] md:scale-110 md:hover:scale-125'
         >
           <Image
             src={'/mori.png'}
@@ -40,7 +41,7 @@ export default function Header() {
           </Link>
         </div>
         <div className='ml-auto flex items-center md:hidden'>
-          <FaRegCommentAlt size={32} />
+          <MobileMenu />
         </div>
       </nav>
     </header>

@@ -21,25 +21,25 @@ const languages: Skill[] = [
   },
   {
     title: 'Python',
-    learn: '60',
+    learn: 60,
     content:
       'ある程度は使えるのですが、継承が少し怪しいのと、特殊というかPythonが基本的に自由すぎるのでその独自のシステムなどはまだ学べてもないと思うのでこの学び率です',
   },
   {
     title: 'Java',
-    learn: '50',
+    learn: 50,
     content:
       '最初に勉強したプログラミング言語です、マイクラのプラグイン以外で使ったことありません',
   },
   {
     title: 'Scala',
-    learn: '10',
+    learn: 10,
     content:
       'Javaの代わりにScalaでマイクラのプラグインを書こうかなと思っているため学んでます',
   },
   {
     title: 'C++',
-    learn: '10',
+    learn: 10,
     content: '競プロのために学ぼうとしています',
   },
 ];
