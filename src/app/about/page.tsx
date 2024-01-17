@@ -4,11 +4,12 @@ import { AiOutlineLike } from 'react-icons/ai';
 import { FaSearch } from 'react-icons/fa';
 import { List, Item } from '@/components/List';
 import Link from 'next/link';
+import Image from 'next/image';
 export default function Page() {
   return (
     <>
       <div className='min-h-all flex flex-col items-center py-10'>
-        <h1 className='flex items-center gap-x-2 font-mono text-5xl font-bold text-warning'>
+        <h1 className='flex items-center gap-x-2 font-mono text-5xl font-bold text-warning-300'>
           <FaSearch />
           About me
         </h1>
@@ -33,11 +34,32 @@ export default function Page() {
           <Item id='言語' value='Python・JavaScript・TypeScript・Java' />
           <Item id='ツール' value='WSL2,macOs,Neovim' />
         </List>
-        {/* <div className='mt-10 flex w-full flex-col items-center font-mono-jp text-2xl container break-words'> */}
-        {/*   高校生のただのプログラマーです、まだ普通の学生なのでプログラミングをしています。 */}
-        {/*   最近はPythonのframeworkのDjango,Flaskを学んだり、このポートフォリオではNext.jsというReactのframeworkを使用しています。 */}
-        {/*   一番驚いたことは、Reactはframeworkではなくlibraryということです。 */}
-        {/* </div> */}
+        <div className='container my-8 grid h-[600px] md:h-[400px] grid-cols-1 items-center justify-center md:grid-cols-2 lg:h-[200px] lg:grid-cols-3'>
+          <div className='relative h-[200px]'>
+            <Image
+              alt='Top Langs'
+              fill
+              sizes='(100%,100%)'
+              src='https://github-readme-stats.vercel.app/api?username=moriyoshi-kasuga&theme=onedark&show_icons=true'
+            />
+          </div>
+          <div className='relative h-[200px] order-none md:order-1 lg:order-none max-lg:col-span-2'>
+            <Image
+              alt='Top Langs'
+              fill
+              sizes='(100%,100%)'
+              src='https://github-readme-stats.vercel.app/api/top-langs/?username=moriyoshi-kasuga&layout=compact&show_icons=true&theme=onedark'
+            />
+          </div>
+          <div className='relative h-[200px]'>
+            <Image
+              alt='github stats'
+              fill
+              sizes='(100%,100%)'
+              src='https://github-readme-streak-stats.herokuapp.com?user=moriyoshi-kasuga&theme=onedark'
+            />
+          </div>
+        </div>
       </div>
     </>
   );

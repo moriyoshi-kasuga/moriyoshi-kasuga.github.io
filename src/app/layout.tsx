@@ -5,11 +5,11 @@ import {
   Noto_Sans_JP,
   Noto_Serif_JP,
 } from 'next/font/google';
-import { Providers } from './provider';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { cn } from '@/lib/utils';
+import LayoutProvider from './LayoutProvider';
 
 const NotoSansJP = Noto_Sans_JP({
   weight: '400',
@@ -55,11 +55,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           MPlusRounded1c.variable,
         )}
       >
-        <Providers>
+        <LayoutProvider>
           <Header />
           {children}
           <Footer />
-        </Providers>
+        </LayoutProvider>
       </body>
     </html>
   );

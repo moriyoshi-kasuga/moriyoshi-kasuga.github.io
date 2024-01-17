@@ -1,4 +1,3 @@
-'use client';
 import { FaHome, FaProjectDiagram, FaSearch } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
