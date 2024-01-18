@@ -54,11 +54,11 @@ const TechStack = ({ title, skills }: { title: string; skills: Skill[] }) => {
         {skills.map((skill) => {
           return (
             <div
-              className='flex w-full flex-wrap justify-center md:w-1/2'
+              className='mb-12 flex w-full items-center max-lg:flex-col md:w-1/2'
               key={skill.title}
             >
               <div
-                className='techStack relative m-4 flex h-60 w-60 items-center justify-center rounded-full'
+                className='techStack relative m-4 flex aspect-square max-h-60 min-h-52 min-w-52 max-w-60 items-center justify-center rounded-full'
                 style={{
                   ['--learn' as string]: skill.learn,
                 }}
@@ -68,7 +68,7 @@ const TechStack = ({ title, skills }: { title: string; skills: Skill[] }) => {
                   {skill.learn}%
                 </p>
               </div>
-              <div className='jusify-center flex w-full flex-col items-center px-4 py-2 md:w-1/2'>
+              <div className='jusify-center flex w-4/5 flex-col items-center px-4 py-2 lg:w-1/2'>
                 <p className='my-auto font-mono-jp font-semibold'>{skill.content}</p>
               </div>
             </div>

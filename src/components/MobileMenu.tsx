@@ -48,7 +48,7 @@ export const MobileMenu = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className='fixed top-[var(--header-height)] left-0 right-0 p-5 backdrop-blur-sm rounded-b-3xl'
+            className='fixed left-0 right-0 top-[var(--header-height)] rounded-b-3xl p-5 shadow-sm shadow-default-600 backdrop-blur-sm'
           >
             <ul className='grid gap-2 p-3'>
               {routes.map((route, idx) => {
@@ -70,11 +70,13 @@ export const MobileMenu = () => {
                     <Link
                       onClick={() => setOpen((prev) => !prev)}
                       className={
-                        'flex w-full items-center justify-between rounded-xl p-5 text-white'
+                        'flex w-full items-center justify-between rounded-xl bg-gray-100 p-5'
                       }
                       href={route.href}
                     >
-                      <span className='flex gap-1 text-lg font-semibold font-mono'>{route.title}</span>
+                      <span className='flex gap-1 font-mono text-lg font-semibold'>
+                        {route.title}
+                      </span>
                       <Icon className='text-xl' />
                     </Link>
                   </motion.li>

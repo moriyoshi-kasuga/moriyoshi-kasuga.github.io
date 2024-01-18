@@ -7,13 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write --ignore-path .gitignore 'src/**/*.{js,jsx,ts,tsx,json,css}' && next lint --fix",
-    "schema": "supabase gen types typescript --local > ./src/lib/schema.ts && npx better-supabase-types -i ./src/lib/schema.ts -f"
+    "format": "prettier --write --ignore-path .gitignore 'src/**/*.{js,jsx,ts,tsx,json,css}' && next lint --fix"
   },
   "dependencies": {
     "@nextui-org/react": "^2.2.9",
     "clsx": "^2.1.0",
-    "framer-motion": "^10.16.16",
+    "framer-motion": "^10.18.0",
     "hamburger-react": "^2.5.0",
     "next": "14.0.4",
     "next-themes": "^0.2.1",

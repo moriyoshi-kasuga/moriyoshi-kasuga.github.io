@@ -34,7 +34,7 @@ export default function Page() {
           <Item id='言語' value='Python・JavaScript・TypeScript・Java' />
           <Item id='ツール' value='WSL2,macOs,Neovim' />
         </List>
-        <div className='container my-8 grid h-[600px] md:h-[400px] grid-cols-1 items-center justify-center md:grid-cols-2 lg:h-[200px] lg:grid-cols-3'>
+        <div className='container my-8 grid h-[600px] grid-cols-1 items-center justify-center md:h-[400px] md:grid-cols-2 lg:h-[200px] lg:grid-cols-3'>
           <div className='relative h-[200px]'>
             <Image
               alt='Top Langs'
@@ -43,7 +43,7 @@ export default function Page() {
               src='https://github-readme-stats.vercel.app/api?username=moriyoshi-kasuga&theme=onedark&show_icons=true'
             />
           </div>
-          <div className='relative h-[200px] order-none md:order-1 lg:order-none max-lg:col-span-2'>
+          <div className='relative order-none h-[200px] max-lg:col-span-2 md:order-1 lg:order-none'>
             <Image
               alt='Top Langs'
               fill
