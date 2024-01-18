@@ -5,28 +5,30 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import useClickAway from '@/lib/useClickAway';
 import { Squash as Hamburger } from 'hamburger-react';
-import { FaSearchPlus } from 'react-icons/fa';
+import { FaHome, FaProjectDiagram, FaSearch } from 'react-icons/fa';
+import { FaComputer } from 'react-icons/fa6';
+import Link from 'next/link';
 
 export const routes = [
   {
     title: 'Home',
-    href: '#',
-    Icon: FaSearchPlus,
-  },
-  {
-    title: 'Explore',
-    href: '#',
-    Icon: FaSearchPlus,
-  },
-  {
-    title: 'Pricing',
-    href: '#',
-    Icon: FaSearchPlus,
+    href: '/',
+    Icon: FaHome,
   },
   {
     title: 'About',
-    href: '#',
-    Icon: FaSearchPlus,
+    href: '/about',
+    Icon: FaSearch,
+  },
+  {
+    title: 'Projects',
+    href: '/projects',
+    Icon: FaProjectDiagram,
+  },
+  {
+    title: 'Skills',
+    href: '/skills',
+    Icon: FaComputer,
   },
 ];
 
@@ -37,7 +39,7 @@ export const MobileMenu = () => {
   useClickAway(ref, () => setOpen(false));
 
   return (
-    <div ref={ref} className='lg:hidden '>
+    <div ref={ref}>
       <Hamburger toggled={isOpen} size={20} toggle={setOpen} />
       <AnimatePresence>
         {isOpen && (
@@ -46,9 +48,9 @@ export const MobileMenu = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className='shadow-4xl fixed left-0 right-0 top-[3.5rem] border-b p-5 pt-0'
+            className='fixed top-[var(--header-height)] left-0 right-0 p-5 backdrop-blur-sm rounded-b-3xl'
           >
-            <ul className='grid gap-2'>
+            <ul className='grid gap-2 p-3'>
               {routes.map((route, idx) => {
                 const { Icon } = route;
 
@@ -65,16 +67,16 @@ export const MobileMenu = () => {
                     key={route.title}
                     className='w-full rounded-xl bg-gradient-to-tr p-[0.08rem]'
                   >
-                    <a
+                    <Link
                       onClick={() => setOpen((prev) => !prev)}
                       className={
-                        'flex w-full items-center justify-between rounded-xl p-5'
+                        'flex w-full items-center justify-between rounded-xl p-5 text-white'
                       }
                       href={route.href}
                     >
-                      <span className='flex gap-1 text-lg'>{route.title}</span>
+                      <span className='flex gap-1 text-lg font-semibold font-mono'>{route.title}</span>
                       <Icon className='text-xl' />
-                    </a>
+                    </Link>
                   </motion.li>
                 );
               })}
