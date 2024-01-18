@@ -50,7 +50,7 @@ export default function Home() {
                     <Image
                       src={`/projects/${p}/image.png`}
                       alt={`${p} image`}
-                      className='aspect-square h-40 w-40 rounded-lg object-cover'
+                      className='aspect-square rounded-lg'
                       width={160}
                       height={160}
                     />

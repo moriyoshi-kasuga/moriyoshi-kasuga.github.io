@@ -34,7 +34,7 @@ export default function Page() {
           <Item id='言語' value='Python・JavaScript・TypeScript・Java' />
           <Item id='ツール' value='WSL2,macOs,Neovim' />
         </List>
-        <div className='container my-8 grid h-[600px] grid-cols-1 items-center justify-center md:h-[400px] md:grid-cols-2 lg:h-[200px] lg:grid-cols-3'>
+        <div className='container mt-8 grid h-[600px] grid-cols-1 items-center justify-center md:h-[400px] md:grid-cols-2 lg:h-[200px] lg:grid-cols-3'>
           <div className='relative h-[200px]'>
             <Image
               alt='Top Langs'

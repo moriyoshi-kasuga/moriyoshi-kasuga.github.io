@@ -135,7 +135,7 @@ export default function Page({ params: { name } }: { params: { name: string } })
               ギャラリー
             </h3>
           </div>
-          <div className='flex flex-wrap justify-center p-4'>
+          <div className='flex flex-wrap justify-center p-4 relative'>
             {project.gallery?.map((path) => {
               return (
                 <Image

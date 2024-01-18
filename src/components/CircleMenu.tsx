@@ -46,7 +46,6 @@ const Menu = ({
   startAngle?: number;
 }) => {
   const [close, setClose] = useState(false);
-  const [animate, setAnimate] = useState(false);
 
   return (
     <div
@@ -61,8 +60,6 @@ const Menu = ({
       <button
         id='menu-button'
         onClick={() => setClose(!close)}
-        onAnimationStart={() => setAnimate(true)}
-        onAnimationEnd={() => setAnimate(false)}
         className={cn(
           'relative mb-5 flex h-20 w-20 flex-col items-center justify-center bg-sky-400 duration-400 [&.hovered]:bg-amber-400',
           close && 'close bg-amber-400 [&.hovered]:bg-sky-400',
@@ -96,9 +93,8 @@ const Menu = ({
               placement={link.placement ?? 'left-start'}
               content={link.content}
               color={link.tooltipColor ?? 'default'}
-              isOpen={animate ? false : undefined}
               delay={0}
-              closeDelay={100}
+              closeDelay={0}
             >
               <Link
                 href={link.href}
