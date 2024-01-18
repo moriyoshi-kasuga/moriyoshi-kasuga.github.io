@@ -48,7 +48,7 @@ export const MobileMenu = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className='fixed left-0 right-0 top-[var(--header-height)] rounded-b-3xl p-5 shadow-sm shadow-default-600 backdrop-blur-sm'
+            className='fixed left-0 right-0 top-[var(--header-height)] rounded-b-3xl p-5 backdrop-blur-sm'
           >
             <ul className='grid gap-2 p-3'>
               {routes.map((route, idx) => {

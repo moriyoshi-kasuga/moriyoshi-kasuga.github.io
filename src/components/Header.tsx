@@ -6,7 +6,7 @@ import { MobileMenu } from './MobileMenu';
 
 export default function Header() {
   return (
-    <header className='fixed top-0 z-50 flex h-[var(--header-height)] w-screen items-center py-2  shadow-sm shadow-default-600 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:backdrop-blur-sm'>
+    <header className='fixed top-0 z-50 flex h-[var(--header-height)] w-screen items-center py-2  before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:backdrop-blur-sm'>
       <nav className='container relative mx-auto flex items-center justify-between'>
         <Link
           href='/'
