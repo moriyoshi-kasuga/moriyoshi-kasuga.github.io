@@ -48,7 +48,7 @@ export default function Home() {
                 >
                   <div className='mx-4 my-2 flex flex-col items-center justify-center rounded-2xl'>
                     <Image
-                      src={`/projects/${p}/image.png`}
+                      src={`/projects/${p}/main.png`}
                       alt={`${p} image`}
                       className='aspect-square rounded-lg'
                       width={160}

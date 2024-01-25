@@ -87,7 +87,7 @@ export default function Page() {
           Skills
           <FaComputer />
         </h1>
-        <p className='my-4 text-center font-mono-jp text-xl'>
+        <p className='my-4 text-center font-mono-jp text-2xl'>
           パーセンテージで完全に自分の主観でどれぐらい理解できるかを図で表しています
         </p>
         <TechStack title='Languages' skills={languages} />

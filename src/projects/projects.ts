@@ -14,7 +14,6 @@ const projects: Project[] = [
     commitment: '全体的に雰囲気を統一するためにフォントには気をつけました。',
     content: `これが二個目のWebSiteにしてはかなりできているのではと自分では満足しています。
 ある程度参考にしたサイトはありますがちゃんと雰囲気は全てのページ統一してオリジナリティができたいると思っています。`,
-    // TODO: あと画像だけ と Google Slide
     gallery: ['main.png', 'sub.png'],
   },
   {
@@ -48,7 +47,7 @@ const projects: Project[] = [
     commitment: 'JavaScriptを使って、ページをリロードしなくてもいいようにしました。',
     content: `RYAMAは Rainbow Yonder Adorn Markdown Application(どこからでも虹のように飾れるマークダウンアプリ)と命名したのですが全くの名前詐欺ですね、
 一応二代目を作ろうとしています。(諦めてこのポートフォリオを作ったので作っているかは分かりませんが)`,
-    gallery: ['image.png','explorer.png'],
+    gallery: ['main.png','explorer.png'],
   },
 ];
 
