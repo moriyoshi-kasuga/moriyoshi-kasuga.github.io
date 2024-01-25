@@ -15,7 +15,7 @@ export default function Header() {
           <Image
             src={'/mori.png'}
             alt='My Avatar'
-            className='rounded-full object-cover ring-2 ring-default ring-offset-2 ring-offset-foreground'
+            className='rounded-full object-cover'
             fill
             sizes='(100%,100%)'
           />

@@ -70,7 +70,7 @@ export const MobileMenu = () => {
                     <Link
                       onClick={() => setOpen((prev) => !prev)}
                       className={
-                        'flex w-full items-center justify-between rounded-xl bg-gray-100 p-5'
+                        'flex w-full items-center justify-between rounded-xl bg-gray-200 p-5'
                       }
                       href={route.href}
                     >

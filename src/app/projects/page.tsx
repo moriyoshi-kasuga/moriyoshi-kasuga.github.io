@@ -23,8 +23,7 @@ export default function Page() {
               </h2>
               <div className='relative my-2 aspect-square w-full'>
                 <Image
-                  // FIX: 本当は main.png だけど写真がないから今は image.png
-                  src={`/projects/${project.name}/image.png`}
+                  src={`/projects/${project.name}/main.png`}
                   alt={project.title}
                   className='w-full rounded-xl object-cover'
                   fill
@@ -42,11 +41,9 @@ export default function Page() {
                 ))}
               </div>
               <div className='break-words py-2 font-sans-jp text-xl'>
-                {project.objective}
+                {project.description}
               </div>
-              <span className='ml-auto font-serif-jp font-semibold'>
-                {project.cretedAt}
-              </span>
+              <span className='ml-auto font-mono font-thin'>{project.cretedAt}</span>
             </Link>
           ))}
         </div>

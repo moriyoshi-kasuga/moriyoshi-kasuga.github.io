@@ -76,7 +76,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* TODO: すこし見やすく、言語とかは色付けたりunderlineつけてもいいかも */}
       <div className='mt-8 flex w-2/3 flex-col items-center justify-center'>
         <h2 className='mb-10 w-full text-center font-mono text-5xl'>About me</h2>
         <div className='flex flex-wrap items-center justify-center gap-x-3 md:flex-nowrap'>

@@ -2,19 +2,20 @@ const projects: Project[] = [
   {
     name: 'portfolio-v1',
     title: '一代目ポートフォリオ',
-    description: 'Next.js 製一代目ポートフォリオです',
+    description: 'Next.js製 一代目ポートフォリオ',
     cretedAt: '2024/12/26',
     genre: 'Web Site',
     github: 'https://github.com/moriyoshi-kasuga/portfolio',
+    site: 'https://morilab.vercel.app/',
     technology: ['Next.js', 'TypeScript'],
     objective: 'Moriってこんな人を知ってもらうため',
     background:
-      'まだウェブサイトなどを作った経験が少ないためあまりサイトのスタイルに自信がないですけど、とりあえず自分が納得できるようにして作り切りました',
-    commitment:
-      'hoverしたときなどに軽くアニメーションというか動きをつけてふわっとした感じにしました',
-    content:
-      'Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.',
-    gallery: ['image.png'],
+      'シンプルほど難しいと思ったので、邪魔にならない程度にアニメーションを付けました。',
+    commitment: '全体的に雰囲気を統一するためにフォントには気をつけました。',
+    content: `これが二個目のWebSiteにしてはかなりできているのではと自分では満足しています。
+ある程度参考にしたサイトはありますがちゃんと雰囲気は全てのページ統一してオリジナリティができたいると思っています。`,
+    // TODO: あと画像だけ と Google Slide
+    gallery: ['main.png', 'sub.png'],
   },
   {
     name: 'dotfiles',
@@ -24,32 +25,30 @@ const projects: Project[] = [
     genre: 'CLI',
     github: 'https://github.com/moriyoshi-kasuga/dotfiles',
     technology: ['shellscript'],
-    objective:
-      'windowsのwslを時々初期化するためいちいち手動でやるのもめんどくさいため、コマンド一行でdotfilesを適用できるようにした。(macも対応,一応linuxもできるはず)',
+    objective: 'windowsではwsl2を使っていて時々、初期化するのでそのために作りました。',
     background:
-      '実は夏からやっているのですが、結構あとで個人情報がのっているのに気づいたのでそのときにcommit全部リセットしたのでコミット数が異常に減りました。(現在 38commit だけど本当は150commitぐらいあると思う。shellscriptがかなり難しかった)',
-    commitment: '本当にコマンドを一行一回たたくだけで自分の環境を構築できます。',
-    content:
-      'Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.',
-    gallery: ['image.png'],
+      '最初は自分の開発環境をまとめているという事に惹かれて単純にdotfileだけを作っていました。',
+    commitment:
+      '大体のdotfileはファイルをまとめているだけか手順が必要なのでそれに対して全部makeでできるようにしました',
+    content: `本当は6月ぐらいから書いていたんですけど、間違えて.gitignoreに個人情報のファイルを書いていなかったのでそれまでのLogを全部消してしまいました。
+その時はまだgitを学び始めたばっかだったのでそれぐらいしか知らなかったんですよね、今思うと本当に馬鹿なことしたなと思います。
+(多分shellscriptを頑張って書いている100コミットぐらいが全部飛びました)`,
+    gallery: ['neovim.png', 'telescope.png', 'cdr.png', 'history.png'],
   },
   {
     name: 'ryama-v1',
     title: '一代目RYAMA',
-    description: 'Django製一代目のRYAMAです',
+    description: 'Markdownを書くwebapp',
     cretedAt: '2023/7/19',
     genre: 'Web App',
     github: 'https://github.com/moriyoshi-kasuga/RYAMA',
     technology: ['Django', 'Python', 'Javascript', 'HTML', 'CSS'],
-    objective:
-      '自分が最初にwebappをDjangoで作るときにMarkdownでメモを書くことにはまっていたため、マークダウンに関するwebappを作ることにしてこれを作りました。',
-    background:
-      'DjangoではReactのように動的更新ができないため、javascriptを頑張って書きました。(今はNext.jsでryama-v2を作ろうとしています)',
-    commitment:
-      'javascriptでページを更新しなくてもファイルの作成などの動的更新を再現しました',
-    content:
-      'Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.',
-    gallery: ['image.png'],
+    objective: 'Djangoを学んでいて、Mardkownを書くのにハマっていたので作る事にしました。',
+    background: '完成に近づくとJavaScriptしか書いていなかったです。',
+    commitment: 'JavaScriptを使って、ページをリロードしなくてもいいようにしました。',
+    content: `RYAMAは Rainbow Yonder Adorn Markdown Application(どこからでも虹のように飾れるマークダウンアプリ)と命名したのですが全くの名前詐欺ですね、
+一応二代目を作ろうとしています。(諦めてこのポートフォリオを作ったので作っているかは分かりませんが)`,
+    gallery: ['image.png','explorer.png'],
   },
 ];
 

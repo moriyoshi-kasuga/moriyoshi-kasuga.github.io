@@ -1,3 +1,4 @@
+'use client';
 import projects from '@/projects/projects';
 import { Divider, Tooltip } from '@nextui-org/react';
 import { FaLink } from 'react-icons/fa';
@@ -39,7 +40,7 @@ export default function Page({ params: { name } }: { params: { name: string } })
   }
   return (
     <>
-      <h1 className='my-2 text-center font-serif-jp text-5xl font-semibold'>
+      <h1 className='my-2 text-center font-mono-jp text-5xl font-semibold'>
         {project.title}
       </h1>
       <p className='text-center font-sans-jp'>{project.description}</p>
@@ -103,7 +104,7 @@ export default function Page({ params: { name } }: { params: { name: string } })
           <div className='w-full md:w-1/2 lg:w-1/3'>
             <div className='relative m-2 flex h-full border-2 border-dotted border-success-500'>
               <p className='my-auto p-4 font-sans-jp'>{project.objective}</p>
-              <h3 className='absolute -top-6 left-4 rounded-xl bg-white p-2 font-sans-jp text-lg'>
+              <h3 className='absolute -top-6 left-4 rounded-xl bg-white p-2 font-mono-jp text-lg'>
                 目的
               </h3>
             </div>
@@ -111,7 +112,7 @@ export default function Page({ params: { name } }: { params: { name: string } })
           <div className='w-full md:w-1/2 lg:w-1/3'>
             <div className='relative m-2 flex h-full border-2 border-dotted border-warning-500'>
               <p className='my-auto p-4 font-sans-jp'>{project.background}</p>
-              <h3 className='absolute -top-6 left-4 rounded-xl bg-white p-2 font-sans-jp text-lg'>
+              <h3 className='absolute -top-6 left-4 rounded-xl bg-white p-2 font-mono-jp text-lg'>
                 背景
               </h3>
             </div>
@@ -119,14 +120,13 @@ export default function Page({ params: { name } }: { params: { name: string } })
           <div className='w-full md:w-1/2 lg:w-1/3'>
             <div className='relative m-2 flex h-full border-2 border-dotted border-primary-500'>
               <p className='my-auto p-4 font-sans-jp'>{project.commitment}</p>
-              <h3 className='absolute -top-6 left-4 rounded-xl bg-white p-2 font-sans-jp text-lg'>
+              <h3 className='absolute -top-6 left-4 rounded-xl bg-white p-2 font-mono-jp text-lg'>
                 こだわり
               </h3>
             </div>
           </div>
         </div>
-        <div className='w-full rounded-xl px-12 pb-4 pt-2 shadow-md'>
-          こんにtは
+        <div className='w-full whitespace-pre-wrap break-words rounded-xl px-12 pb-4 pt-2 shadow-md'>
           {project.content}
         </div>
         <div className='relative m-4 mb-40 mt-20 rounded-xl border-2 border-double border-black'>
@@ -135,14 +135,15 @@ export default function Page({ params: { name } }: { params: { name: string } })
               ギャラリー
             </h3>
           </div>
-          <div className='flex flex-wrap justify-center p-4 relative'>
+          <div className='grid grid-cols-1 gap-4 p-4 md:grid-cols-2'>
             {project.gallery?.map((path) => {
               return (
                 <Image
                   src={`/projects/${project.name}/${path}`}
                   alt={path}
+                  id={path}
                   key={path}
-                  className='!relative rounded-xl object-contain p-2 md:!w-1/2'
+                  className='!relative aspect-auto object-contain'
                   fill
                 />
               );

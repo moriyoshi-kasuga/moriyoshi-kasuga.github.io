@@ -28,7 +28,7 @@ export default function Page() {
         <div className='flex space-x-2'>
           <IconButton
             content='This Portfolio'
-            url='#' // FIX: 決まったらここにURLを入力
+            url='https://morilab.vercel.app/'
             icon=<IoIosGitBranch />
           />
         </div>
