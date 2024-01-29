@@ -1,5 +1,3 @@
-'use client';
-import projects from '@/projects/projects';
 import { Divider, Tooltip } from '@nextui-org/react';
 import { FaLink } from 'react-icons/fa';
 import Link from 'next/link';
@@ -7,6 +5,9 @@ import { BiSolidCategoryAlt } from 'react-icons/bi';
 import { FaGithub } from 'react-icons/fa';
 import { FaProjectDiagram } from 'react-icons/fa';
 import Image from 'next/image';
+import Markdown from 'markdown-to-jsx';
+import { getProject, getProjects } from '@/lib/projects';
+import { NotFound } from '@/components/NotFound';
 
 const ProjectLink = ({
   url,
@@ -33,17 +34,26 @@ const ProjectLink = ({
   );
 };
 
+export const generateStaticParams = async () => {
+  const projects = getProjects();
+  return projects.map((project) => ({
+    name: project.name,
+  }));
+};
+
 export default function Page({ params: { name } }: { params: { name: string } }) {
-  const project = projects.find((project) => project.name == name);
+  const project = getProject(name);
   if (!project) {
-    return <div>Project not found. {name}</div>;
+    return (
+      <NotFound backLink='/projects' title={'プロジェクトが見つかりませんでした。'} />
+    );
   }
   return (
     <>
       <h1 className='my-2 text-center font-mono-jp text-5xl font-semibold'>
         {project.title}
       </h1>
-      <p className='text-center font-sans-jp'>{project.description}</p>
+      <p className='text-center font-sans-jp text-lg'>{project.description}</p>
       <div className='my-5 flex justify-center gap-x-8 gap-y-4 max-sm:flex-col'>
         <div className='flex items-center p-4 md:justify-center'>
           <div className='group relative ml-auto'>
@@ -127,7 +137,7 @@ export default function Page({ params: { name } }: { params: { name: string } })
           </div>
         </div>
         <div className='w-full whitespace-pre-wrap break-words rounded-xl px-12 pb-4 pt-2 shadow-md'>
-          {project.content}
+          <Markdown>{project.content}</Markdown>
         </div>
         <div className='relative m-4 mb-40 mt-20 rounded-xl border-2 border-double border-black'>
           <div className='absolute inset-x-0 -top-6 flex justify-center'>

@@ -4,8 +4,8 @@ import { FaXTwitter } from 'react-icons/fa6';
 import { IoIosGitBranch } from 'react-icons/io';
 import Link from 'next/link';
 import Image from 'next/image';
-import projects from '@/projects/projects';
 import IconButton from '@/components/IconButton';
+import { getProject } from '@/lib/projects';
 
 const showProjects = ['portfolio-v1', 'dotfiles', 'ryama-v1'];
 
@@ -39,7 +39,7 @@ export default function Home() {
           <h2 className='mb-10 w-full text-center font-mono text-5xl'>Projects</h2>
           <div className='flex w-1/2 flex-wrap items-center justify-center md:w-4/5'>
             {showProjects.map((p) => {
-              const project = projects.find((v) => v.name === p)!;
+              const project = getProject(p);
               return (
                 <Link
                   key={project.name}

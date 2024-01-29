@@ -1,4 +1,4 @@
-import projects from '@/projects/projects';
+import { getProjects } from '@/lib/projects';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaProjectDiagram } from 'react-icons/fa';
@@ -12,7 +12,7 @@ export default function Page() {
           Projects
         </h1>
         <div className='container mx-auto my-8 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 md:gap-8 lg:grid-cols-3 lg:gap-10 xl:gap-12'>
-          {projects.map((project) => (
+          {getProjects().map((project) => (
             <Link
               href={`/projects/${project.name}`}
               className='flex h-full w-full flex-col rounded-2xl px-8 py-2 ring-[3px] ring-primary-300 transition-all hover:scale-105 hover:ring-primary-500'
