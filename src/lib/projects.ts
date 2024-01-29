@@ -36,14 +36,16 @@ export const getProjects = (): ProjectMetaData[] => {
   const folder = 'src/projects/';
   const files = fs.readdirSync(folder);
   const markdownProjects = files.filter((file) => file.endsWith('.md'));
-  const projects = markdownProjects.map((name) => {
-    const fileContent = fs.readFileSync(`src/projects/${name}`, 'utf8');
-    const matterData = matter(fileContent);
-    return {
-      ...matterData.data,
-      content: matterData.content,
-      name: name.replace('.md', ''),
-    } as ProjectMetaData;
-  });
+  const projects = markdownProjects
+    .map((name) => {
+      const fileContent = fs.readFileSync(`src/projects/${name}`, 'utf8');
+      const matterData = matter(fileContent);
+      return {
+        ...matterData.data,
+        content: matterData.content,
+        name: name.replace('.md', ''),
+      } as ProjectMetaData;
+    })
+    .sort((a, b) => new Date(b.cretedAt).valueOf() - new Date(a.cretedAt).valueOf());
   return projects;
 };

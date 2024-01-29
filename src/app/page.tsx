@@ -40,6 +40,9 @@ export default function Home() {
           <div className='flex w-1/2 flex-wrap items-center justify-center md:w-4/5'>
             {showProjects.map((p) => {
               const project = getProject(p);
+              if (!project) {
+                return null;
+              }
               return (
                 <Link
                   key={project.name}

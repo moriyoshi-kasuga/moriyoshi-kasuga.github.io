@@ -44,9 +44,7 @@ export const generateStaticParams = async () => {
 export default function Page({ params: { name } }: { params: { name: string } }) {
   const project = getProject(name);
   if (!project) {
-    return (
-      <NotFound backLink='/projects' title={'プロジェクトが見つかりませんでした。'} />
-    );
+    return <NotFound backLink='/projects' title={'Project not found'} />;
   }
   return (
     <>
