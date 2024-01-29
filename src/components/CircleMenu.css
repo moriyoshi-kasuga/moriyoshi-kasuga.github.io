@@ -33,38 +33,6 @@
   }
 }
 
-#menu-button .line {
-  --second: 100ms;
-  transition:
-    y var(--second) ease-in var(--second),
-    rotate var(--second) ease-in,
-    opacity 0ms var(--second);
-  transform-origin: center;
-}
-
-#menu-button:not(.close) .line {
-  transition:
-    y var(--second) ease-in,
-    rotate var(--second) ease-in var(--second),
-    opacity 0ms var(--second);
-}
-
-#menu-button:not(.close) :is(.top, .bottom) {
-  y: 45;
-}
-
-#menu-button:not(.close) .top {
-  rotate: 45deg;
-}
-
-#menu-button:not(.close) .middle {
-  opacity: 0;
-}
-
-#menu-button:not(.close) .bottom {
-  rotate: -45deg;
-}
-
 #menu .circle-link {
   display: flex;
   flex-direction: column;

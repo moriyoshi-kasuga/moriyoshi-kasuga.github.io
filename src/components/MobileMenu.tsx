@@ -4,10 +4,10 @@ import { useRef } from 'react';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import useClickAway from '@/lib/useClickAway';
-import { Squash as Hamburger } from 'hamburger-react';
 import { FaHome, FaProjectDiagram, FaSearch } from 'react-icons/fa';
 import { FaComputer } from 'react-icons/fa6';
 import Link from 'next/link';
+import { MenuButton } from './MenuButton';
 
 export const routes = [
   {
@@ -40,7 +40,13 @@ export const MobileMenu = () => {
 
   return (
     <div ref={ref}>
-      <Hamburger toggled={isOpen} size={20} toggle={setOpen} />
+      <MenuButton
+        width={20}
+        height={20}
+        isOpen={isOpen}
+        strokeWidth={4}
+        onClick={() => setOpen(!isOpen)}
+      />
       <AnimatePresence>
         {isOpen && (
           <motion.div

@@ -4,6 +4,7 @@ import { Tooltip } from '@nextui-org/react';
 import Link from 'next/link';
 import './CircleMenu.css';
 import { useState } from 'react';
+import { MenuButton } from './MenuButton';
 
 type OverlayPlacement =
   | 'top'
@@ -57,34 +58,15 @@ const Menu = ({
       }}
       id='menu'
     >
-      <button
+      <MenuButton
         id='menu-button'
+        isOpen={!close}
         onClick={() => setClose(!close)}
         className={cn(
-          'relative mb-5 flex h-20 w-20 flex-col items-center justify-center bg-sky-400 duration-400 [&.hovered]:bg-amber-400',
-          close && 'close bg-amber-400 [&.hovered]:bg-sky-400',
+          'relative h-full w-full items-center justify-center bg-sky-400 p-5 duration-400 hover:bg-amber-400',
+          close && 'close bg-amber-400 hover:bg-sky-400',
         )}
-      >
-        <svg className='select-none fill-zinc-600' viewBox='0 0 100 100' width='250'>
-          <rect className='line top' width='60' height='10' x='20' y='25' rx='5'></rect>
-          <rect
-            className='line middle'
-            width='60'
-            height='10'
-            x='20'
-            y='45'
-            rx='5'
-          ></rect>
-          <rect
-            className='line bottom'
-            width='60'
-            height='10'
-            x='20'
-            y='65'
-            rx='5'
-          ></rect>
-        </svg>
-      </button>
+      />
       <nav className='relative left-[140%] h-[60px] w-[60px]'>
         {links.map((link, index) => {
           return (
