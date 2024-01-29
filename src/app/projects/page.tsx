@@ -15,7 +15,7 @@ export default function Page() {
           {projects.map((project) => (
             <Link
               href={`/projects/${project.name}`}
-              className='flex h-fit w-full flex-col rounded-2xl px-8 py-2 ring-[3px] ring-primary-300 transition-all hover:scale-105 hover:ring-primary-500'
+              className='flex h-full w-full flex-col rounded-2xl px-8 py-2 ring-[3px] ring-primary-300 transition-all hover:scale-105 hover:ring-primary-500'
               key={project.name}
             >
               <h2 className='text-center font-mono-jp text-2xl font-bold'>
@@ -40,7 +40,7 @@ export default function Page() {
                   </span>
                 ))}
               </div>
-              <div className='break-words py-2 font-sans-jp text-xl'>
+              <div className='mt-auto break-words py-2 font-sans-jp text-xl'>
                 {project.description}
               </div>
               <span className='ml-auto font-mono font-thin'>{project.cretedAt}</span>

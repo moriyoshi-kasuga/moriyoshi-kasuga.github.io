@@ -35,7 +35,7 @@ export default function Page() {
           <Item id='ツール' value='WSL2,macOs,Neovim' />
         </List>
         <div className='container mt-8 grid h-[600px] grid-cols-1 items-center justify-center md:h-[400px] md:grid-cols-2 lg:h-[200px] lg:grid-cols-3'>
-          <div className='relative h-[200px]'>
+          <div className='relative h-[150px]'>
             <Image
               alt='Top Langs'
               fill
@@ -51,7 +51,7 @@ export default function Page() {
               src='https://github-readme-stats.vercel.app/api/top-langs/?username=moriyoshi-kasuga&layout=compact&show_icons=true&theme=onedark'
             />
           </div>
-          <div className='relative h-[200px]'>
+          <div className='relative h-[150px]'>
             <Image
               alt='github stats'
               fill
