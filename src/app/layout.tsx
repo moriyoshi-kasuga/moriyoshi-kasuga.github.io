@@ -9,24 +9,23 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { cn } from '@/lib/utils';
-import LayoutProvider from './LayoutProvider';
 
 const NotoSansJP = Noto_Sans_JP({
-  weight: '400',
+  weight: ['200', '300', '400', '500', '600', '700', '900'],
   subsets: ['latin'],
   variable: '--font-NotoSansJP',
   display: 'swap',
 });
 
 const NotoSerifJP = Noto_Serif_JP({
-  weight: '400',
+  weight: ['200', '300', '400', '500', '600', '700', '900'],
   subsets: ['latin'],
   variable: '--font-NotoSerifJP',
   display: 'swap',
 });
 
 const MPlusRounded1c = M_PLUS_Rounded_1c({
-  weight: '400',
+  weight: ['100', '300', '400', '500', '700', '800', '900'],
   subsets: ['latin'],
   variable: '--font-MPlusRounded1c',
   display: 'swap',
@@ -46,7 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang='en' suppressHydrationWarning>
       <body
         className={cn(
-          'min-h-screen bg-background pt-[var(--header-height)] font-sans antialiased',
+          'bg-background min-h-screen pt-[var(--header-height)] font-sans antialiased',
           '[--header-height:50px]',
           '[--footer-height:40px]',
           FontSans.className,
@@ -55,11 +54,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           MPlusRounded1c.variable,
         )}
       >
-        <LayoutProvider>
-          <Header />
-          {children}
-          <Footer />
-        </LayoutProvider>
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   );

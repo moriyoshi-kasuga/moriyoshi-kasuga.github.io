@@ -1,4 +1,3 @@
-import { Divider, Tooltip } from '@nextui-org/react';
 import { FaLink } from 'react-icons/fa';
 import Link from 'next/link';
 import { BiSolidCategoryAlt } from 'react-icons/bi';
@@ -44,7 +43,13 @@ export const generateStaticParams = async () => {
 export default function Page({ params: { name } }: { params: { name: string } }) {
   const project = getProject(name);
   if (!project) {
-    return <NotFound backLink='/projects' title={'Project not found'} />;
+    return (
+      <NotFound
+        backLink='/projects'
+        title={'Project not found'}
+        description={'お探しのプロジェクトは存在しません。'}
+      />
+    );
   }
   return (
     <>
@@ -52,21 +57,13 @@ export default function Page({ params: { name } }: { params: { name: string } })
         {project.title}
       </h1>
       <p className='text-center font-sans-jp text-lg'>{project.description}</p>
-      <div className='my-5 flex justify-center gap-x-8 gap-y-4 max-sm:flex-col'>
+      <div className='mt-8 flex justify-center gap-x-8 gap-y-4 max-sm:flex-col md:mt-5'>
         <div className='flex items-center p-4 md:justify-center'>
           <div className='group relative ml-auto'>
-            <Tooltip
-              content='公開日'
-              color='foreground'
-              delay={0}
-              closeDelay={100}
-              className='max-sm:hidden'
-            >
-              <div className='flex cursor-pointer items-center justify-center rounded-md bg-black p-2 text-xl shadow-xl duration-300 hover:shadow-2xl md:rounded-full'>
-                <FaProjectDiagram className='text-white' />
-              </div>
-            </Tooltip>
-            <div className='absolute -top-[30px] z-10 flex w-40 rounded-md bg-black p-2 text-white duration-300 md:-left-12 md:top-12 md:justify-center md:rounded-lg md:opacity-0'>
+            <div className='flex cursor-pointer items-center justify-center rounded-b-md bg-black p-2 text-xl shadow-xl duration-300 hover:shadow-2xl md:rounded-full'>
+              <FaProjectDiagram className='text-white' />
+            </div>
+            <div className='md:scale-80 absolute -top-9 z-10 flex w-40 break-keep rounded-t-md rounded-br-md bg-black p-2 text-center font-mono-jp text-sm text-white duration-150 group-hover:visible group-hover:scale-100 group-hover:opacity-100 md:invisible md:w-fit md:-translate-x-1/4 md:justify-center md:rounded-xl md:px-1.5 md:py-1 md:opacity-0'>
               <p>公開日</p>
             </div>
           </div>
@@ -74,18 +71,10 @@ export default function Page({ params: { name } }: { params: { name: string } })
         </div>
         <div className='flex items-center p-4 md:justify-center'>
           <div className='group relative ml-auto'>
-            <Tooltip
-              content='ジャンル'
-              color='foreground'
-              delay={0}
-              closeDelay={100}
-              className='max-sm:hidden'
-            >
-              <div className='flex cursor-pointer items-center justify-center rounded-md bg-black p-2 text-xl shadow-xl duration-300 hover:shadow-2xl md:rounded-full'>
-                <BiSolidCategoryAlt className='text-white' />
-              </div>
-            </Tooltip>
-            <div className='absolute -top-[30px] z-10 flex w-40 rounded-md bg-black p-2 text-white duration-300 md:-left-12 md:top-12 md:justify-center md:rounded-lg md:opacity-0'>
+            <div className='flex cursor-pointer items-center justify-center rounded-b-md bg-black p-2 text-xl shadow-xl duration-300 hover:shadow-2xl md:rounded-full'>
+              <BiSolidCategoryAlt className='text-white' />
+            </div>
+            <div className='md:scale-80 absolute -top-9 z-10 flex w-40 break-keep rounded-t-md rounded-br-md bg-black p-2 text-center font-mono-jp text-sm text-white duration-150 group-hover:visible group-hover:scale-100 group-hover:opacity-100 md:invisible md:w-fit md:-translate-x-1/4 md:justify-center md:rounded-xl md:px-1.5 md:py-1 md:opacity-0'>
               <p>ジャンル</p>
             </div>
           </div>
@@ -93,12 +82,15 @@ export default function Page({ params: { name } }: { params: { name: string } })
         </div>
       </div>
       <div className='flex flex-wrap justify-center gap-8'>
-        <ProjectLink url={project.github} title='GitHub' icon={<FaGithub />} />
+        <ProjectLink url={project.github} title='Code' icon={<FaGithub />} />
         <ProjectLink url={project.site} title='Site' icon={<FaLink />} />
       </div>
-      <Divider className='mx-auto mt-5 w-11/12' />
+      <div className='h-divider relative mx-auto my-8 h-[1px] w-11/12 border-none bg-divider'>
+        <h2 className='absolute left-[50%] -translate-x-1/2 -translate-y-1/2 justify-center bg-white text-center font-serif-jp text-3xl'>
+          技術
+        </h2>
+      </div>
       <div className='container mx-auto my-5'>
-        <h2 className='text-center font-serif-jp text-3xl'>技術</h2>
         <div className='flex flex-wrap justify-center font-sans-jp'>
           {project.technology.map((str) => {
             return (
@@ -134,7 +126,7 @@ export default function Page({ params: { name } }: { params: { name: string } })
             </div>
           </div>
         </div>
-        <div className='w-full whitespace-pre-wrap break-words rounded-xl px-12 pb-4 pt-2 shadow-md'>
+        <div className='w-full whitespace-pre-wrap break-words rounded-xl px-12 pb-4 pt-2 text-lg shadow-lg'>
           <Markdown>{project.content}</Markdown>
         </div>
         <div className='relative m-4 mb-40 mt-20 rounded-xl border-2 border-double border-black'>

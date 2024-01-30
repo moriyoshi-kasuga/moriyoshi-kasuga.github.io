@@ -6,7 +6,7 @@ import { FaProjectDiagram } from 'react-icons/fa';
 export default function Page() {
   return (
     <>
-      <div className='min-h-all'>
+      <div className='min-h-all py-10'>
         <h1 className='flex justify-center gap-x-2 font-mono-jp text-5xl font-bold'>
           <FaProjectDiagram />
           Projects
@@ -18,7 +18,7 @@ export default function Page() {
               className='flex h-full w-full flex-col rounded-2xl px-8 py-2 ring-[3px] ring-primary-300 transition-all hover:scale-105 hover:ring-primary-500'
               key={project.name}
             >
-              <h2 className='text-center font-mono-jp text-2xl font-bold'>
+              <h2 className='text-center font-mono-jp text-2xl font-semibold'>
                 {project.title}
               </h2>
               <div className='relative my-2 aspect-square w-full'>
@@ -34,7 +34,7 @@ export default function Page() {
                 {project.technology.map((tag) => (
                   <span
                     key={tag}
-                    className='rounded-xl bg-warning-300 px-2 py-1 font-sans-jp font-thin text-default-900'
+                    className='text-default-900 rounded-xl bg-warning-300 px-2 py-1 font-sans-jp font-normal'
                   >
                     {tag}
                   </span>

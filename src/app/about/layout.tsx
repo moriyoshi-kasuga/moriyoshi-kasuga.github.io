@@ -3,6 +3,7 @@ import { SlNotebook } from 'react-icons/sl';
 import { FaComputer } from 'react-icons/fa6';
 import { AiOutlineLike } from 'react-icons/ai';
 import { FaSearch } from 'react-icons/fa';
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
@@ -11,33 +12,27 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         links={[
           {
             href: '/about',
-            content: 'About Me',
+            content: 'About',
             icon: <FaSearch />,
-            tooltipColor: 'warning',
             linkClass: 'bg-warning-400',
           },
           {
             href: '/about/likes',
             content: 'Likes',
             icon: <AiOutlineLike />,
-            tooltipColor: 'danger',
             linkClass: 'bg-danger-400',
           },
           {
             href: '/about/links',
             content: 'Links',
             icon: <SlNotebook />,
-            tooltipColor: 'success',
             linkClass: 'bg-success-400',
-            placement: 'top-end',
           },
           {
             href: '/skills',
             content: 'Skills',
             icon: <FaComputer />,
-            tooltipColor: 'primary',
             linkClass: 'bg-primary-400',
-            placement: 'top-end',
           },
         ]}
       />

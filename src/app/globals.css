@@ -34,18 +34,17 @@
   transform: scale(1, 1);
 }
 
-.link-style {
-  @apply text-primary-600 underline underline-offset-[3px];
-}
-
 @layer base {
   .base-btn {
     @apply flex items-center gap-x-2 rounded-2xl px-8 py-3 font-mono text-xl font-bold transition duration-500;
+  }
+  .link-style {
+    @apply text-primary-600 underline underline-offset-[3px];
   }
 }
 
 @layer components {
   .btn {
-    @apply base-btn text-default-900 hover:bg-default-900;
+    @apply base-btn text-zinc-900 hover:bg-zinc-900;
   }
 }

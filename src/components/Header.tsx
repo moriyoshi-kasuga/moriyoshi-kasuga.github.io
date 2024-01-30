@@ -10,7 +10,7 @@ export default function Header() {
       <nav className='container relative mx-auto flex items-center justify-between'>
         <Link
           href='/'
-          className='absolute aspect-square h-[calc(var(--header-height)*0.8)] transition-transform hover:scale-110 max-md:left-[50%]'
+          className='absolute aspect-square h-[calc(var(--header-height)*0.8)] transition-transform hover:scale-110 max-md:left-[50%] -translate-x-1/2'
         >
           <Image
             src={'/mori.png'}

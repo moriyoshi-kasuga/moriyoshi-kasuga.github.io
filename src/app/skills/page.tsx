@@ -1,5 +1,6 @@
 import './style.css';
 import { FaComputer } from 'react-icons/fa6';
+
 type Skill = {
   title: string;
   learn: number;
@@ -69,7 +70,7 @@ const TechStack = ({ title, skills }: { title: string; skills: Skill[] }) => {
                 </p>
               </div>
               <div className='jusify-center flex w-4/5 flex-col items-center px-4 py-2 lg:w-1/2'>
-                <p className='my-auto font-mono-jp font-semibold'>{skill.content}</p>
+                <p className='my-auto font-sans-jp font-medium'>{skill.content}</p>
               </div>
             </div>
           );
@@ -81,17 +82,15 @@ const TechStack = ({ title, skills }: { title: string; skills: Skill[] }) => {
 
 export default function Page() {
   return (
-    <>
-      <div className='min-h-all flex flex-col items-center py-10 font-sans-jp'>
-        <h1 className='flex items-center gap-x-2 font-mono text-5xl font-bold text-primary-300'>
-          Skills
-          <FaComputer />
-        </h1>
-        <p className='my-4 text-center font-mono-jp text-2xl'>
-          パーセンテージで完全に自分の主観でどれぐらい理解できるかを図で表しています
-        </p>
-        <TechStack title='Languages' skills={languages} />
-      </div>
-    </>
+    <div className='min-h-all flex flex-col items-center py-10 font-sans-jp'>
+      <h1 className='flex items-center gap-x-2 font-mono text-5xl font-bold text-primary-300'>
+        Skills
+        <FaComputer />
+      </h1>
+      <p className='m-4 text-center font-mono-jp text-2xl'>
+        パーセンテージで完全に自分の主観でどれぐらい理解できるかを図で表しています
+      </p>
+      <TechStack title='Languages' skills={languages} />
+    </div>
   );
 }

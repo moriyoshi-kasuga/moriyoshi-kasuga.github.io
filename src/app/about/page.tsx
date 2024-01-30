@@ -5,6 +5,7 @@ import { FaSearch } from 'react-icons/fa';
 import { List, Item } from '@/components/List';
 import Link from 'next/link';
 import Image from 'next/image';
+
 export default function Page() {
   return (
     <>

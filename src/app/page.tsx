@@ -11,23 +11,23 @@ const showProjects = ['portfolio-v1', 'dotfiles', 'ryama-v1'];
 
 export default function Home() {
   return (
-    <div className='min-h-all flex w-full flex-col items-center bg-primary-300 py-10 text-default-50'>
+    <div className='min-h-all flex w-full flex-col items-center bg-primary-300 py-10 text-zinc-100'>
       <div className='flex flex-col items-center'>
         <h1 className='font-mono-jp text-7xl font-semibold'>MoriLab</h1>
         <h2 className='font-mono text-3xl'>Mori Programmer Lab</h2>
-        <div className='mt-6 flex space-x-2'>
+        <div className='mt-6 flex flex-wrap items-center justify-center gap-2 px-4'>
           <IconButton
-            content='My Github Profile'
+            content='Github'
             url='https://github.com/moriyoshi-kasuga'
             icon=<FaGithub />
           />
           <IconButton
-            content='This Portfolio Repository'
+            content='Repository'
             url='https://github.com/moriyoshi-kasuga/portfolio'
             icon=<IoIosGitBranch />
           />
           <IconButton
-            content='My Twitter Profile'
+            content='Twitter'
             url='https://twitter.com/MoriyoshiKasuga'
             icon=<FaXTwitter />
           />
@@ -90,7 +90,7 @@ export default function Home() {
             height={150}
           />
           <div>
-            <p className='max-w-xl font-sans-jp font-semibold sm:text-lg md:text-xl'>
+            <p className='max-w-xl font-mono-jp font-medium text-white sm:text-lg md:text-xl'>
               高校生のただのプログラマー、本格的にプログラミングを学び始めたのは高校に入った2023年春ぐらいから、
               それまでは中学生の時にマイクラのプラグインを(Javaで)作っていました。
               最近はpython(django,flask),typescript(react,nextjs) などを触っています

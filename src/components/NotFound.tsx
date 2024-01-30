@@ -2,7 +2,15 @@ import Link from 'next/link';
 import { FaArrowLeft } from 'react-icons/fa';
 import { PiWarningCircle } from 'react-icons/pi';
 
-export const NotFound = ({ backLink, title }: { backLink?: string; title?: string }) => {
+export const NotFound = ({
+  backLink,
+  title,
+  description,
+}: {
+  backLink?: string;
+  title?: string;
+  description?: string;
+}) => {
   return (
     <div className='min-h-all container mx-auto flex items-center px-6 py-12'>
       <div className='mx-auto flex max-w-sm flex-col items-center text-center'>
@@ -13,7 +21,7 @@ export const NotFound = ({ backLink, title }: { backLink?: string; title?: strin
           {title || 'Page not found'}
         </h1>
         <p className='mt-4 text-gray-500 dark:text-gray-400'>
-          {'お探しのページは存在しません。'}
+          {description || 'お探しのページは存在しません。'}
         </p>
         <Link
           href={backLink || '/'}

@@ -49,8 +49,8 @@
   --percent: 0;
   animation: show 1s forwards;
   background-image: conic-gradient(
-    hsl(var(--nextui-primary-200)),
-    hsl(var(--nextui-primary-200)) calc(var(--percent) * 1%),
-    hsl(var(--nextui-default-500)) calc(var(--percent) * 1.01%) 100%
+    #99c7fb,
+    #99c7fb calc(var(--percent) * 1%),
+    #71717a calc(var(--percent) * 1.01%) 100%
   );
 }

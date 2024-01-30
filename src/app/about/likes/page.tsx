@@ -1,10 +1,11 @@
 import { Item, List } from '@/components/List';
 import { AiOutlineLike } from 'react-icons/ai';
+
 export default function Page() {
   return (
     <>
       <div className='min-h-all flex flex-col items-center py-10'>
-        <h1 className='mb-10 flex items-center gap-x-2 font-mono text-5xl font-bold text-danger'>
+        <h1 className='mb-10 flex items-center gap-x-2 font-mono text-5xl font-bold text-danger-500'>
           <AiOutlineLike />
           Likes
         </h1>
