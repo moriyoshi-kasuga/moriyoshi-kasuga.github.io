@@ -10,7 +10,7 @@ export default function Header() {
       <nav className='container relative mx-auto flex items-center justify-between'>
         <Link
           href='/'
-          className='absolute aspect-square h-[calc(var(--header-height)*0.8)] transition-transform hover:scale-110 max-md:left-[50%] -translate-x-1/2'
+          className='absolute aspect-square h-[calc(var(--header-height)*0.8)] -translate-x-1/2 transition-transform hover:scale-110 max-md:left-[50%]'
         >
           <Image
             src={'/mori.png'}
@@ -21,7 +21,7 @@ export default function Header() {
           />
         </Link>
 
-        <div className='ml-auto hidden items-center space-x-6 font-mono text-xl md:flex'>
+        <div className='ml-auto hidden items-center space-x-6 font-mono text-xl font-semibold md:flex'>
           <Link href='/' className='link-hover-animation'>
             <FaHome className='mr-1' />
             <span>Home</span>

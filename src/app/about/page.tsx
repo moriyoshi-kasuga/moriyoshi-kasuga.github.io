@@ -10,7 +10,7 @@ export default function Page() {
   return (
     <>
       <div className='min-h-all flex flex-col items-center py-10'>
-        <h1 className='flex items-center gap-x-2 font-mono text-5xl font-bold text-warning-300'>
+        <h1 className='flex items-center gap-x-2 font-mono text-5xl font-bold text-warning-400'>
           <FaSearch />
           About me
         </h1>

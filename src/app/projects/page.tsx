@@ -7,7 +7,7 @@ export default function Page() {
   return (
     <>
       <div className='min-h-all py-10'>
-        <h1 className='flex justify-center gap-x-2 font-mono-jp text-5xl font-bold'>
+        <h1 className='flex justify-center gap-x-2 font-mono-jp text-5xl font-bold text-danger-400'>
           <FaProjectDiagram />
           Projects
         </h1>
