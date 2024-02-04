@@ -11,6 +11,8 @@ objective: 'windowsではwsl2を使っていて時々、初期化するのでそ
 background: '最初は自分の開発環境をまとめているという事に惹かれて単純にdotfileだけを作っていました。'
 commitment: '大体のdotfileはファイルをまとめているだけか手順が必要なのでそれに対して全部makeでできるようにしました'
 gallery:
+  - 'terminal.png'
+  - 'ide.png'
   - 'neovim.png'
   - 'telescope.png'
   - 'cdr.png'

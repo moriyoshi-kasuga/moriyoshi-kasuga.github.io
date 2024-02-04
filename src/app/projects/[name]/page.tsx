@@ -126,7 +126,7 @@ export default function Page({ params: { name } }: { params: { name: string } })
             </div>
           </div>
         </div>
-        <div className='w-full whitespace-pre-wrap break-words rounded-xl px-12 pb-4 pt-2 text-lg shadow-lg'>
+        <div className='w-full whitespace-pre-wrap break-words rounded-xl px-12 pb-4 pt-2 font-sans-jp text-lg shadow-lg'>
           <Markdown>{project.content}</Markdown>
         </div>
         <div className='relative m-4 mb-40 mt-20 rounded-xl border-2 border-double border-black'>
