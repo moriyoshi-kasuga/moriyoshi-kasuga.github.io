@@ -29,7 +29,7 @@ export default function Page() {
         <div className='flex space-x-2'>
           <IconButton
             content='Repository'
-            url='https://morilab.vercel.app/'
+            url='https://github.com/moriyoshi-kasuga/portfolio'
             icon=<IoIosGitBranch />
           />
         </div>
