@@ -1,0 +1,44 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<header
+  class="fixed top-0 z-50 flex h-[var(--header-height)] w-screen items-center py-2 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:backdrop-blur-sm"
+>
+  <nav class="container relative mx-auto flex items-center justify-between">
+    <a
+      href="/"
+      class="absolute aspect-square h-[calc(var(--header-height)*0.8)] -translate-x-1/2 transition-transform hover:scale-110 max-md:left-[50%]"
+    >
+      <img
+        src={"/mori.png"}
+        alt="My Avatar"
+        class="rounded-full object-cover"
+      />
+    </a>
+
+    <div
+      class="ml-auto hidden items-center space-x-6 font-mono text-xl font-semibold md:flex"
+    >
+      <a href="/" class="link-hover-animation">
+        <Icon name="mdi:home" />
+        <span>Home</span>
+      </a>
+      <a href="/about" class="link-hover-animation">
+        <Icon name="mdi:home" />
+        <span>About</span>
+      </a>
+      <a href="/projects" class="link-hover-animation">
+        <Icon name="mdi:source-branch" />
+        <span>Projects</span>
+      </a>
+      <a href="/skills" class="link-hover-animation">
+        <Icon name="mdi:computer" />
+        <span>Skills</span>
+      </a>
+    </div>
+    <!-- <div class="ml-auto flex items-center md:hidden"> -->
+    <!--   <MobileMenu /> -->
+    <!-- </div> -->
+  </nav>
+</header>
