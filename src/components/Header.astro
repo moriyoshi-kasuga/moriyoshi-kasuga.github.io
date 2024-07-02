@@ -3,7 +3,7 @@ import { Icon } from "astro-icon/components";
 ---
 
 <header
-  class="fixed top-0 z-50 flex h-[var(--header-height)] w-screen items-center py-2 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:backdrop-blur-sm"
+  class="fixed top-0 z-50 flex h-[var(--header-height)] w-screen items-center px-4 py-2 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:backdrop-blur-sm"
 >
   <nav class="container relative mx-auto flex items-center justify-between">
     <a
@@ -21,7 +21,7 @@ import { Icon } from "astro-icon/components";
       class="ml-auto hidden items-center space-x-6 font-mono text-xl font-semibold md:flex"
     >
       <a href="/" class="link-hover-animation">
-        <Icon name="mdi:home" />
+        <Icon title="this is title" name="mdi:home" />
         <span>Home</span>
       </a>
       <a href="/about" class="link-hover-animation">

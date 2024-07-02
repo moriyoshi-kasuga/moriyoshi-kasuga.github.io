@@ -1,0 +1,70 @@
+---
+import Item from "../../components/Item.astro";
+import List from "../../components/List.astro";
+import Layout from "../../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<Layout title="About me">
+  <div class="min-h-all flex flex-col items-center pb-10">
+    <h1
+      class="flex items-center gap-x-2 font-mono text-5xl font-bold text-warning-400"
+    >
+      <Icon name="mdi:search" />
+      About me
+    </h1>
+    <div class="mb-5 mt-10 flex gap-8 max-md:flex-col">
+      <a href="/about/likes" class="btn bg-danger-300 hover:text-danger-300">
+        <Icon name="mdi:like-outline" />
+        Likes
+      </a>
+      <a href="/about/links" class="btn bg-success-300 hover:text-success-300">
+        <Icon name="mdi:notebook" />
+        Links
+      </a>
+      <a href="/skills" class="btn bg-primary-300 hover:text-primary-300">
+        <Icon name="mdi:computer" />
+        Skills
+      </a>
+    </div>
+    <List>
+      <Item id="名前" value="Mori" />
+      <Item id="年齢" value="16" />
+      <Item id="誕生日" value="2007/12/18" />
+      <Item id="言語" value="Python・JavaScript・TypeScript・Java" />
+      <Item id="ツール" value="WSL2,macOs,Neovim" />
+    </List>
+    <div
+      class="container mt-8 grid h-[600px] grid-cols-1 place-items-center items-center justify-center gap-1 md:h-[400px] md:grid-cols-2 lg:h-[200px] lg:grid-cols-3"
+    >
+      <div class="relative h-[150px] rounded-sm">
+        <img
+          alt="Top Langs"
+          src="https://github-readme-stats.vercel.app/api?username=moriyoshi-kasuga&theme=onedark&show_icons=true"
+          class="object-fit aspect-auto h-[150px]"
+          height="100%"
+        />
+      </div>
+
+      <div
+        class="relative order-none h-[200px] rounded-sm md:order-1 md:max-lg:col-span-2 lg:order-none"
+      >
+        <img
+          alt="Top Langs"
+          src="https://github-readme-stats.vercel.app/api/top-langs/?username=moriyoshi-kasuga&layout=compact&show_icons=true&theme=onedark"
+          class="object-fit aspect-auto h-[200px]"
+          height="100%"
+        />
+      </div>
+
+      <div class="relative h-[150px] rounded-sm">
+        <img
+          alt="github stats"
+          src="https://github-readme-streak-stats.herokuapp.com?user=moriyoshi-kasuga&theme=onedark"
+          class="object-fit aspect-auto h-[150px]"
+          height="100%"
+        />
+      </div>
+    </div>
+  </div>
+</Layout>
