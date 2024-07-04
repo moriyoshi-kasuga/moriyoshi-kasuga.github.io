@@ -1,0 +1,69 @@
+---
+import Layout from "./Layout.astro";
+import { Icon } from "astro-icon/components";
+interface Props {
+  title: string;
+  color: string;
+}
+
+const { title, color } = Astro.props;
+const pathname = Astro.url.pathname;
+---
+
+<Layout title={title}>
+  <div class="min-h-all flex flex-col items-center">
+    <h1
+      class:list={[
+        "flex items-center gap-x-2 font-mono text-5xl font-bold",
+        color,
+      ]}
+    >
+      <slot name="icon" />
+      {title}
+    </h1>
+    <div class="mb-5 mt-10 flex gap-8 max-md:flex-col">
+      {
+        pathname != "/about" && (
+          <a href="/about" class="btn bg-warning-300 hover:text-danger-300">
+            <Icon name="mdi:search" />
+            About
+          </a>
+        )
+      }
+      {
+        pathname != "/about/likes" && (
+          <a
+            href="/about/likes"
+            class="btn bg-danger-300 hover:text-danger-300"
+          >
+            <Icon name="mdi:like-outline" />
+            Likes
+          </a>
+        )
+      }
+      {
+        pathname != "/about/links" && (
+          <a
+            href="/about/links"
+            class="btn bg-success-300 hover:text-success-300"
+          >
+            <Icon name="mdi:notebook" />
+            Links
+          </a>
+        )
+      }
+      {
+        pathname != "/about/skill" && (
+          <a
+            href="/about/skill"
+            class="btn bg-primary-300 hover:text-primary-300"
+          >
+            <Icon name="mdi:computer" />
+            Skill
+          </a>
+        )
+      }
+    </div>
+    <slot />
+  </div>
+</Layout>

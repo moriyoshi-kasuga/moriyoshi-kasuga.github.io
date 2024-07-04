@@ -1,0 +1,31 @@
+---
+import Item from "../../components/Item.astro";
+import List from "../../components/List.astro";
+import AboutLayout from "../../layouts/AboutLayout.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<AboutLayout title="Likes" color="text-danger-500">
+  <Icon name="mdi:like-outline" slot="icon" />
+  <List>
+    <Item
+      id="エディター"
+      href="https://github.com/neovim/neovim"
+      value="Neovim"
+    />
+    <Item
+      id="エディターテーマ"
+      href="https://github.com/craftzdog/solarized-osaka.nvim"
+      value="solarized-osaka"
+    />
+    <Item id="キーバインド" value="Vim" />
+    <Item id="SNS" value="Youtube" />
+    <Item id="飲み物" value="カフェラテ,緑茶,ウーロン茶" />
+    <Item id="漫画" value="葬送のフリーレン" />
+    <Item
+      id="フォント"
+      href="https://github.com/ryanoasis/nerd-fonts"
+      value="Ubuntu Nerd Font Mono"
+    />
+  </List>
+</AboutLayout>
