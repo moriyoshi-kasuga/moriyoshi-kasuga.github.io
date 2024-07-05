@@ -1,11 +1,8 @@
 ---
-import AboutLayout from "../../layouts/AboutLayout.astro";
-import { Icon } from "astro-icon/components";
-type Skill = {
-  title: string;
-  learn: number;
-};
-const skills = await Astro.glob<Skill>("../../skill/*.md");
+import AboutLayout from '../../layouts/AboutLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { type Skill } from '../../type';
+const skills = await Astro.glob<Skill>('../../static/skill/**.md');
 ---
 
 <AboutLayout title="Skill" color="text-primary-300">
@@ -21,7 +18,7 @@ const skills = await Astro.glob<Skill>("../../skill/*.md");
             <div
               class="techStack relative m-4 flex aspect-square max-h-60 min-h-52 min-w-52 max-w-60 items-center justify-center rounded-full"
               style={{
-                ["--learn" as string]: skill.frontmatter.learn,
+                ['--learn' as string]: skill.frontmatter.learn,
               }}
             >
               <h3 class="font-mono-jp text-2xl font-semibold">

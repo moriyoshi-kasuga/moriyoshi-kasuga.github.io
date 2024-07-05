@@ -4,18 +4,18 @@ export default {
   tabWidth: 2,
   useTabs: false,
   semi: true,
-  singleQuote: false,
-  trailingComma: "es5",
+  singleQuote: true,
+  trailingComma: 'es5',
   bracketSpacing: true,
-  arrowParens: "avoid",
-  proseWrap: "always",
+  arrowParens: 'avoid',
+  proseWrap: 'always',
 
-  plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
+  plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
   overrides: [
     {
-      files: "*.astro",
+      files: '*.astro',
       options: {
-        parser: "astro",
+        parser: 'astro',
       },
     },
   ],

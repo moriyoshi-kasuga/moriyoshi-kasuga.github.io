@@ -1,12 +1,12 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import IconButton from "../components/IconButton.astro";
-import { Icon } from "astro-icon/components";
-import { type Project } from "../type";
+import Layout from '../layouts/Layout.astro';
+import IconButton from '../components/IconButton.astro';
+import { Icon } from 'astro-icon/components';
+import { type Project } from '../type';
 
-const projects = await Astro.glob<Project>("./projects/*.md");
+const projects = await Astro.glob<Project>('./projects/*.md');
 const convert = (date: string) => {
-  const arr = date.split("/").map(Number);
+  const arr = date.split('/').map(Number);
   return new Date(arr[0], arr[1] + 1, arr[2]);
 };
 
@@ -74,7 +74,7 @@ const showProjects = projects
             つくったもの
           </p>
           <div class="flex items-center justify-center">
-            <a href={"/projects"}>
+            <a href={'/projects'}>
               <div
                 class="flex rounded-xl bg-danger-300 px-4 py-3 font-medium text-black duration-500 hover:bg-black hover:text-danger-300"
               >
@@ -93,7 +93,7 @@ const showProjects = projects
         class="flex flex-wrap items-center justify-center gap-x-3 md:flex-nowrap"
       >
         <img
-          src={"/mori.png"}
+          src={'/mori.png'}
           alt="My Avatar"
           class="aspect-square rounded-full"
           width={150}
@@ -109,7 +109,7 @@ const showProjects = projects
             などを触っています
           </p>
           <div class="mt-5 flex items-center justify-center">
-            <a href={"/about"}>
+            <a href={'/about'}>
               <div
                 class="flex rounded-xl bg-warning-300 px-4 py-3 font-medium text-black duration-500 hover:bg-black hover:text-warning-300"
               >

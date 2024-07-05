@@ -12,3 +12,8 @@ export type Project = {
   commitment: string;
   gallery: string[];
 };
+
+export type Skill = {
+  title: string;
+  learn: number;
+};
