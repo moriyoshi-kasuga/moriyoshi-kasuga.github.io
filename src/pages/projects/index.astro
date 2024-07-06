@@ -1,0 +1,55 @@
+---
+import { Icon } from 'astro-icon/components';
+import { type Project } from '../../type';
+import Layout from '../../layouts/Layout.astro';
+
+const projects = await Astro.glob<Project>('../../static/projects/*.md');
+---
+
+<Layout title="Projects">
+  <div class="min-h-all py-10">
+    <h1
+      class="font-mono-jp flex justify-center gap-x-2 text-5xl font-bold text-danger-400"
+    >
+      <Icon name="mdi:source-branch" />
+      Projects
+    </h1>
+    <div
+      class="container mx-auto my-8 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 md:gap-8 lg:grid-cols-3 lg:gap-10 xl:gap-12"
+    >
+      {
+        projects.map(project => (
+          <a
+            href={`/projects/${project.frontmatter.name}`}
+            class="flex h-full w-full flex-col rounded-2xl px-8 py-2 ring-[3px] ring-primary-300 transition-all hover:scale-105 hover:ring-primary-500"
+          >
+            <h2 class="font-mono-jp text-center text-2xl font-semibold">
+              {project.frontmatter.title}
+            </h2>
+            <div class="relative my-2 aspect-square w-full">
+              <img
+                src={`/projects/${project.frontmatter.name}/main.png`}
+                alt={project.frontmatter.title}
+                class="w-full rounded-xl object-cover"
+                sizes="(100%,100%)"
+              />
+            </div>
+            <div class="flex flex-wrap items-start gap-2 text-lg">
+              {project.frontmatter.technology.map(tag => (
+                <span class="text-default-900 font-sans-jp rounded-xl bg-warning-300 px-2 py-1 font-normal">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <div class="font-sans-jp mt-auto break-words py-2 text-xl">
+              {project.frontmatter.description}
+            </div>
+            <span class="ml-auto font-mono font-thin">
+              {project.frontmatter.createdAt}
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</Layout>

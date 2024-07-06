@@ -1,12 +1,13 @@
 ---
-name: portfolio-v1
-title: 一代目ポートフォリオ
-description: Next.js製 一代目ポートフォリオ
-createdAt: 2023/12/26
+name: portfolio-v2
+title: 二代目ポートフォリオ
+description: Astro製 二代目ポートフォリオ
+createdAt: 2024/7/5
 genre: Web Site
-github: 'https://github.com/moriyoshi-kasuga/moriyoshi-kasuga.github.io/tree/v1'
+github: 'https://github.com/moriyoshi-kasuga/moriyoshi-kasuga.github.io'
+site: 'https://moriyoshi-kasuga.github.io'
 technology:
-  - Next.js
+  - Astro
   - tailwindcss
   - TypeScript
 objective: Moriってこんな人を知ってもらうため
@@ -19,4 +20,5 @@ gallery:
 
 コンセプトは 「緩やかに柔らかに 」ということでフォントや色などにも気を付けて作成
 しました。これが二個目のWebSiteにしてはかなりできているのではと自分では満足して
-います。
+います。(ひとまずはv1と同様です、Next.jsからAstroに移行しました。これから変えて
+いく予定です)

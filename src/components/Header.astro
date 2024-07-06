@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { MobileMenu } from './react/MobileMenu.tsx';
 ---
 
 <header
@@ -21,24 +22,34 @@ import { Icon } from 'astro-icon/components';
       class="ml-auto hidden items-center space-x-6 font-mono text-xl font-semibold md:flex"
     >
       <a href="/" class="link-hover-animation">
-        <Icon title="this is title" name="mdi:home" />
+        <Icon name="mdi:home-outline" />
         <span>Home</span>
       </a>
       <a href="/about" class="link-hover-animation">
-        <Icon name="mdi:home" />
+        <Icon name="mdi:search" />
         <span>About</span>
       </a>
       <a href="/projects" class="link-hover-animation">
         <Icon name="mdi:source-branch" />
         <span>Projects</span>
       </a>
-      <a href="/skills" class="link-hover-animation">
+      <a href="/about/skill" class="link-hover-animation">
         <Icon name="mdi:computer" />
-        <span>Skills</span>
+        <span>Skill</span>
       </a>
     </div>
-    <!-- <div class="ml-auto flex items-center md:hidden"> -->
-    <!--   <MobileMenu /> -->
-    <!-- </div> -->
+    <div class="ml-auto flex items-center md:hidden">
+      <MobileMenu client:load>
+        <Icon name="mdi:home-outline" slot="Home" width={30} height={30} />,
+        <Icon name="mdi:search" slot="About" width={30} height={30} />,
+        <Icon
+          name="mdi:source-branch"
+          slot="Projects"
+          width={30}
+          height={30}
+        />,
+        <Icon name="mdi:computer" slot="Skill" width={30} height={30} />,
+      </MobileMenu>
+    </div>
   </nav>
 </header>

@@ -2,13 +2,13 @@
 import AboutLayout from '../../layouts/AboutLayout.astro';
 import { Icon } from 'astro-icon/components';
 import { type Skill } from '../../type';
-const skills = await Astro.glob<Skill>('../../static/skill/**.md');
+const skills = await Astro.glob<Skill>('../../static/skill/*.md');
 ---
 
 <AboutLayout title="Skill" color="text-primary-300">
   <Icon name="mdi:computer" slot="icon" />
   <p class="font-mono-jp m-4 text-center text-2xl">
-    パーセンテージで完全に自分の主観でどれぐらい理解できるかを図で表しています
+    完全に自分の主観でどれぐらい理解できるかを図で表しています
   </p>
   <div class="container mb-20 flex flex-wrap justify-center">
     {

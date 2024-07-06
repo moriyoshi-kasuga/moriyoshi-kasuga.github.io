@@ -4,7 +4,7 @@ import IconButton from '../components/IconButton.astro';
 import { Icon } from 'astro-icon/components';
 import { type Project } from '../type';
 
-const projects = await Astro.glob<Project>('./projects/*.md');
+const projects = await Astro.glob<Project>('../static/projects/*.md');
 const convert = (date: string) => {
   const arr = date.split('/').map(Number);
   return new Date(arr[0], arr[1] + 1, arr[2]);
@@ -87,7 +87,7 @@ const showProjects = projects
     </div>
     <div class="mt-8 flex w-2/3 flex-col items-center justify-center">
       <h2 class="font-mono-jp mb-10 w-full text-center text-5xl font-medium">
-        About me
+        About
       </h2>
       <div
         class="flex flex-wrap items-center justify-center gap-x-3 md:flex-nowrap"
