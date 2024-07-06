@@ -8,14 +8,5 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://moriyoshi-kasuga.github.io',
-  integrations: [
-    tailwind(),
-    icon({
-      include: {
-        mdi: ['*'],
-      },
-    }),
-    mdx(),
-    react(),
-  ],
+  integrations: [tailwind(), icon(), mdx(), react()],
 });
