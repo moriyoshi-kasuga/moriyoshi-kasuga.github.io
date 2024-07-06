@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Icon } from '@iconify/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { type RefObject, useEffect, useRef } from 'react';
 import { MenuButton } from './MenuButton';
@@ -60,23 +61,26 @@ const routes = [
   {
     title: 'Home',
     href: '/',
+    icon: <Icon icon="mdi:home-outline" width={30} height={30} />,
   },
   {
     title: 'About',
     href: '/about',
+    icon: <Icon icon="mdi:search" width={30} height={30} />,
   },
   {
     title: 'Projects',
     href: '/projects',
+    icon: <Icon icon="mdi:source-branch" width={30} height={30} />,
   },
   {
     title: 'Skill',
     href: '/about/skill',
+    icon: <Icon icon="mdi:computer" width={30} height={30} />,
   },
 ];
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function MobileMenu(props: any) {
+export function MobileMenu() {
   const [isOpen, setOpen] = useState(false);
   const ref = useRef(null);
 
@@ -102,8 +106,7 @@ export function MobileMenu(props: any) {
           >
             <ul className="grid gap-2 p-3">
               {routes.map((route, idx) => {
-                const { title, href } = route;
-                const Icon = props[title];
+                const { title, href, icon } = route;
 
                 return (
                   <motion.li
@@ -128,7 +131,7 @@ export function MobileMenu(props: any) {
                       <span className="font-mono-jp flex gap-1 text-lg font-semibold">
                         {title}
                       </span>
-                      {Icon}
+                      {icon}
                     </a>
                   </motion.li>
                 );

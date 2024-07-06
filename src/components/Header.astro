@@ -38,18 +38,8 @@ import { MobileMenu } from './react/MobileMenu.tsx';
         <span>Skill</span>
       </a>
     </div>
-    <div class="ml-auto flex items-center md:hidden">
-      <MobileMenu client:load>
-        <Icon name="mdi:home-outline" slot="Home" width={30} height={30} />,
-        <Icon name="mdi:search" slot="About" width={30} height={30} />,
-        <Icon
-          name="mdi:source-branch"
-          slot="Projects"
-          width={30}
-          height={30}
-        />,
-        <Icon name="mdi:computer" slot="Skill" width={30} height={30} />,
-      </MobileMenu>
+    <div class="ml-auto flex items-center md:invisible md:hidden">
+      <MobileMenu client:visible />
     </div>
   </nav>
 </header>
