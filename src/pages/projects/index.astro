@@ -3,7 +3,15 @@ import { Icon } from 'astro-icon/components';
 import { type Project } from '../../type';
 import Layout from '../../layouts/Layout.astro';
 
-const projects = await Astro.glob<Project>('../../static/projects/*.md');
+const convert = (date: string) => {
+  const arr = date.split('/').map(Number);
+  return new Date(arr[0], arr[1] + 1, arr[2]);
+};
+
+const projects = (await Astro.glob<Project>('../../static/projects/*.md')).sort(
+  (a, b) =>
+    convert(a.frontmatter.createdAt) < convert(b.frontmatter.createdAt) ? 1 : -1
+);
 ---
 
 <Layout title="Projects">
