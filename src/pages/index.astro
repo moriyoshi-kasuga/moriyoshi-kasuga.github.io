@@ -19,11 +19,11 @@ const showProjects = projects
 
 <Layout title="MoriLab">
   <div
-    class="min-h-all flex w-full flex-col items-center bg-primary-300 text-zinc-100"
+    class="min-h-all flex w-full flex-col items-center bg-primary-300 text-white"
   >
     <div class="flex flex-col items-center">
-      <h1 class="font-mono-jp text-7xl font-semibold text-white">MoriLab</h1>
-      <h2 class="font-mono text-3xl">Mori Programmer Lab</h2>
+      <h1 class="text-7xl font-semibold">MoriLab</h1>
+      <h2 class="text-3xl">Mori Programmer Lab</h2>
       <div class="mt-6 flex flex-wrap items-center justify-center gap-2 px-4">
         <IconButton url="https://github.com/moriyoshi-kasuga">
           <Icon name="mdi:github" slot="icon" />
@@ -39,13 +39,11 @@ const showProjects = projects
           Twitter
         </IconButton>
       </div>
-      <div class="font-mono-jp container my-20 text-center text-2xl">
+      <div class="container my-20 text-center text-2xl">
         毎日手をつけようと頑張っているこの頃
       </div>
       <div class="container mt-10 flex max-w-[1200px] flex-wrap">
-        <h2 class="font-mono-jp mb-10 w-full text-center text-5xl font-medium">
-          Projects
-        </h2>
+        <h2 class="mb-10 w-full text-center text-5xl font-medium">Projects</h2>
         <div class="flex w-1/2 flex-wrap items-center justify-center md:w-4/5">
           {
             showProjects.map(project => {
@@ -60,7 +58,7 @@ const showProjects = projects
                       width={160}
                       height={160}
                     />
-                    <p class="font-mono-jp relative text-nowrap text-lg font-medium transition-all before:absolute before:-left-3 after:absolute group-hover:scale-110 group-hover:before:content-['>'] group-hover:after:content-['<'] md:text-lg">
+                    <p class="relative text-nowrap font-monospace text-lg font-medium transition-all before:absolute before:-left-3 after:absolute group-hover:scale-110 group-hover:before:content-['>'] group-hover:after:content-['<'] md:text-xl">
                       {project.frontmatter.title}
                     </p>
                   </div>
@@ -70,9 +68,7 @@ const showProjects = projects
           }
         </div>
         <div class="flex w-1/2 flex-col items-center justify-center md:w-1/5">
-          <p class="font-mono-jp mb-2 text-center text-2xl font-medium">
-            つくったもの
-          </p>
+          <p class="mb-2 text-center text-2xl font-medium">つくったもの</p>
           <div class="flex items-center justify-center">
             <a href={'/projects'}>
               <div
@@ -86,9 +82,7 @@ const showProjects = projects
       </div>
     </div>
     <div class="mt-8 flex w-2/3 flex-col items-center justify-center">
-      <h2 class="font-mono-jp mb-10 w-full text-center text-5xl font-medium">
-        About
-      </h2>
+      <h2 class="mb-10 w-full text-center text-5xl font-bold">About</h2>
       <div
         class="flex flex-wrap items-center justify-center gap-x-3 md:flex-nowrap"
       >
@@ -100,9 +94,7 @@ const showProjects = projects
           height={150}
         />
         <div>
-          <p
-            class="font-sans-jp max-w-xl font-medium text-white sm:text-lg md:text-xl"
-          >
+          <p class="max-w-xl font-sans text-white sm:text-lg md:text-xl">
             高校生のただのプログラマー、本格的にプログラミングを学び始めたのは高校に入った2023年春ぐらいから、
             それまでは中学生の時にマイクラのプラグインを(Javaで)作っていました。
             最近はpython(django,flask),typescript(react,nextjs)

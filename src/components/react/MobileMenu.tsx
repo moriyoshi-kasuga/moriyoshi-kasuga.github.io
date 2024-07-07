@@ -61,23 +61,27 @@ const routes = [
   {
     title: 'Home',
     href: '/',
+    color: 'bg-primary-200',
     icon: <Icon icon="mdi:home-outline" width={30} height={30} />,
   },
   {
     title: 'About',
     href: '/about',
+    color: 'bg-warning-200',
     icon: <Icon icon="mdi:search" width={30} height={30} />,
   },
   {
     title: 'Projects',
     href: '/projects',
+    color: 'bg-danger-200',
     icon: <Icon icon="mdi:source-branch" width={30} height={30} />,
   },
-  {
-    title: 'Skill',
-    href: '/about/skill',
-    icon: <Icon icon="mdi:computer" width={30} height={30} />,
-  },
+  // {
+  //   title: 'Skill',
+  //   href: '/about/skill',
+  //   color: 'bg-success-200',
+  //   icon: <Icon icon="mdi:computer" width={30} height={30} />,
+  // },
 ];
 
 export function MobileMenu() {
@@ -104,9 +108,9 @@ export function MobileMenu() {
             transition={{ duration: 0.2 }}
             className="fixed left-0 right-0 top-[var(--header-height)] rounded-b-3xl p-5 backdrop-blur-sm"
           >
-            <ul className="grid gap-2 p-3">
+            <ul className="fotn-monospace grid gap-2 p-3">
               {routes.map((route, idx) => {
-                const { title, href, icon } = route;
+                const { title, href, color, icon } = route;
 
                 return (
                   <motion.li
@@ -124,11 +128,12 @@ export function MobileMenu() {
                     <a
                       onClick={() => setOpen(prev => !prev)}
                       className={
-                        'flex w-full items-center justify-between rounded-xl bg-zinc-200 p-5'
+                        'flex w-full items-center justify-between rounded-xl p-5 ' +
+                        color
                       }
                       href={href}
                     >
-                      <span className="font-mono-jp flex gap-1 text-lg font-semibold">
+                      <span className="flex gap-1 text-lg font-semibold">
                         {title}
                       </span>
                       {icon}

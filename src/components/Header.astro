@@ -19,7 +19,7 @@ import { MobileMenu } from './react/MobileMenu.tsx';
     </a>
 
     <div
-      class="ml-auto hidden items-center space-x-6 font-mono text-xl font-semibold md:flex"
+      class="ml-auto hidden items-center space-x-6 font-monospace text-xl font-semibold md:flex"
     >
       <a href="/" class="link-hover-animation">
         <Icon name="mdi:home-outline" />
@@ -33,10 +33,10 @@ import { MobileMenu } from './react/MobileMenu.tsx';
         <Icon name="mdi:source-branch" />
         <span>Projects</span>
       </a>
-      <a href="/about/skill" class="link-hover-animation">
-        <Icon name="mdi:computer" />
-        <span>Skill</span>
-      </a>
+      <!-- <a href="/about/skill" class="link-hover-animation"> -->
+      <!--   <Icon name="mdi:computer" /> -->
+      <!--   <span>Skill</span> -->
+      <!-- </a> -->
     </div>
     <div class="ml-auto flex items-center md:invisible md:hidden">
       <MobileMenu client:visible />

@@ -1,3 +1,5 @@
+import defaultTheme from 'tailwindcss/defaultTheme';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -6,6 +8,13 @@ export default {
       padding: '1rem',
     },
     extend: {
+      fontFamily: {
+        mono: ["'M PLUS 1 Variable'", ...defaultTheme.fontFamily.mono],
+        monospace: [
+          "'M PLUS 1 Code Variable'",
+          ...defaultTheme.fontFamily.sans,
+        ],
+      },
       // ref: https://nextui.org/docs/customization/colors#common-colors
       colors: {
         divider: 'rgba(17, 17, 17, 0.15)',

@@ -7,29 +7,27 @@ const skills = await Astro.glob<Skill>('../../static/skill/*.md');
 
 <AboutLayout title="Skill" color="text-primary-300">
   <Icon name="mdi:computer" slot="icon" />
-  <p class="font-mono-jp m-4 text-center text-2xl">
+  <p class="text-center text-2xl">
     完全に自分の主観でどれぐらい理解できるかを図で表しています
   </p>
-  <div class="container mb-20 flex flex-wrap justify-center">
+  <div class="container my-4 flex flex-wrap items-center justify-center">
     {
       skills.map(skill => {
         return (
           <div class="mb-12 flex w-full items-center max-lg:flex-col md:w-1/2">
             <div
-              class="techStack relative m-4 flex aspect-square max-h-60 min-h-52 min-w-52 max-w-60 items-center justify-center rounded-full"
+              class="techStack relative flex aspect-square w-1/2 items-center justify-center rounded-full font-monospace"
               style={{
                 ['--learn' as string]: skill.frontmatter.learn,
               }}
             >
-              <h3 class="font-mono-jp text-2xl font-semibold">
-                {skill.frontmatter.title}
-              </h3>
-              <p class="font-mono-jp absolute top-[30%] -translate-y-1/2 text-xl font-semibold">
+              <h3 class="text-2xl font-semibold">{skill.frontmatter.title}</h3>
+              <p class="absolute top-[30%] -translate-y-1/2 text-xl font-semibold">
                 {skill.frontmatter.learn}%
               </p>
             </div>
-            <div class="jusify-center flex w-4/5 flex-col items-center px-4 py-2 lg:w-1/2">
-              <p class="font-sans-jp my-auto font-medium">
+            <div class="jusify-center flex w-4/5 flex-col items-center px-4 py-2">
+              <p class="my-auto font-medium">
                 <skill.Content />
               </p>
             </div>

@@ -36,7 +36,7 @@
 
 @layer base {
   .base-btn {
-    @apply flex items-center gap-x-2 rounded-2xl px-8 py-3 font-mono text-xl font-bold transition duration-500;
+    @apply flex items-center gap-x-2 rounded-2xl px-8 py-3 text-xl font-bold transition duration-500;
   }
   .link-style {
     @apply text-primary-600 underline underline-offset-[3px];
@@ -46,5 +46,12 @@
 @layer components {
   .btn {
     @apply base-btn text-zinc-900 hover:bg-zinc-900;
+  }
+}
+
+/* Apply this to top level containers to fix their layout shift when scrollbar appears */
+@media (min-width: 1024px /* breakpoint for desktop layout */) {
+  .top-level-container {
+    padding-left: calc(100vw - 100%);
   }
 }
