@@ -1,5 +1,5 @@
 ---
-import AboutLayout from '../../layouts/AboutLayout.astro';
+import AboutLayout from '@layouts/AboutLayout.astro';
 import { Icon } from 'astro-icon/components';
 import { type Skill } from '../../type';
 const skills = await Astro.glob<Skill>('../../static/skill/*.md');

@@ -1,9 +1,10 @@
 ---
 import type { MarkdownInstance } from 'astro';
-import { type Project } from '../../type';
+import { Image } from 'astro:assets';
+import { type Project } from '@src/type';
 import { Icon } from 'astro-icon/components';
-import ProjectLink from '../../components/ProjectLink.astro';
-import Layout from '../../layouts/Layout.astro';
+import ProjectLink from '@components/ProjectLink.astro';
+import Layout from '@layouts/Layout.astro';
 
 type Type = {
   params: {
@@ -145,10 +146,9 @@ const {
         {
           frontmatter.gallery?.map(path => {
             return (
-              <img
-                src={`/projects/${frontmatter.name}/${path}`}
+              <Image
+                src={import(`/public/projects/${frontmatter.name}/${path}`)}
                 alt={path}
-                id={path}
                 class="!relative aspect-auto object-contain"
               />
             );

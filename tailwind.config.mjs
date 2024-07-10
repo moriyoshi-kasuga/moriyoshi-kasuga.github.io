@@ -9,11 +9,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        mono: ["'M PLUS 1 Variable'", ...defaultTheme.fontFamily.mono],
-        monospace: [
-          "'M PLUS 1 Code Variable'",
-          ...defaultTheme.fontFamily.sans,
-        ],
+        mono: ["'M PLUS 1'", ...defaultTheme.fontFamily.mono],
+        monospace: ["'M PLUS 1 Code'", ...defaultTheme.fontFamily.sans],
       },
       // ref: https://nextui.org/docs/customization/colors#common-colors
       colors: {
