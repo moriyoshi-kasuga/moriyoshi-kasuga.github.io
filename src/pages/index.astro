@@ -5,6 +5,7 @@ import { Image } from 'astro:assets';
 import IconButton from '@components/IconButton.astro';
 import { Icon } from 'astro-icon/components';
 import { type Project } from '../type';
+import Mori from '@src/assets/mori.png';
 
 const projects = await Astro.glob<Project>('../static/projects/*.md');
 const convert = (date: string) => {
@@ -96,8 +97,8 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
         class="flex flex-wrap items-center justify-center gap-x-3 md:flex-nowrap"
       >
         <Image
-          src={'/mori.png'}
-          alt="My Avatar"
+          src={Mori}
+          alt="Avatar"
           class="aspect-square rounded-full"
           width={150}
           height={150}
