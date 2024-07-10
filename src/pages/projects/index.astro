@@ -1,8 +1,9 @@
 ---
+import type { ImageMetadata } from 'astro';
 import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
 import { type Project } from '../../type';
-import Layout from '../../layouts/Layout.astro';
+import Layout from '@layouts/Layout.astro';
 
 const convert = (date: string) => {
   const arr = date.split('/').map(Number);
@@ -12,6 +13,13 @@ const convert = (date: string) => {
 const projects = (await Astro.glob<Project>('../../static/projects/*.md')).sort(
   (a, b) =>
     convert(a.frontmatter.createdAt) < convert(b.frontmatter.createdAt) ? 1 : -1
+);
+
+const photos = import.meta.glob<{ default: ImageMetadata }>(
+  `/src/assets/projects/*/main.png`,
+  {
+    eager: true,
+  }
 );
 ---
 
@@ -37,9 +45,9 @@ const projects = (await Astro.glob<Project>('../../static/projects/*.md')).sort(
               <div class="relative my-2 aspect-square w-full">
                 <Image
                   src={
-                    import(
-                      `/public/projects/${project.frontmatter.name}/main.png`
-                    )
+                    photos[
+                      `/src/assets/projects/${project.frontmatter.name}/main.png`
+                    ].default
                   }
                   alt={project.frontmatter.title}
                   class="w-full rounded-xl object-cover"
