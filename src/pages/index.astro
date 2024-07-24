@@ -6,6 +6,8 @@ import IconButton from '@components/IconButton.astro';
 import { Icon } from 'astro-icon/components';
 import { type Project } from '../type';
 import Mori from '@src/assets/mori.png';
+import { rawContent as SelfIntroduction } from '../static/self-introduction.md';
+import { rawContent as SelfSlogan } from '../static/self-slogan.md';
 
 const projects = await Astro.glob<Project>('../static/projects/*.md');
 const convert = (date: string) => {
@@ -50,7 +52,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
         </IconButton>
       </div>
       <div class="container my-20 text-center text-2xl">
-        毎日手をつけようと頑張っているこの頃
+        {SelfSlogan()}
       </div>
       <div class="container mt-10 flex max-w-[1200px] flex-wrap">
         <h2 class="mb-10 w-full text-center text-5xl font-medium">Projects</h2>
@@ -91,7 +93,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
         </div>
       </div>
     </div>
-    <div class="mt-8 flex w-2/3 flex-col items-center justify-center">
+    <div class="my-8 flex w-2/3 flex-col items-center justify-center">
       <h2 class="mb-10 w-full text-center text-5xl font-bold">About</h2>
       <div
         class="flex flex-wrap items-center justify-center gap-x-3 md:flex-nowrap"
@@ -105,10 +107,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
         />
         <div>
           <p class="max-w-xl font-sans text-white sm:text-lg md:text-xl">
-            高校生のただのプログラマー、本格的にプログラミングを学び始めたのは高校に入った2023年春ぐらいから、
-            それまでは中学生の時にマイクラのプラグインを(Javaで)作っていました。
-            最近はpython(django,flask),typescript(react,nextjs)
-            などを触っています
+            {SelfIntroduction()}
           </p>
           <div class="mt-5 flex items-center justify-center">
             <a href={'/about'}>

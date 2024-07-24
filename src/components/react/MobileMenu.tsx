@@ -61,27 +61,18 @@ const routes = [
   {
     title: 'Home',
     href: '/',
-    color: 'bg-primary-200',
     icon: <Icon icon="mdi:home-outline" width={30} height={30} />,
   },
   {
     title: 'About',
     href: '/about',
-    color: 'bg-warning-200',
     icon: <Icon icon="mdi:search" width={30} height={30} />,
   },
   {
     title: 'Projects',
     href: '/projects',
-    color: 'bg-danger-200',
     icon: <Icon icon="mdi:source-branch" width={30} height={30} />,
   },
-  // {
-  //   title: 'Skill',
-  //   href: '/about/skill',
-  //   color: 'bg-success-200',
-  //   icon: <Icon icon="mdi:computer" width={30} height={30} />,
-  // },
 ];
 
 export function MobileMenu() {
@@ -108,9 +99,9 @@ export function MobileMenu() {
             transition={{ duration: 0.2 }}
             className="fixed left-0 right-0 top-[var(--header-height)] rounded-b-3xl p-5 backdrop-blur-sm"
           >
-            <ul className="fotn-monospace grid gap-2 p-3">
+            <ul className="grid place-content-center place-items-center gap-2 p-3 font-monospace">
               {routes.map((route, idx) => {
-                const { title, href, color, icon } = route;
+                const { title, href, icon } = route;
 
                 return (
                   <motion.li
@@ -118,18 +109,17 @@ export function MobileMenu() {
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{
                       type: 'spring',
-                      stiffness: 260,
+                      stiffness: 340,
                       damping: 20,
-                      delay: 0.1 + idx / 10,
+                      delay: 0.05 + idx / 10,
                     }}
                     key={title}
-                    className="w-full rounded-xl bg-gradient-to-tr p-[0.08rem]"
+                    className="rounded-xl bg-gradient-to-tr p-[0.08rem]"
                   >
                     <a
                       onClick={() => setOpen(prev => !prev)}
                       className={
-                        'flex w-full items-center justify-between rounded-xl p-5 ' +
-                        color
+                        'flex min-w-72 max-w-80 items-center justify-between rounded-xl bg-slate-100/90 p-5'
                       }
                       href={href}
                     >
