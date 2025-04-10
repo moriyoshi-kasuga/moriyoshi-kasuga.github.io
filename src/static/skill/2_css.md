@@ -1,7 +1,6 @@
 ---
 title: Css
-learn: 50
+learn: 40
 ---
 
-(言語ではないですが)こちらも定義が難しかったので50%としました、CSSもHTMLと同様に
-使えるようになりたいです
+UI Libraryを使わないでUI構築をplain cssでやるのは厳しいです
