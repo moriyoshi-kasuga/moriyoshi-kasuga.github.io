@@ -27,7 +27,7 @@ function other(url: string) {
     <div class="font-monospace mt-10 mb-5 flex gap-8 max-md:flex-col">
       {
         other("/about") && (
-          <a href="/about" class="btn bg-warning-300 hover:text-danger-300">
+          <a href="/about" class="btn bg-warning hover:text-warning-foreground">
             <Icon name="mdi:search" />
             About
           </a>
@@ -37,7 +37,7 @@ function other(url: string) {
         other("/about/likes") && (
           <a
             href="/about/likes"
-            class="btn bg-danger-300 hover:text-danger-300"
+            class="btn bg-danger hover:text-danger-foreground"
           >
             <Icon name="mdi:like-outline" />
             Likes
@@ -48,7 +48,7 @@ function other(url: string) {
         other("/about/links") && (
           <a
             href="/about/links"
-            class="btn bg-success-300 hover:text-success-300"
+            class="btn bg-success hover:text-success-foreground"
           >
             <Icon name="mdi:notebook-outline" />
             Links
@@ -59,7 +59,7 @@ function other(url: string) {
         other("/about/skill") && (
           <a
             href="/about/skill"
-            class="btn bg-primary-300 hover:text-primary-300"
+            class="btn bg-primary hover:text-primary-foreground"
           >
             <Icon name="mdi:computer" />
             Skill

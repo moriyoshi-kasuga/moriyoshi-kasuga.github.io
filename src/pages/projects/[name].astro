@@ -102,7 +102,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/**/*");
     <div class="my-16 flex flex-wrap items-stretch justify-center gap-y-4">
       <div class="w-full md:w-1/2 lg:w-1/3">
         <div
-          class="border-success-500 relative m-2 flex h-full border-2 border-dotted"
+          class="border-success-foreground relative m-2 flex h-full border-2 border-dotted"
         >
           <p class="my-auto p-4">{frontmatter.objective}</p>
           <h3 class="absolute -top-6 left-4 rounded-xl bg-white p-2 text-lg">
@@ -112,7 +112,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/**/*");
       </div>
       <div class="w-full md:w-1/2 lg:w-1/3">
         <div
-          class="border-warning-500 relative m-2 flex h-full border-2 border-dotted"
+          class="border-warning-foreground relative m-2 flex h-full border-2 border-dotted"
         >
           <p class="my-auto p-4">{frontmatter.background}</p>
           <h3 class="absolute -top-6 left-4 rounded-xl bg-white p-2 text-lg">
@@ -122,7 +122,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/**/*");
       </div>
       <div class="w-full md:w-1/2 lg:w-1/3">
         <div
-          class="border-primary-500 relative m-2 flex h-full border-2 border-dotted"
+          class="border-primary-foreground relative m-2 flex h-full border-2 border-dotted"
         >
           <p class="my-auto p-4">{frontmatter.commitment}</p>
           <h3 class="absolute -top-6 left-4 rounded-xl bg-white p-2 text-lg">
