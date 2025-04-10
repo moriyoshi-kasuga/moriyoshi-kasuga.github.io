@@ -50,7 +50,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
         </IconButton>
         <IconButton url="https://twitter.com/MoriyoshiKasuga">
           <Icon name="mdi:twitter" slot="icon" />
-          Twitter
+          旧Twitter
         </IconButton>
       </div>
       <div class="container mt-10 flex max-w-[1200px] flex-wrap">
@@ -93,9 +93,9 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
       </div>
     </div>
     <div class="my-8 flex w-2/3 flex-col items-center justify-center">
-      <h2 class="mb-5 w-full text-center text-5xl font-bold">About</h2>
+      <h2 class="mb-2 w-full text-center text-5xl font-bold">About</h2>
       <div
-        class="flex flex-wrap items-center justify-center gap-x-3 md:flex-nowrap"
+        class="flex gap-2 flex-wrap items-center justify-center gap-x-3 md:flex-nowrap"
       >
         <Image
           src={Mori}
@@ -106,7 +106,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
         />
         <div>
           <p
-            class="max-w-xl font-semibold font-mono text-white sm:text-lg md:text-xl"
+            class="max-w-2xl font-semibold font-mono text-white sm:text-lg md:text-xl"
           >
             {SelfIntroduction()}
           </p>
