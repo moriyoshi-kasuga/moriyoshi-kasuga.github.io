@@ -1,49 +1,122 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-.min-h-all {
-  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+@theme {
+  --font-mono: 'M PLUS 1', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  --font-monospace: 'M PLUS 1 Code', ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --color-divider: rgba(17, 17, 17, 0.15);
+
+  --color-primary-50: #e6f1fe;
+  --color-primary-100: #cce3fd;
+  --color-primary-200: #99c7fb;
+  --color-primary-300: #66aaf9;
+  --color-primary-400: #338ef7;
+  --color-primary-500: #006fee;
+  --color-primary-600: #005bc4;
+  --color-primary-700: #004493;
+  --color-primary-800: #002e62;
+  --color-primary-900: #001731;
+
+  --color-success-50: #e8faf0;
+  --color-success-100: #d1f4e0;
+  --color-success-200: #a2e9c1;
+  --color-success-300: #74dfa2;
+  --color-success-400: #45d483;
+  --color-success-500: #17c964;
+  --color-success-600: #12a150;
+  --color-success-700: #0e793c;
+  --color-success-800: #095028;
+  --color-success-900: #052814;
+
+  --color-warning-50: #fefce8;
+  --color-warning-100: #fdedd3;
+  --color-warning-200: #fbdba7;
+  --color-warning-300: #f9c97c;
+  --color-warning-400: #f7b750;
+  --color-warning-500: #f5a524;
+  --color-warning-600: #c4841d;
+  --color-warning-700: #936316;
+  --color-warning-800: #62420e;
+  --color-warning-900: #312107;
+
+  --color-danger-50: #fee7ef;
+  --color-danger-100: #fdd0df;
+  --color-danger-200: #faa0bf;
+  --color-danger-300: #f871a0;
+  --color-danger-400: #f54180;
+  --color-danger-500: #f31260;
+  --color-danger-600: #c20e4d;
+  --color-danger-700: #920b3a;
+  --color-danger-800: #610726;
+  --color-danger-900: #310413;
 }
 
-.min-h-content {
-  min-height: calc(100vh - var(--header-height));
+@utility container {
+  padding-inline: 1rem;
 }
 
-.link-hover-animation {
-  position: relative;
-  display: flex;
-  align-items: center;
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
 }
 
-.link-hover-animation::after {
-  position: absolute;
-  left: 0;
-  content: '';
-  width: 100%;
-  height: 2px;
-  background: black;
-  bottom: -1px;
-  border-radius: 1px;
-  transform: scale(0, 1);
-  transform-origin: left top;
-  transition: all 0.3s ease-in-out 0s;
+@layer utilities {
+  .min-h-all {
+    min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  }
+
+  .min-h-content {
+    min-height: calc(100vh - var(--header-height));
+  }
+
+  .link-hover-animation {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .link-hover-animation::after {
+    position: absolute;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: black;
+    bottom: -1px;
+    border-radius: 1px;
+    transform: scale(0, 1);
+    transform-origin: left top;
+    transition: all 0.3s ease-in-out 0s;
+  }
+
+  .link-hover-animation:hover::after {
+    transform: scale(1, 1);
+  }
 }
 
-.link-hover-animation:hover::after {
-  transform: scale(1, 1);
+@utility base-btn {
+  @apply flex items-center gap-x-2 rounded-2xl px-8 py-3 text-xl font-bold transition duration-500;
 }
 
 @layer base {
-  .base-btn {
-    @apply flex items-center gap-x-2 rounded-2xl px-8 py-3 text-xl font-bold transition duration-500;
-  }
   .link-style {
     @apply text-primary-600 underline underline-offset-[3px];
   }
-}
-
-@layer components {
   .btn {
     @apply base-btn text-zinc-900 hover:bg-zinc-900;
   }

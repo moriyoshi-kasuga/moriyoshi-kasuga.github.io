@@ -16,7 +16,7 @@ const skills = await Astro.glob<Skill>('../../static/skill/*.md');
         return (
           <div class="mb-12 flex w-full items-center max-lg:flex-col md:w-1/2">
             <div
-              class="techStack relative flex aspect-square w-1/2 items-center justify-center rounded-full font-monospace"
+              class="techStack font-monospace relative flex aspect-square w-1/2 items-center justify-center rounded-full"
               style={{
                 ['--learn' as string]: skill.frontmatter.learn,
               }}

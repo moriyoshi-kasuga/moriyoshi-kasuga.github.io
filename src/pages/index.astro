@@ -31,7 +31,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
 
 <Layout title="MoriLab">
   <div
-    class="min-h-all flex w-full flex-col items-center bg-primary-300 text-white"
+    class="min-h-all bg-primary-300 flex w-full flex-col items-center text-white"
   >
     <div class="flex flex-col items-center">
       <h1 class="text-7xl font-semibold">MoriLab</h1>
@@ -70,7 +70,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
                       width={160}
                       height={160}
                     />
-                    <p class="relative text-nowrap font-monospace text-lg font-medium transition-all before:absolute before:-left-3 after:absolute group-hover:scale-110 group-hover:before:content-['>'] group-hover:after:content-['<'] md:text-xl">
+                    <p class="font-monospace relative text-lg font-medium text-nowrap transition-all group-hover:scale-110 before:absolute before:-left-3 group-hover:before:content-['>'] after:absolute group-hover:after:content-['<'] md:text-xl">
                       {project.frontmatter.title}
                     </p>
                   </div>
@@ -84,7 +84,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
           <div class="flex items-center justify-center">
             <a href={'/projects'}>
               <div
-                class="flex rounded-xl bg-danger-300 px-4 py-3 font-medium text-black duration-500 hover:bg-black hover:text-danger-300"
+                class="bg-danger-300 hover:text-danger-300 flex rounded-xl px-4 py-3 font-medium text-black duration-500 hover:bg-black"
               >
                 もっと見る!
               </div>
@@ -112,7 +112,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
           <div class="mt-5 flex items-center justify-center">
             <a href={'/about'}>
               <div
-                class="flex rounded-xl bg-warning-300 px-4 py-3 font-medium text-black duration-500 hover:bg-black hover:text-warning-300"
+                class="bg-warning-300 hover:text-warning-300 flex rounded-xl px-4 py-3 font-medium text-black duration-500 hover:bg-black"
               >
                 もっと知る!
               </div>

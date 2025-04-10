@@ -16,13 +16,13 @@ const { href, id, value } = Astro.props;
     href ? (
       <a
         href={href}
-        class="link-style w-2/3 break-words text-left text-xl font-semibold md:w-1/2"
+        class="link-style w-2/3 text-left text-xl font-semibold break-words md:w-1/2"
         target="_blank"
       >
         {value}
       </a>
     ) : (
-      <p class="w-2/3 break-words text-left text-xl font-semibold md:w-1/2">
+      <p class="w-2/3 text-left text-xl font-semibold break-words md:w-1/2">
         {value}
       </p>
     )

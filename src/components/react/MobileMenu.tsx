@@ -97,9 +97,9 @@ export function MobileMenu() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed left-0 right-0 top-[var(--header-height)] rounded-b-3xl p-5 backdrop-blur-sm"
+            className="fixed top-[var(--header-height)] right-0 left-0 rounded-b-3xl p-5 backdrop-blur-xs"
           >
-            <ul className="grid place-content-center place-items-center gap-2 p-3 font-monospace">
+            <ul className="font-monospace grid place-content-center place-items-center gap-2 p-3">
               {routes.map((route, idx) => {
                 const { title, href, icon } = route;
 
@@ -114,12 +114,12 @@ export function MobileMenu() {
                       delay: 0.05 + idx / 10,
                     }}
                     key={title}
-                    className="rounded-xl bg-gradient-to-tr p-[0.08rem]"
+                    className="rounded-xl bg-linear-to-tr p-[0.08rem]"
                   >
                     <a
                       onClick={() => setOpen(prev => !prev)}
                       className={
-                        'flex min-w-72 max-w-80 items-center justify-between rounded-xl bg-slate-100/90 p-5'
+                        'flex max-w-80 min-w-72 items-center justify-between rounded-xl bg-slate-100/90 p-5'
                       }
                       href={href}
                     >
