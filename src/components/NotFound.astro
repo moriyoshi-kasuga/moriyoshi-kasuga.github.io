@@ -1,7 +1,7 @@
 ---
-import { Icon } from 'astro-icon/components';
-import IconButton from '../components/IconButton.astro';
-import Layout from '../layouts/Layout.astro';
+import { Icon } from "astro-icon/components";
+import IconButton from "../components/IconButton.astro";
+import Layout from "../layouts/Layout.astro";
 
 interface Props {
   backLink?: string;
@@ -12,7 +12,7 @@ interface Props {
 const { backLink, title, description } = Astro.props;
 ---
 
-<Layout title={title || 'Page not found'}>
+<Layout title={title || "Page not found"}>
   <div class="min-h-all container mx-auto flex items-center px-6 py-12">
     <div class="mx-auto flex max-w-sm flex-col items-center text-center">
       <p
@@ -21,12 +21,12 @@ const { backLink, title, description } = Astro.props;
         <Icon name="mdi:warning-decagram-outline" />
       </p>
       <h1 class="mt-3 text-2xl font-semibold text-gray-800 md:text-3xl">
-        {title || 'Page not found'}
+        {title || "Page not found"}
       </h1>
       <p class="my-4 text-gray-500">
-        {description || 'お探しのページは存在しません。'}
+        {description || "お探しのページは存在しません。"}
       </p>
-      <IconButton url={backLink || '/'} self class="">
+      <IconButton url={backLink || "/"} self class="">
         <Icon name="mdi:arrow-left-thin" slot="icon" />
         Go back
       </IconButton>

@@ -8,18 +8,15 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier --ignore-path .gitignore --write './src/**/*.{js,cjs,ts,jsx,tsx,astro,json,html,md}'",
     "check": "astro check && tsc --noEmit",
-    "lint": "eslint --fix 'src/**/*.{astro,ts,js,tsx,jsx}'",
-    "lint-fix": "eslint --fix './src/**/*.{astro,ts,js,tsx,jsx}' && prettier --write './src/**/*.{astro,ts,js,tsx,jsx}'",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
     "prepare": "husky install"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^4.2.3",
     "@astrojs/react": "^4.2.3",
-    "@astrojs/tailwind": "^6.0.2",
-    "@tailwindcss/postcss": "^4.1.3",
     "@tailwindcss/vite": "^4.1.3",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
@@ -27,30 +24,21 @@
     "astro-google-fonts-optimizer": "^0.2.2",
     "astro-icon": "^1.1.0",
     "framer-motion": "^11.2.13",
-    "postcss": "^8.5.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwindcss": "^4.1.3",
     "typescript": "^5.5.2"
   },
   "devDependencies": {
-    "@eslint/js": "^9.6.0",
+    "@antfu/eslint-config": "^4.12.0",
+    "@astrojs/ts-plugin": "^1.10.4",
     "@iconify-json/mdi": "^1.1.67",
     "@iconify/react": "^5.0.1",
-    "@typescript-eslint/parser": "^7.14.1",
-    "eslint": "^9.6.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-astro": "^1.2.2",
-    "eslint-plugin-prettier": "^5.1.3",
     "globals": "^15.6.0",
     "husky": "^8.0.0",
-    "lint-staged": "^15.2.7",
-    "prettier": "^3.3.2",
-    "prettier-plugin-astro": "^0.14.0",
-    "prettier-plugin-tailwindcss": "^0.6.11",
-    "typescript-eslint": "^7.14.1"
+    "lint-staged": "^15.2.7"
   },
-  "overrides": {
-    "eslint": "^9.6.0"
+  "lint-staged": {
+    "*": "bun run lint"
   }
 }

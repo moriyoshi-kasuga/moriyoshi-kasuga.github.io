@@ -1,25 +1,25 @@
 ---
-import type { ImageMetadata } from 'astro';
-import { Icon } from 'astro-icon/components';
-import { Image } from 'astro:assets';
-import { type Project } from '../../type';
-import Layout from '@layouts/Layout.astro';
+import type { ImageMetadata } from "astro";
+import type { Project } from "../../type";
+import Layout from "@layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 
-const convert = (date: string) => {
-  const arr = date.split('/').map(Number);
+function convert(date: string) {
+  const arr = date.split("/").map(Number);
   return new Date(arr[0], arr[1] + 1, arr[2]);
-};
+}
 
-const projects = (await Astro.glob<Project>('../../static/projects/*.md')).sort(
+const projects = (await Astro.glob<Project>("../../static/projects/*.md")).sort(
   (a, b) =>
-    convert(a.frontmatter.createdAt) < convert(b.frontmatter.createdAt) ? 1 : -1
+    convert(a.frontmatter.createdAt) < convert(b.frontmatter.createdAt) ? 1 : -1,
 );
 
 const photos = import.meta.glob<{ default: ImageMetadata }>(
   `/src/assets/projects/*/main.png`,
   {
     eager: true,
-  }
+  },
 );
 ---
 
@@ -33,7 +33,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
       class="container mx-auto my-8 grid grid-cols-1 place-items-center gap-4 sm:grid-cols-2 sm:gap-6 md:gap-8 lg:grid-cols-3 lg:gap-10 xl:gap-12"
     >
       {
-        projects.map(async project => {
+        projects.map(async (project) => {
           return (
             <a
               href={`/projects/${project.frontmatter.name}`}

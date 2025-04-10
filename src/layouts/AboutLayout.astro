@@ -1,6 +1,7 @@
 ---
-import Layout from './Layout.astro';
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
+import Layout from "./Layout.astro";
+
 interface Props {
   title: string;
   color: string;
@@ -9,23 +10,23 @@ interface Props {
 const { title, color } = Astro.props;
 const pathname = Astro.url.pathname;
 
-const other = (url: string) => {
-  if (pathname == url) {
+function other(url: string) {
+  if (pathname === url) {
     return false;
   }
-  return pathname != url + '/';
-};
+  return pathname !== `${url}/`;
+}
 ---
 
 <Layout title={title}>
   <div class="min-h-all top-level-container flex flex-col items-center">
-    <h1 class:list={['flex items-center gap-x-2 text-5xl font-bold', color]}>
+    <h1 class:list={["flex items-center gap-x-2 text-5xl font-bold", color]}>
       <slot name="icon" />
       {title}
     </h1>
     <div class="font-monospace mt-10 mb-5 flex gap-8 max-md:flex-col">
       {
-        other('/about') && (
+        other("/about") && (
           <a href="/about" class="btn bg-warning-300 hover:text-danger-300">
             <Icon name="mdi:search" />
             About
@@ -33,7 +34,7 @@ const other = (url: string) => {
         )
       }
       {
-        other('/about/likes') && (
+        other("/about/likes") && (
           <a
             href="/about/likes"
             class="btn bg-danger-300 hover:text-danger-300"
@@ -44,7 +45,7 @@ const other = (url: string) => {
         )
       }
       {
-        other('/about/links') && (
+        other("/about/links") && (
           <a
             href="/about/links"
             class="btn bg-success-300 hover:text-success-300"
@@ -55,7 +56,7 @@ const other = (url: string) => {
         )
       }
       {
-        other('/about/skill') && (
+        other("/about/skill") && (
           <a
             href="/about/skill"
             class="btn bg-primary-300 hover:text-primary-300"

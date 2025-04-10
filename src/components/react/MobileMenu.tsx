@@ -1,17 +1,18 @@
-import { useState } from 'react';
-import { Icon } from '@iconify/react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { type RefObject, useEffect, useRef } from 'react';
-import { MenuButton } from './MenuButton';
+/* eslint-disable ts/no-unsafe-function-type */
+import type { RefObject } from "react";
+import { Icon } from "@iconify/react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { MenuButton } from "./MenuButton";
 
 function on<T extends Window | Document | HTMLElement | EventTarget>(
   obj: T | null,
-  // eslint-disable-next-line @typescript-eslint/ban-types, @typescript-eslint/no-explicit-any
-  ...args: Parameters<T['addEventListener']> | [string, Function | null, ...any]
+
+  ...args: Parameters<T["addEventListener"]> | [string, Function | null, ...any]
 ): void {
   if (obj && obj.addEventListener) {
     obj.addEventListener(
-      ...(args as Parameters<HTMLElement['addEventListener']>)
+      ...(args as Parameters<HTMLElement["addEventListener"]>),
     );
   }
 }
@@ -20,28 +21,22 @@ function off<T extends Window | Document | HTMLElement | EventTarget>(
   obj: T | null,
 
   ...args:
-    | Parameters<T['removeEventListener']>
-    // eslint-disable-next-line @typescript-eslint/ban-types, @typescript-eslint/no-explicit-any
+    | Parameters<T["removeEventListener"]>
     | [string, Function | null, ...any]
 ): void {
   if (obj && obj.removeEventListener) {
     obj.removeEventListener(
-      ...(args as Parameters<HTMLElement['removeEventListener']>)
+      ...(args as Parameters<HTMLElement["removeEventListener"]>),
     );
   }
 }
-const defaultEvents = ['mousedown', 'touchstart'];
-const useClickAway = <E extends Event = Event>(
-  ref: RefObject<HTMLElement | null>,
-  onClickAway: (event: E) => void,
-  events: string[] = defaultEvents
-) => {
+const defaultEvents = ["mousedown", "touchstart"];
+function useClickAway<E extends Event = Event>(ref: RefObject<HTMLElement | null>, onClickAway: (event: E) => void, events: string[] = defaultEvents) {
   const savedCallback = useRef(onClickAway);
   useEffect(() => {
     savedCallback.current = onClickAway;
   }, [onClickAway]);
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handler = (event: any) => {
       const { current: el } = ref;
       el && !el.contains(event.target) && savedCallback.current(event);
@@ -55,22 +50,22 @@ const useClickAway = <E extends Event = Event>(
       }
     };
   }, [events, ref]);
-};
+}
 
 const routes = [
   {
-    title: 'Home',
-    href: '/',
+    title: "Home",
+    href: "/",
     icon: <Icon icon="mdi:home-outline" width={30} height={30} />,
   },
   {
-    title: 'About',
-    href: '/about',
+    title: "About",
+    href: "/about",
     icon: <Icon icon="mdi:search" width={30} height={30} />,
   },
   {
-    title: 'Projects',
-    href: '/projects',
+    title: "Projects",
+    href: "/projects",
     icon: <Icon icon="mdi:source-branch" width={30} height={30} />,
   },
 ];
@@ -108,7 +103,7 @@ export function MobileMenu() {
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{
-                      type: 'spring',
+                      type: "spring",
                       stiffness: 340,
                       damping: 20,
                       delay: 0.05 + idx / 10,
@@ -118,9 +113,7 @@ export function MobileMenu() {
                   >
                     <a
                       onClick={() => setOpen(prev => !prev)}
-                      className={
-                        'flex max-w-80 min-w-72 items-center justify-between rounded-xl bg-slate-100/90 p-5'
-                      }
+                      className="flex max-w-80 min-w-72 items-center justify-between rounded-xl bg-slate-100/90 p-5"
                       href={href}
                     >
                       <span className="flex gap-1 text-lg font-semibold">

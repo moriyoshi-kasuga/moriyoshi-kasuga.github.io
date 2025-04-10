@@ -1,8 +1,9 @@
 ---
-import AboutLayout from '@layouts/AboutLayout.astro';
-import { Icon } from 'astro-icon/components';
-import { type Skill } from '../../type';
-const skills = await Astro.glob<Skill>('../../static/skill/*.md');
+import type { Skill } from "../../type";
+import AboutLayout from "@layouts/AboutLayout.astro";
+import { Icon } from "astro-icon/components";
+
+const skills = await Astro.glob<Skill>("../../static/skill/*.md");
 ---
 
 <AboutLayout title="Skill" color="text-primary-300">
@@ -12,13 +13,13 @@ const skills = await Astro.glob<Skill>('../../static/skill/*.md');
   </p>
   <div class="container my-4 flex flex-wrap items-center justify-center">
     {
-      skills.map(skill => {
+      skills.map((skill) => {
         return (
           <div class="mb-12 flex w-full items-center max-lg:flex-col md:w-1/2">
             <div
               class="techStack font-monospace relative flex aspect-square w-1/2 items-center justify-center rounded-full"
               style={{
-                ['--learn' as string]: skill.frontmatter.learn,
+                ["--learn" as string]: skill.frontmatter.learn,
               }}
             >
               <h3 class="text-2xl font-semibold">{skill.frontmatter.title}</h3>

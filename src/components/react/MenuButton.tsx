@@ -1,4 +1,5 @@
-import { motion, type Transition, type SVGMotionProps } from 'framer-motion';
+import type { SVGMotionProps, Transition } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface Props extends SVGMotionProps<SVGElement> {
   isOpen?: boolean;
@@ -10,15 +11,15 @@ interface Props extends SVGMotionProps<SVGElement> {
 
 export function MenuButton({
   isOpen = false,
-  strokeWidth = '7',
-  width = '24',
-  height = '24',
-  lineProps = { strokeLinecap: 'round' },
-  color = '#52525b',
+  strokeWidth = "7",
+  width = "24",
+  height = "24",
+  lineProps = { strokeLinecap: "round" },
+  color = "#52525b",
   transition = {},
   ...props
 }: Props) {
-  const variant = isOpen ? 'opened' : 'closed';
+  const variant = isOpen ? "opened" : "closed";
   const top = {
     closed: {
       rotate: 0,
@@ -50,8 +51,8 @@ export function MenuButton({
   lineProps = {
     stroke: color,
     strokeWidth: strokeWidth as number,
-    vectorEffect: 'non-scaling-stroke',
-    initial: 'closed',
+    vectorEffect: "non-scaling-stroke",
+    initial: "closed",
     animate: variant,
     transition,
     ...lineProps,
