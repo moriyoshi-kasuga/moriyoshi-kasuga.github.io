@@ -7,7 +7,6 @@ import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import { rawContent as SelfIntroduction } from "../static/self-introduction.md";
-import { rawContent as SelfSlogan } from "../static/self-slogan.md";
 
 const projects = await Astro.glob<Project>("../static/projects/*.md");
 function convert(date: string) {
@@ -37,7 +36,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
   >
     <div class="flex flex-col items-center">
       <h1 class="text-7xl font-semibold">MoriLab</h1>
-      <h2 class="text-3xl">Mori Programmer Lab</h2>
+      <h2 class="text-3xl">Mori’s tiny dev lab.</h2>
       <div class="mt-6 flex flex-wrap items-center justify-center gap-2 px-4">
         <IconButton url="https://github.com/moriyoshi-kasuga">
           <Icon name="mdi:github" slot="icon" />
@@ -45,16 +44,14 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
         </IconButton>
         <IconButton
           url="https://github.com/moriyoshi-kasuga/moriyoshi-kasuga.github.io"
-        ><Icon name="mdi:source-branch" slot="icon" />
+        >
+          <Icon name="mdi:source-branch" slot="icon" />
           Repository
         </IconButton>
         <IconButton url="https://twitter.com/MoriyoshiKasuga">
           <Icon name="mdi:twitter" slot="icon" />
           Twitter
         </IconButton>
-      </div>
-      <div class="container my-20 text-center text-2xl">
-        {SelfSlogan()}
       </div>
       <div class="container mt-10 flex max-w-[1200px] flex-wrap">
         <h2 class="mb-10 w-full text-center text-5xl font-medium">Projects</h2>
@@ -96,7 +93,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
       </div>
     </div>
     <div class="my-8 flex w-2/3 flex-col items-center justify-center">
-      <h2 class="mb-10 w-full text-center text-5xl font-bold">About</h2>
+      <h2 class="mb-5 w-full text-center text-5xl font-bold">About</h2>
       <div
         class="flex flex-wrap items-center justify-center gap-x-3 md:flex-nowrap"
       >
@@ -108,7 +105,9 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
           height={150}
         />
         <div>
-          <p class="max-w-xl font-sans text-white sm:text-lg md:text-xl">
+          <p
+            class="max-w-xl font-semibold font-mono text-white sm:text-lg md:text-xl"
+          >
             {SelfIntroduction()}
           </p>
           <div class="mt-5 flex items-center justify-center">

@@ -3,6 +3,7 @@ import Item from "@components/Item.astro";
 import List from "@components/List.astro";
 import AboutLayout from "@layouts/AboutLayout.astro";
 import { Icon } from "astro-icon/components";
+import { rawContent as SelfDescription } from "../../static/self-description.md";
 ---
 
 <AboutLayout title="About" color="text-warning">
@@ -14,6 +15,11 @@ import { Icon } from "astro-icon/components";
     <Item id="言語" value="Python・JavaScript・TypeScript・Java" />
     <Item id="ツール" value="WSL2,macOs,Neovim" />
   </List>
+  <p
+    class="my-2 py-2 rounded-lg border container md:w-3/5 font-semibold font-mono sm:text-lg md:text-xl"
+  >
+    {SelfDescription()}
+  </p>
   <div
     class="container mt-8 grid h-[600px] grid-cols-1 place-items-center items-center justify-center gap-1 md:h-[400px] md:grid-cols-2 lg:h-[200px] lg:grid-cols-3"
   >
