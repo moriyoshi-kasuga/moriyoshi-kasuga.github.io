@@ -11,7 +11,10 @@ const skills = await Astro.glob<Skill>("../../static/skill/*.md");
   <p class="text-center text-2xl">
     完全に自分の主観でどれぐらい理解できるかを図で表しています
   </p>
-  <div class="container my-4 flex flex-wrap items-center justify-center">
+  <div
+    id="techContent"
+    class="container my-4 flex flex-wrap items-center justify-center"
+  >
     {
       skills.map((skill) => {
         return (
@@ -34,6 +37,19 @@ const skills = await Astro.glob<Skill>("../../static/skill/*.md");
         );
       })
     }
+    <style>
+      #techContent :global(a) {
+        color: #0070f3;
+        text-decoration: none;
+      }
+      #techContent :global(blockquote) {
+        border-left: 4px solid #ccc;
+        margin: 0.5em 0;
+        padding: 0.5em 0.3em;
+        color: var(--color-link);
+        background: #f9f9f9;
+      }
+    </style>
   </div>
 </AboutLayout>
 <style>
