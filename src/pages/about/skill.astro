@@ -28,9 +28,7 @@ const skills = await Astro.glob<Skill>("../../static/skill/*.md");
               </p>
             </div>
             <div class="jusify-center flex w-4/5 flex-col items-center px-4 py-2">
-              <p class="my-auto font-semibold text-2xl">
-                <skill.Content />
-              </p>
+              <skill.Content />
             </div>
           </div>
         );
@@ -92,7 +90,7 @@ const skills = await Astro.glob<Skill>("../../static/skill/*.md");
     background-image: conic-gradient(
       #99c7fb,
       #99c7fb calc(var(--percent) * 1%),
-      #71717a calc(var(--percent) * 1.01%) 100%
+      #71717a calc(var(--percent) * 1%) 100%
     );
   }
 </style>
