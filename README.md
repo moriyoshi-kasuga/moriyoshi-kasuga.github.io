@@ -4,7 +4,7 @@
 
 ## deploy with GitHub Pages
 
-**https://moriyoshi-kasuga.github.io**
+**[https://moriyoshi-kasuga.github.io](https://moriyoshi-kasuga.github.io)**
 
 ## コンセプト: 柔らかく緩やかに
 
