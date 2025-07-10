@@ -15,15 +15,29 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Mori's Lab" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Mori's Lab - 17歳エンジニアのポートフォリオサイト。TypeScript、Java、Rustを使った開発プロジェクトを紹介。" />
+    <meta name="keywords" content="Mori, MoriLab, ポートフォリオ, エンジニア, TypeScript, Java, Rust, プログラミング" />
+    <meta name="author" content="Mori" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content="Mori's Lab - 17歳エンジニアのポートフォリオサイト" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://moriyoshi-kasuga.github.io" />
+    <meta property="og:image" content="https://moriyoshi-kasuga.github.io/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content="Mori's Lab - 17歳エンジニアのポートフォリオサイト" />
+    <meta name="twitter:image" content="https://moriyoshi-kasuga.github.io/og-image.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#66aaf9" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ClientRouter />
@@ -49,7 +63,18 @@ const { title } = Astro.props;
       h4,
       h5,
       h6 {
-        font-family: "M Plus 1 Code", monospace;
+        font-family: var(--font-display);
+        letter-spacing: var(--tracking-tight);
+        line-height: var(--line-tight);
+      }
+
+      body {
+        font-family: var(--font-primary);
+        line-height: var(--line-normal);
+      }
+
+      p, article {
+        line-height: var(--line-loose);
       }
     </style>
   </body>

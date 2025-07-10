@@ -131,9 +131,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/**/*");
         </div>
       </div>
     </div>
-    <div
-      class="w-full items-center justify-center rounded-xl px-4 pt-2 pb-4 text-lg break-words shadow-lg md:px-8 lg:px-12 xl:px-24"
-    >
+    <div class="w-full rounded-xl px-4 pt-2 pb-4 text-responsive-lg break-words shadow-lg md:px-8 lg:px-12 xl:px-24 line-loose">
       <Content />
     </div>
     <div
@@ -154,6 +152,9 @@ const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/**/*");
                 ]()}
                 alt={path}
                 class="relative! aspect-auto object-contain"
+                loading="lazy"
+                widths={[320, 640, 960, 1280]}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             );
           })

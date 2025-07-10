@@ -1,10 +1,8 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-mono: 'M PLUS 1', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    'Liberation Mono', 'Courier New', monospace;
-  --font-monospace: 'M PLUS 1 Code', ui-sans-serif, system-ui, sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-mono: var(--font-primary);
+  --font-monospace: var(--font-display);
 
   --color-divider: rgba(17, 17, 17, 0.15);
 
@@ -40,6 +38,25 @@
   --ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
   --ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
   --ease-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* Typography system */
+  --font-primary: 'M PLUS 1', system-ui, sans-serif;
+  --font-display: 'M PLUS 1 Code', 'Courier New', monospace;
+  
+  /* Line heights */
+  --line-tight: 1.25;
+  --line-normal: 1.5;
+  --line-loose: 1.75;
+  
+  /* Letter spacing */
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+  
+  /* Optimal measures (line lengths) */
+  --measure-short: 20ch;
+  --measure-base: 66ch;
+  --measure-long: 75ch;
 }
 
 @utility container {
@@ -104,9 +121,6 @@
 }
 
 /* Layout utilities */
-@utility flex-center {
-  @apply flex items-center justify-center;
-}
 
 @utility flex-items-gap {
   @apply flex items-center gap-2;
@@ -125,13 +139,6 @@
   @apply text-xl font-semibold;
 }
 
-@utility text-bold-2xl {
-  @apply text-2xl font-bold;
-}
-
-@utility text-bold-3xl {
-  @apply text-3xl font-bold;
-}
 
 /* Button variant utilities */
 @utility btn-warning {
@@ -207,16 +214,52 @@
   transition: transform var(--duration-normal) var(--ease-out);
 }
 
-@utility hover-lift-strong {
-  transition: transform var(--duration-normal) var(--ease-spring);
+
+
+/* Typography utilities */
+@utility text-primary {
+  font-family: var(--font-primary);
 }
 
-@utility fade-in {
-  transition: opacity var(--duration-normal) var(--ease-out);
+@utility text-display {
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-tight);
 }
 
-@utility bounce-in {
-  transition: transform var(--duration-slow) var(--ease-spring);
+@utility line-tight {
+  line-height: var(--line-tight);
+}
+
+@utility line-normal {
+  line-height: var(--line-normal);
+}
+
+@utility line-loose {
+  line-height: var(--line-loose);
+}
+
+@utility tracking-tight {
+  letter-spacing: var(--tracking-tight);
+}
+
+
+@utility measure-base {
+  max-width: var(--measure-base);
+}
+
+
+@utility measure-long {
+  max-width: var(--measure-long);
+}
+
+/* Responsive typography utilities */
+@utility text-responsive-lg {
+  font-size: clamp(1.125rem, 3vw, 1.25rem);
+}
+
+@utility text-responsive-display {
+  font-size: clamp(2rem, 8vw, 4rem);
+  line-height: var(--line-tight);
 }
 
 @layer base {
@@ -232,9 +275,6 @@
     transform: scale(1.05);
   }
   
-  .hover-lift-strong:hover {
-    transform: scale(1.1);
-  }
   
   /* Backward compatibility */
   .hover-scale:hover {
@@ -256,6 +296,19 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Focus styles for accessibility */
+@layer base {
+  *:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+  
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+  
 }
 
 /* Apply this to top level containers to fix their layout shift when scrollbar appears */
