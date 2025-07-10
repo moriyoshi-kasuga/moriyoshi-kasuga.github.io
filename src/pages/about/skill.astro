@@ -3,7 +3,8 @@ import type { Skill } from "../../type";
 import AboutLayout from "@layouts/AboutLayout.astro";
 import { Icon } from "astro-icon/components";
 
-const skills = await Astro.glob<Skill>("../../static/skill/*.md");
+const skillFiles = import.meta.glob<{ frontmatter: Skill; Content: any }>("../../static/skill/*.md", { eager: true });
+const skills = Object.values(skillFiles);
 ---
 
 <AboutLayout title="Skill" class="text-primary">

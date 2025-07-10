@@ -1,4 +1,3 @@
-/* eslint-disable ts/no-unsafe-function-type */
 import type { RefObject } from "react";
 import { Icon } from "@iconify/react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -7,39 +6,42 @@ import { MenuButton } from "./MenuButton";
 
 function on<T extends Window | Document | HTMLElement | EventTarget>(
   obj: T | null,
-
-  ...args: Parameters<T["addEventListener"]> | [string, Function | null, ...any]
+  event: string,
+  handler: EventListener,
+  options?: AddEventListenerOptions | boolean,
 ): void {
   if (obj && obj.addEventListener) {
-    obj.addEventListener(
-      ...(args as Parameters<HTMLElement["addEventListener"]>),
-    );
+    obj.addEventListener(event, handler, options);
   }
 }
 
 function off<T extends Window | Document | HTMLElement | EventTarget>(
   obj: T | null,
-
-  ...args:
-    | Parameters<T["removeEventListener"]>
-    | [string, Function | null, ...any]
+  event: string,
+  handler: EventListener,
+  options?: EventListenerOptions | boolean,
 ): void {
   if (obj && obj.removeEventListener) {
-    obj.removeEventListener(
-      ...(args as Parameters<HTMLElement["removeEventListener"]>),
-    );
+    obj.removeEventListener(event, handler, options);
   }
 }
 const defaultEvents = ["mousedown", "touchstart"];
-function useClickAway<E extends Event = Event>(ref: RefObject<HTMLElement | null>, onClickAway: (event: E) => void, events: string[] = defaultEvents) {
+function useClickAway<E extends Event = Event>(
+  ref: RefObject<HTMLElement | null>,
+  onClickAway: (event: E) => void,
+  events: string[] = defaultEvents,
+) {
   const savedCallback = useRef(onClickAway);
   useEffect(() => {
     savedCallback.current = onClickAway;
   }, [onClickAway]);
   useEffect(() => {
-    const handler = (event: any) => {
+    const handler = (event: Event) => {
       const { current: el } = ref;
-      el && !el.contains(event.target) && savedCallback.current(event);
+      const target = event.target as Node;
+      if (el && !el.contains(target)) {
+        savedCallback.current(event as E);
+      }
     };
     for (const eventName of events) {
       on(document, eventName, handler);

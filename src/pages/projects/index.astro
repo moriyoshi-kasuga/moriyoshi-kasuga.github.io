@@ -10,7 +10,8 @@ function convert(date: string) {
   return new Date(arr[0], arr[1] + 1, arr[2]);
 }
 
-const projects = (await Astro.glob<Project>("../../static/projects/*.md")).sort(
+const projectFiles = import.meta.glob<{ frontmatter: Project }>("../../static/projects/*.md", { eager: true });
+const projects = Object.values(projectFiles).sort(
   (a, b) =>
     convert(a.frontmatter.createdAt) < convert(b.frontmatter.createdAt) ? 1 : -1,
 );

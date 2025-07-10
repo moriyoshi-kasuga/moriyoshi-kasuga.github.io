@@ -8,7 +8,8 @@ import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import { rawContent as SelfIntroduction } from "../static/self-introduction.md";
 
-const projects = await Astro.glob<Project>("../static/projects/*.md");
+const projectFiles = import.meta.glob<{ frontmatter: Project }>("../static/projects/*.md", { eager: true });
+const projects = Object.values(projectFiles);
 function convert(date: string) {
   const arr = date.split("/").map(Number);
   return new Date(arr[0], arr[1] + 1, arr[2]);

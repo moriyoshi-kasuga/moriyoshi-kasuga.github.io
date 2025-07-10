@@ -1,6 +1,6 @@
 ---
 import type { Project } from "@src/type";
-import type { ImageMetadata, MarkdownInstance } from "astro";
+import type { ImageMetadata } from "astro";
 import ProjectLink from "@components/ProjectLink.astro";
 import Layout from "@layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
@@ -11,14 +11,14 @@ type Type = {
     name: string;
   };
   props: {
-    project: MarkdownInstance<Project>;
+    project: { frontmatter: Project; Content: any };
   };
 }[];
 
 export async function getStaticPaths(): Promise<Type> {
-  const projects = await Astro.glob<Project>("../../static/projects/*.md");
+  const projectFiles = import.meta.glob<{ frontmatter: Project; Content: any }>("../../static/projects/*.md", { eager: true });
 
-  return projects.map((project) => {
+  return Object.values(projectFiles).map((project) => {
     return {
       params: {
         name: project.frontmatter.name,

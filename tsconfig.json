@@ -17,7 +17,7 @@
       "@public/*": [
         "public/*"
       ],
-      "@statis/*": [
+      "@static/*": [
         "static/*"
       ]
     },
