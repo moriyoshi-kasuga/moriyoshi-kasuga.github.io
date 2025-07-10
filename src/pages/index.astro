@@ -56,12 +56,12 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
       </div>
       <div class="container mt-10 flex max-w-[1200px] flex-wrap">
         <h2 class="mb-10 w-full text-center text-5xl font-medium">Projects</h2>
-        <div class="flex w-1/2 flex-wrap items-center justify-center md:w-4/5">
+        <div class="mx-auto flex flex-wrap lg:flex-nowrap items-center justify-center">
           {
             showProjects.map((project) => {
               const p = project.frontmatter.name;
               return (
-                <a href={`/projects/${p}`} class="group md:w-1/3" aria-label={`プロジェクト ${project.frontmatter.title} の詳細を見る`}>
+                <a href={`/projects/${p}`} class="group size-50" aria-label={`プロジェクト ${project.frontmatter.title} の詳細を見る`}>
                   <div class="mx-4 my-2 flex flex-col items-center justify-center rounded-2xl">
                     <Image
                       src={photos[`/src/assets/projects/${p}/main.png`].default}
@@ -81,17 +81,16 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
               );
             })
           }
-        </div>
-        <div class="flex w-1/2 flex-col items-center justify-center md:w-1/5">
-          <p class="mb-2 text-center text-2xl font-medium">つくったもの</p>
-          <div class="flex items-center justify-center">
-            <a href="/projects" aria-label="すべてのプロジェクトを見る">
-              <div
-                class="bg-danger hover:text-danger flex rounded-xl px-4 py-3 font-medium text-black smooth-transition hover:bg-black focus:ring-2 focus:ring-offset-2 focus:ring-danger-foreground"
-              >
-                もっと見る!
-              </div>
-            </a>
+          <div class="flex flex-col items-center justify-center w-50 h-20">
+            <div class="flex items-center justify-center">
+              <a href="/projects" aria-label="すべてのプロジェクトを見る">
+                <div
+                  class="bg-danger hover:text-danger flex rounded-xl px-4 py-3 font-medium text-black smooth-transition hover:bg-black focus:ring-2 focus:ring-offset-2 focus:ring-danger-foreground"
+                >
+                  もっと見る!
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </div>
