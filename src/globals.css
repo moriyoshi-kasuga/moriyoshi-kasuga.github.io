@@ -30,6 +30,16 @@
   --color-gray-500: #6b7280;
   --color-gray-800: #1f2937;
   --color-gray-900: #111827;
+
+  /* Animation system */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-extra-slow: 1000ms;
+  
+  --ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --ease-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 @utility container {
@@ -80,7 +90,7 @@
     border-radius: 1px;
     transform: scale(0, 1);
     transform-origin: left top;
-    transition: all 0.3s ease-in-out 0s;
+    transition: transform var(--duration-normal) var(--ease-in-out);
   }
 
   .link-hover-animation:hover::after {
@@ -89,7 +99,8 @@
 }
 
 @utility base-btn {
-  @apply flex items-center gap-x-2 rounded-2xl px-8 py-3 text-xl font-bold transition duration-500;
+  @apply flex items-center gap-x-2 rounded-2xl px-8 py-3 text-xl font-bold;
+  transition: all var(--duration-slow) var(--ease-out);
 }
 
 /* Layout utilities */
@@ -139,13 +150,13 @@
   @apply base-btn text-gray-900 hover:bg-gray-900 bg-primary hover:text-primary-foreground;
 }
 
-/* Interactive utilities */
+/* Interactive utilities (deprecated - use hover-lift instead) */
 @utility hover-scale {
-  @apply transition-transform hover:scale-105;
+  transition: transform var(--duration-normal) var(--ease-out);
 }
 
 @utility hover-scale-110 {
-  @apply transition-transform hover:scale-110;
+  transition: transform var(--duration-normal) var(--ease-spring);
 }
 
 /* Component utilities */
@@ -154,7 +165,7 @@
 }
 
 @utility project-card {
-  @apply ring-primary hover:ring-primary-foreground flex h-full w-full max-w-[360px] flex-col rounded-2xl px-8 py-2 ring-[3px] transition-all hover:scale-105;
+  @apply ring-primary hover:ring-primary-foreground flex h-full w-full max-w-[360px] flex-col rounded-2xl px-8 py-2 ring-[3px] hover-lift;
 }
 
 @utility item-label {
@@ -187,12 +198,63 @@
   @apply flex md:hidden items-center;
 }
 
+/* Animation utilities */
+@utility smooth-transition {
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+@utility hover-lift {
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+@utility hover-lift-strong {
+  transition: transform var(--duration-normal) var(--ease-spring);
+}
+
+@utility fade-in {
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+@utility bounce-in {
+  transition: transform var(--duration-slow) var(--ease-spring);
+}
+
 @layer base {
   .link-style {
     @apply text-link underline underline-offset-[3px];
   }
   .btn {
     @apply base-btn text-zinc-900 hover:bg-zinc-900;
+  }
+  
+  /* Hover effects */
+  .hover-lift:hover {
+    transform: scale(1.05);
+  }
+  
+  .hover-lift-strong:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Backward compatibility */
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+  
+  .hover-scale-110:hover {
+    transform: scale(1.1);
+  }
+}
+
+/* Accessibility: Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

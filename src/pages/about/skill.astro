@@ -54,47 +54,10 @@ const skills = Object.values(skillFiles);
   </div>
 </AboutLayout>
 <style>
-  @keyframes show {
-    0% {
+  @keyframes skillProgress {
+    from {
       --percent: 0;
     }
-
-    10% {
-      --percent: calc(var(--learn) / 10);
-    }
-
-    20% {
-      --percent: calc(var(--learn) / 5);
-    }
-
-    30% {
-      --percent: calc(var(--learn) / 4);
-    }
-
-    40% {
-      --percent: calc(var(--learn) / 3);
-    }
-
-    50% {
-      --percent: calc(var(--learn) / 2);
-    }
-
-    60% {
-      --percent: calc(var(--learn) / 1.5);
-    }
-
-    70% {
-      --percent: calc(var(--learn) / 1.2);
-    }
-
-    80% {
-      --percent: calc(var(--learn) / 1.1);
-    }
-
-    90% {
-      --percent: calc(var(--learn) / 1.05);
-    }
-
     to {
       --percent: var(--learn);
     }
@@ -103,11 +66,19 @@ const skills = Object.values(skillFiles);
   .techStack {
     --learn: 0;
     --percent: 0;
-    animation: show 1s forwards;
+    animation: skillProgress var(--duration-extra-slow) var(--ease-out) forwards;
     background-image: conic-gradient(
-      #99c7fb,
-      #99c7fb calc(var(--percent) * 1%),
-      #71717a calc(var(--percent) * 1%) 100%
+      var(--color-primary),
+      var(--color-primary) calc(var(--percent) * 1%),
+      var(--color-gray-500) calc(var(--percent) * 1%) 100%
     );
+    will-change: background-image;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .techStack {
+      animation: none;
+      --percent: var(--learn);
+    }
   }
 </style>
