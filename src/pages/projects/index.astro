@@ -31,14 +31,14 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
       Projects
     </h1>
     <div
-      class="container mx-auto my-8 grid grid-cols-1 place-items-center gap-4 sm:grid-cols-2 sm:gap-6 md:gap-8 lg:grid-cols-3 lg:gap-10 xl:gap-12"
+      class="container-center my-8 grid grid-cols-1 place-items-center gap-4 sm:grid-cols-2 sm:gap-6 md:gap-8 lg:grid-cols-3 lg:gap-10 xl:gap-12"
     >
       {
         projects.map(async (project) => {
           return (
             <a
               href={`/projects/${project.frontmatter.name}`}
-              class="ring-primary hover:ring-primary-foreground flex h-full w-full max-w-[360px] flex-col rounded-2xl px-8 py-2 ring-[3px] transition-all hover:scale-105"
+              class="project-card"
             >
               <h2 class="text-center text-2xl font-semibold">
                 {project.frontmatter.title}
@@ -56,7 +56,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
               </div>
               <div class="flex flex-wrap items-start gap-2 text-lg">
                 {project.frontmatter.technology.map(tag => (
-                  <span class="text-default-900 bg-warning rounded-xl px-2 py-1 font-normal">
+                  <span class="tech-tag">
                     {tag}
                   </span>
                 ))}

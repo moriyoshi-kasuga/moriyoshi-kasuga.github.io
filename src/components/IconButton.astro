@@ -12,7 +12,7 @@ const { url, self, class: className } = Astro.props;
   href={url}
   target={self ? "_self" : "_blank"}
   class:list={[
-    "flex items-center gap-2 rounded-lg bg-gray-800 p-2 text-2xl text-white transition-transform hover:scale-105",
+    "flex-items-gap rounded-lg bg-gray-800 p-2 text-2xl text-white hover-scale",
     className,
   ]}
 >

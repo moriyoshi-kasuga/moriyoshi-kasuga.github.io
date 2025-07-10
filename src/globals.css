@@ -92,6 +92,79 @@
   @apply flex items-center gap-x-2 rounded-2xl px-8 py-3 text-xl font-bold transition duration-500;
 }
 
+/* Layout utilities */
+@utility flex-center {
+  @apply flex items-center justify-center;
+}
+
+@utility flex-items-gap {
+  @apply flex items-center gap-2;
+}
+
+@utility container-center {
+  @apply container mx-auto;
+}
+
+@utility full-width-col-center {
+  @apply w-full flex flex-col items-center;
+}
+
+/* Typography utilities */
+@utility text-semibold-xl {
+  @apply text-xl font-semibold;
+}
+
+@utility text-bold-2xl {
+  @apply text-2xl font-bold;
+}
+
+@utility text-bold-3xl {
+  @apply text-3xl font-bold;
+}
+
+/* Button variant utilities */
+@utility btn-warning {
+  @apply base-btn text-gray-900 hover:bg-gray-900 bg-warning hover:text-warning-foreground;
+}
+
+@utility btn-danger {
+  @apply base-btn text-gray-900 hover:bg-gray-900 bg-danger hover:text-danger-foreground;
+}
+
+@utility btn-success {
+  @apply base-btn text-gray-900 hover:bg-gray-900 bg-success hover:text-success-foreground;
+}
+
+@utility btn-primary {
+  @apply base-btn text-gray-900 hover:bg-gray-900 bg-primary hover:text-primary-foreground;
+}
+
+/* Interactive utilities */
+@utility hover-scale {
+  @apply transition-transform hover:scale-105;
+}
+
+@utility hover-scale-110 {
+  @apply transition-transform hover:scale-110;
+}
+
+/* Component utilities */
+@utility tech-tag {
+  @apply bg-warning rounded-xl px-2 py-1 font-normal;
+}
+
+@utility project-card {
+  @apply ring-primary hover:ring-primary-foreground flex h-full w-full max-w-[360px] flex-col rounded-2xl px-8 py-2 ring-[3px] transition-all hover:scale-105;
+}
+
+@utility item-label {
+  @apply w-1/3 text-right text-2xl font-bold md:w-1/2;
+}
+
+@utility item-value {
+  @apply w-2/3 text-left text-xl font-semibold break-words md:w-1/2;
+}
+
 @layer base {
   .link-style {
     @apply text-link underline underline-offset-[3px];

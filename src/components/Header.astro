@@ -8,16 +8,16 @@ import { MobileMenu } from "./react/MobileMenu.tsx";
 <header
   class="fixed top-0 z-50 flex h-[var(--header-height)] w-screen items-center px-4 py-2 before:absolute before:top-0 before:right-0 before:bottom-0 before:left-0 before:backdrop-blur-xs"
 >
-  <nav class="relative container mx-auto flex items-center justify-between">
+  <nav class="relative container-center flex items-center justify-between">
     <a
       href="/"
-      class="absolute aspect-square h-[calc(var(--header-height)*0.8)] -translate-x-1/2 transition-transform hover:scale-110 max-md:left-[50%]"
+      class="absolute aspect-square h-[calc(var(--header-height)*0.8)] -translate-x-1/2 hover-scale-110 max-md:left-[50%]"
     >
       <Image src={Mori} alt="My Avatar" class="rounded-full object-cover" />
     </a>
 
     <div
-      class="font-monospace ml-auto hidden items-center space-x-6 text-xl font-semibold md:flex"
+      class="font-monospace ml-auto hidden space-x-6 text-semibold-xl md:flex items-center"
     >
       <a href="/" class="link-hover-animation">
         <Icon name="mdi:home-outline" />

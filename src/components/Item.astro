@@ -8,8 +8,8 @@ interface Props {
 const { href, id, value } = Astro.props;
 ---
 
-<div class="flex w-full items-center gap-x-2">
-  <h2 class="w-1/3 text-right text-2xl font-bold md:w-1/2">
+<div class="flex-items-gap w-full">
+  <h2 class="item-label">
     {id}
   </h2>
   {
@@ -17,14 +17,14 @@ const { href, id, value } = Astro.props;
 ? (
       <a
         href={href}
-        class="link-style w-2/3 text-left text-xl font-semibold break-words md:w-1/2"
+        class="link-style item-value"
         target="_blank"
       >
         {value}
       </a>
     )
 : (
-      <p class="w-2/3 text-left text-xl font-semibold break-words md:w-1/2">
+      <p class="item-value">
         {value}
       </p>
     )

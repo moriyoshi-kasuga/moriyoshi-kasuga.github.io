@@ -19,9 +19,9 @@ function other(url: string) {
 ---
 
 <Layout title={title}>
-  <div class="min-h-all top-level-container flex flex-col items-center">
+  <div class="min-h-all top-level-container full-width-col-center">
     <h1
-      class:list={["flex items-center gap-x-2 text-5xl font-bold", className]}
+      class:list={["flex-items-gap text-5xl font-bold", className]}
     >
       <slot name="icon" />
       {title}
@@ -29,7 +29,7 @@ function other(url: string) {
     <div class="font-monospace mt-10 mb-5 flex gap-8 max-md:flex-col">
       {
         other("/about") && (
-          <a href="/about" class="btn bg-warning hover:text-warning-foreground">
+          <a href="/about" class="btn-warning">
             <Icon name="mdi:search" />
             About
           </a>
@@ -39,7 +39,7 @@ function other(url: string) {
         other("/about/likes") && (
           <a
             href="/about/likes"
-            class="btn bg-danger hover:text-danger-foreground"
+            class="btn-danger"
           >
             <Icon name="mdi:like-outline" />
             Likes
@@ -50,7 +50,7 @@ function other(url: string) {
         other("/about/links") && (
           <a
             href="/about/links"
-            class="btn bg-success hover:text-success-foreground"
+            class="btn-success"
           >
             <Icon name="mdi:notebook-outline" />
             Links
@@ -61,7 +61,7 @@ function other(url: string) {
         other("/about/skill") && (
           <a
             href="/about/skill"
-            class="btn bg-primary hover:text-primary-foreground"
+            class="btn-primary"
           >
             <Icon name="mdi:computer" />
             Skill

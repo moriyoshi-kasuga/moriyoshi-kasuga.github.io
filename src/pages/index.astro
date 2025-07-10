@@ -33,7 +33,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
 
 <Layout title="MoriLab">
   <div
-    class="min-h-all bg-primary flex w-full flex-col items-center text-white"
+    class="min-h-all bg-primary full-width-col-center text-white"
   >
     <div class="flex flex-col items-center">
       <h1 class="text-7xl font-semibold">MoriLab</h1>
@@ -81,7 +81,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
         </div>
         <div class="flex w-1/2 flex-col items-center justify-center md:w-1/5">
           <p class="mb-2 text-center text-2xl font-medium">つくったもの</p>
-          <div class="flex items-center justify-center">
+          <div class="flex-center">
             <a href="/projects">
               <div
                 class="bg-danger hover:text-danger flex rounded-xl px-4 py-3 font-medium text-black duration-500 hover:bg-black"
@@ -111,7 +111,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
           >
             {SelfIntroduction()}
           </p>
-          <div class="mt-5 flex items-center justify-center">
+          <div class="mt-5 flex-center">
             <a href="/about">
               <div
                 class="bg-warning hover:text-warning flex rounded-xl px-4 py-3 font-medium text-black duration-500 hover:bg-black"
