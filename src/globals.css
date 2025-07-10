@@ -165,6 +165,28 @@
   @apply w-2/3 text-left text-xl font-semibold break-words md:w-1/2;
 }
 
+/* Responsive grid utilities */
+@utility responsive-grid {
+  @apply grid grid-cols-1 gap-4 place-items-center sm:grid-cols-2 sm:gap-6 md:gap-8 lg:grid-cols-3 lg:gap-10 xl:gap-12;
+}
+
+@utility stats-grid {
+  @apply grid grid-cols-1 gap-1 h-[600px] place-items-center items-center justify-center md:grid-cols-2 md:h-[400px] lg:grid-cols-3 lg:h-[200px];
+}
+
+@utility gallery-grid {
+  @apply grid grid-cols-1 gap-4 p-4 md:grid-cols-2;
+}
+
+/* Navigation utilities */
+@utility nav-desktop {
+  @apply hidden md:flex items-center space-x-6;
+}
+
+@utility nav-mobile {
+  @apply flex md:hidden items-center;
+}
+
 @layer base {
   .link-style {
     @apply text-link underline underline-offset-[3px];

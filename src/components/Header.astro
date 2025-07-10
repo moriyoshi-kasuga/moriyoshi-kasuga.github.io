@@ -11,14 +11,12 @@ import { MobileMenu } from "./react/MobileMenu.tsx";
   <nav class="relative container-center flex items-center justify-between">
     <a
       href="/"
-      class="absolute aspect-square h-[calc(var(--header-height)*0.8)] -translate-x-1/2 hover-scale-110 max-md:left-[50%]"
+      class="absolute aspect-square h-[calc(var(--header-height)*0.8)] -translate-x-1/2 hover-scale-110 left-1/2 md:left-auto"
     >
       <Image src={Mori} alt="My Avatar" class="rounded-full object-cover" />
     </a>
 
-    <div
-      class="font-monospace ml-auto hidden space-x-6 text-semibold-xl md:flex items-center"
-    >
+    <div class="font-monospace ml-auto nav-desktop text-semibold-xl">
       <a href="/" class="link-hover-animation">
         <Icon name="mdi:home-outline" />
         <span>Home</span>
@@ -36,7 +34,7 @@ import { MobileMenu } from "./react/MobileMenu.tsx";
       <!--   <span>Skill</span> -->
       <!-- </a> -->
     </div>
-    <div class="ml-auto flex items-center md:invisible md:hidden">
+    <div class="ml-auto nav-mobile">
       <MobileMenu client:media="(max-width: 768px)" />
     </div>
   </nav>

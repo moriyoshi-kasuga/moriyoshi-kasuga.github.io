@@ -42,7 +42,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/**/*");
     {frontmatter.title}
   </h1>
   <p class="text-center text-lg">{frontmatter.description}</p>
-  <div class="mt-8 flex justify-center gap-x-8 gap-y-4 max-sm:flex-col md:mt-5">
+  <div class="mt-5 flex flex-col justify-center gap-x-8 gap-y-4 sm:flex-row md:mt-8">
     <div class="flex items-center p-4 md:justify-center">
       <div class="group relative ml-auto">
         <div
@@ -144,7 +144,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/**/*");
           ギャラリー
         </h3>
       </div>
-      <div class="grid grid-cols-1 gap-4 p-4 md:grid-cols-2">
+      <div class="gallery-grid">
         {
           frontmatter.gallery?.map(async (path) => {
             return (

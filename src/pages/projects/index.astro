@@ -30,9 +30,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
       <Icon name="mdi:source-branch" />
       Projects
     </h1>
-    <div
-      class="container-center my-8 grid grid-cols-1 place-items-center gap-4 sm:grid-cols-2 sm:gap-6 md:gap-8 lg:grid-cols-3 lg:gap-10 xl:gap-12"
-    >
+    <div class="container-center my-8 responsive-grid">
       {
         projects.map(async (project) => {
           return (
