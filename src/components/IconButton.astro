@@ -12,10 +12,10 @@ const { url, self, class: className } = Astro.props;
   href={url}
   target={self ? "_self" : "_blank"}
   class:list={[
-    "flex items-center gap-2 rounded-lg bg-zinc-800 p-2 text-2xl text-white transition-transform hover:scale-105",
+    "flex items-center gap-2 rounded-lg bg-gray-800 p-2 text-2xl text-white transition-transform hover:scale-105",
     className,
   ]}
 >
   <slot name="icon" />
-  <span class="font-medium text-zinc-100"><slot /></span>
+  <span class="font-medium text-gray-100"><slot /></span>
 </a>

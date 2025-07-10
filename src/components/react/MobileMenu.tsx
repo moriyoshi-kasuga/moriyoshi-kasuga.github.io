@@ -115,7 +115,7 @@ export function MobileMenu() {
                   >
                     <a
                       onClick={() => setOpen(prev => !prev)}
-                      className="flex max-w-80 min-w-72 items-center justify-between rounded-xl bg-slate-100/90 p-5"
+                      className="flex max-w-80 min-w-72 items-center justify-between rounded-xl bg-gray-100/90 p-5"
                       href={href}
                     >
                       <span className="flex gap-1 text-lg font-semibold">
