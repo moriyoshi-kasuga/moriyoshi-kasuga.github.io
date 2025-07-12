@@ -34,7 +34,7 @@
   --duration-normal: 300ms;
   --duration-slow: 500ms;
   --duration-extra-slow: 1000ms;
-  
+
   --ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
   --ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
   --ease-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -42,17 +42,17 @@
   /* Typography system */
   --font-primary: 'M PLUS 1', system-ui, sans-serif;
   --font-display: 'M PLUS 1 Code', 'Courier New', monospace;
-  
+
   /* Line heights */
   --line-tight: 1.25;
   --line-normal: 1.5;
   --line-loose: 1.75;
-  
+
   /* Letter spacing */
   --tracking-tight: -0.025em;
   --tracking-normal: 0;
   --tracking-wide: 0.025em;
-  
+
   /* Optimal measures (line lengths) */
   --measure-short: 20ch;
   --measure-base: 66ch;
@@ -72,6 +72,7 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+
   *,
   ::after,
   ::before,
@@ -266,21 +267,22 @@
   .link-style {
     @apply text-link underline underline-offset-[3px];
   }
+
   .btn {
     @apply base-btn text-zinc-900 hover:bg-zinc-900;
   }
-  
+
   /* Hover effects */
   .hover-lift:hover {
     transform: scale(1.05);
   }
-  
-  
+
+
   /* Backward compatibility */
   .hover-scale:hover {
     transform: scale(1.05);
   }
-  
+
   .hover-scale-110:hover {
     transform: scale(1.1);
   }
@@ -288,6 +290,7 @@
 
 /* Accessibility: Respect user's motion preferences */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -304,15 +307,17 @@
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
   }
-  
+
   *:focus:not(:focus-visible) {
     outline: none;
   }
-  
+
 }
 
 /* Apply this to top level containers to fix their layout shift when scrollbar appears */
-@media (min-width: 1024px /* breakpoint for desktop layout */) {
+@media (min-width: 1024px
+  /* breakpoint for desktop layout */
+) {
   .top-level-container {
     padding-left: calc(100vw - 100%);
   }
