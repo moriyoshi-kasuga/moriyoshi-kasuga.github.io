@@ -7,21 +7,13 @@ import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import { rawContent as SelfIntroduction } from "../static/self-introduction.md";
+import { sortProjects } from "./projects/index.astro";
 
-const projectFiles = import.meta.glob<{ frontmatter: Project }>("../static/projects/*.md", { eager: true });
-const projects = Object.values(projectFiles);
-function convert(date: string) {
-  const arr = date.split("/").map(Number);
-  return new Date(arr[0], arr[1] + 1, arr[2]);
-}
-
-const showProjects = projects
-  .sort((a, b) =>
-    convert(a.frontmatter.createdAt) < convert(b.frontmatter.createdAt)
-      ? 1
-      : -1,
-  )
-  .slice(0, 3);
+const projectFiles = import.meta.glob<{ frontmatter: Project }>(
+  "../static/projects/*.md",
+  { eager: true },
+);
+const showProjects = Object.values(projectFiles).sort(sortProjects).slice(0, 3);
 
 const photos = import.meta.glob<{ default: ImageMetadata }>(
   `/src/assets/projects/*/main.png`,
@@ -32,9 +24,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
 ---
 
 <Layout title="MoriLab">
-  <div
-    class="min-h-all bg-primary full-width-col-center text-white"
-  >
+  <div class="min-h-all bg-primary full-width-col-center text-white">
     <div class="flex flex-col items-center">
       <h1 class="text-responsive-display font-semibold">MoriLab</h1>
       <h2 class="text-3xl">Mori’s tiny dev lab.</h2>
@@ -56,12 +46,18 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
       </div>
       <div class="container mt-10 flex max-w-[1200px] flex-wrap">
         <h2 class="mb-10 w-full text-center text-5xl font-medium">Projects</h2>
-        <div class="mx-auto flex flex-wrap lg:flex-nowrap items-center justify-center">
+        <div
+          class="mx-auto flex flex-wrap lg:flex-nowrap items-center justify-center"
+        >
           {
             showProjects.map((project) => {
               const p = project.frontmatter.name;
               return (
-                <a href={`/projects/${p}`} class="group size-50" aria-label={`プロジェクト ${project.frontmatter.title} の詳細を見る`}>
+                <a
+                  href={`/projects/${p}`}
+                  class="group size-50"
+                  aria-label={`プロジェクト ${project.frontmatter.title} の詳細を見る`}
+                >
                   <div class="mx-4 my-2 flex flex-col items-center justify-center rounded-2xl">
                     <Image
                       src={photos[`/src/assets/projects/${p}/main.png`].default}
@@ -74,6 +70,13 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
                       sizes="160px"
                     />
                     <p class="font-monospace relative text-lg font-medium text-nowrap transition-all group-hover:scale-110 before:absolute before:-left-3 group-hover:before:content-['>'] after:absolute group-hover:after:content-['<'] md:text-xl">
+                      {project.frontmatter.pin && (
+                        <Icon
+                          name="mdi:pin"
+                          class="inline-block text-danger"
+                          title="ピン留めされたプロジェクト"
+                        />
+                      )}
                       {project.frontmatter.title}
                     </p>
                   </div>
@@ -108,7 +111,9 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
           height={150}
         />
         <div>
-          <p class="measure-base font-semibold text-primary text-white text-responsive-lg line-loose">
+          <p
+            class="measure-base font-semibold text-primary text-white text-responsive-lg line-loose"
+          >
             {SelfIntroduction()}
           </p>
           <div class="mt-5 flex items-center justify-center">

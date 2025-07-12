@@ -5,18 +5,46 @@ import Layout from "@layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 
-function convert(date: string) {
-  const arr = date.split("/").map(Number);
-  return new Date(arr[0], arr[1] + 1, arr[2]);
-}
-
 const projectFiles = import.meta.glob<{ frontmatter: Project }>(
   "../../static/projects/*.md",
   { eager: true },
 );
-const projects = Object.values(projectFiles).sort((a, b) =>
-  convert(a.frontmatter.createdAt) < convert(b.frontmatter.createdAt) ? 1 : -1,
-);
+
+export function convert(date: string) {
+  const arr = date.split("/").map(Number);
+  return new Date(arr[0], arr[1] + 1, arr[2]);
+}
+
+export function sortProjects(
+  a: { frontmatter: Project },
+  b: { frontmatter: Project },
+): number {
+  const aPin = a.frontmatter.pin ?? false;
+  const bPin = b.frontmatter.pin ?? false;
+
+  if (aPin && !bPin) {
+    return -1;
+  }
+  if (!aPin && bPin) {
+    return 1;
+  }
+  if (aPin && bPin) {
+    return 0;
+  }
+
+  const aDate = convert(a.frontmatter.createdAt);
+  const bDate = convert(b.frontmatter.createdAt);
+  if (aDate.getTime() === bDate.getTime()) {
+    return 0;
+  }
+
+  if (aDate.getTime() > bDate.getTime()) {
+    return -1;
+  }
+  return 1;
+}
+
+const projects = Object.values(projectFiles).sort(sortProjects);
 
 const photos = import.meta.glob<{ default: ImageMetadata }>(
   `/src/assets/projects/*/main.png`,
@@ -41,6 +69,13 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
               class="project-card"
             >
               <h2 class="text-center text-2xl font-semibold">
+                {project.frontmatter.pin && (
+                  <Icon
+                    name="mdi:pin"
+                    class="inline-block text-danger"
+                    title="ピン留めされたプロジェクト"
+                  />
+                )}
                 {project.frontmatter.title}
               </h2>
               <div class="relative my-2 aspect-video w-full">
@@ -55,7 +90,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
                 />
               </div>
               <div class="flex flex-wrap items-start gap-2 text-lg">
-                {project.frontmatter.technology.map(tag => (
+                {project.frontmatter.technology.map((tag) => (
                   <span class="tech-tag">{tag}</span>
                 ))}
               </div>

@@ -11,6 +11,8 @@ export interface Project {
   background: string;
   commitment: string;
   gallery: string[];
+
+  pin?: boolean;
 }
 
 export interface Skill {

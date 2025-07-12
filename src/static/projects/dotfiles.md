@@ -17,6 +17,7 @@ commitment: "最初はshellscriptで書いていましたが、nixを使うこ�
 gallery:
   - "main.png"
   - "zoxide.png"
+pin: true
 ---
 
 wsl2やmac、自宅サーバーでも同様の環境を用意できるので便利です。
