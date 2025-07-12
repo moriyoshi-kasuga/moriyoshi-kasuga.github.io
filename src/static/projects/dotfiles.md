@@ -1,23 +1,23 @@
 ---
-name: 'dotfiles'
-title: 'dotfiles'
-description: 'コマンド一行でdotfilesを適用し、すぐにplay!'
-createdAt: '2023/8/12'
-genre: 'CLI'
-github: 'https://github.com/moriyoshi-kasuga/dotfiles'
+name: dotfiles
+title: dotfiles
+description: nixを使った開発環境
+createdAt: "2023/8/12"
+genre: "CLI"
+github: "https://github.com/moriyoshi-kasuga/dotfiles"
 technology:
-  - 'shellscript'
-objective: 'windowsではwsl2を使っていて時々、初期化するのでそのために作りました。'
-background: '最初は自分の開発環境をまとめているという事に惹かれて単純にdotfileだけを作っていました。'
-commitment: '大体のdotfileはファイルをまとめているだけか手順が必要なのでそれに対して全部makeでできるようにしました'
+  - "nix"
+  - "zsh"
+  - "neovim"
+  - "lua"
+  - "shellscript"
+objective: "windowsではwsl2を使っていて時々、初期化するのでそのために作りました。"
+background: "最初は自分の開発環境をまとめているという事に惹かれて単純にdotfileだけを作っていました。"
+commitment: "最初はshellscriptで書いていましたが、nixを使うことでより簡単に管理できるようになりました。"
 gallery:
-  - 'terminal.png'
-  - 'ide.png'
-  - 'neovim.png'
-  - 'telescope.png'
-  - 'cdr.png'
-  - 'history.png'
+  - "main.png"
+  - "zoxide.png"
 ---
 
-これは実際に自分が使っているので必要だなと思ったのを常に更新していて、かなり力を
-入れています
+wsl2やmac、自宅サーバーでも同様の環境を用意できるので便利です。
+このrepositoryは継続的に更新されるでしょうし、更新する予定です。
