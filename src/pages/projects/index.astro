@@ -10,10 +10,12 @@ function convert(date: string) {
   return new Date(arr[0], arr[1] + 1, arr[2]);
 }
 
-const projectFiles = import.meta.glob<{ frontmatter: Project }>("../../static/projects/*.md", { eager: true });
-const projects = Object.values(projectFiles).sort(
-  (a, b) =>
-    convert(a.frontmatter.createdAt) < convert(b.frontmatter.createdAt) ? 1 : -1,
+const projectFiles = import.meta.glob<{ frontmatter: Project }>(
+  "../../static/projects/*.md",
+  { eager: true },
+);
+const projects = Object.values(projectFiles).sort((a, b) =>
+  convert(a.frontmatter.createdAt) < convert(b.frontmatter.createdAt) ? 1 : -1,
 );
 
 const photos = import.meta.glob<{ default: ImageMetadata }>(
@@ -41,7 +43,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
               <h2 class="text-center text-2xl font-semibold">
                 {project.frontmatter.title}
               </h2>
-              <div class="relative my-2 aspect-square w-full">
+              <div class="relative my-2 aspect-video w-full">
                 <Image
                   src={
                     photos[
@@ -49,20 +51,18 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
                     ].default
                   }
                   alt={project.frontmatter.title}
-                  class="w-full rounded-xl object-cover"
+                  class="rounded-xl object-cover"
                 />
               </div>
               <div class="flex flex-wrap items-start gap-2 text-lg">
                 {project.frontmatter.technology.map(tag => (
-                  <span class="tech-tag">
-                    {tag}
-                  </span>
+                  <span class="tech-tag">{tag}</span>
                 ))}
               </div>
-              <div class="mt-auto py-2 text-xl break-words">
+              <div class="py-2 text-xl break-words">
                 {project.frontmatter.description}
               </div>
-              <span class="ml-auto font-thin">
+              <span class="mt-auto ml-auto font-thin">
                 {project.frontmatter.createdAt}
               </span>
             </a>
