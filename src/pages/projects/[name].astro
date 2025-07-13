@@ -145,6 +145,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/**/*");
       <div class="gallery-grid">
         {
           frontmatter.gallery?.map(async (path) => {
+            // TODO: add image popup
             return (
               <Image
                 src={images[
