@@ -3,6 +3,7 @@ import type { Project } from "@src/type";
 import type { ImageMetadata } from "astro";
 import ProjectLink from "@components/ProjectLink.astro";
 import { ZoomDialog } from "@components/react/ZoomDialog";
+import Tooltip from "@components/Tooltip.astro";
 import Layout from "@layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
@@ -49,36 +50,14 @@ const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/**/*");
   <div
     class="mt-5 flex flex-col justify-center gap-x-8 gap-y-4 sm:flex-row md:mt-8"
   >
-    <div class="flex items-center p-4 md:justify-center">
-      <div class="group relative ml-auto">
-        <div
-          class="flex cursor-pointer items-center justify-center rounded-b-md bg-black p-2 text-xl shadow-xl duration-300 hover:shadow-2xl md:rounded-full"
-        >
-          <Icon name="mdi:source-branch" class="text-white" />
-        </div>
-        <div
-          class="absolute -top-9 z-10 flex w-40 rounded-t-md rounded-br-md bg-black p-2 text-center text-sm break-keep text-white duration-150 group-hover:visible group-hover:scale-100 group-hover:opacity-100 md:invisible md:w-fit md:-translate-x-1/4 md:scale-80 md:justify-center md:rounded-xl md:px-1.5 md:py-1 md:opacity-0"
-        >
-          <p>公開日</p>
-        </div>
-      </div>
-      <p class="mt-2 ml-2 max-sm:w-1/2 md:mt-0">{frontmatter.createdAt}</p>
-    </div>
-    <div class="flex items-center p-4 md:justify-center">
-      <div class="group relative ml-auto">
-        <div
-          class="flex cursor-pointer items-center justify-center rounded-b-md bg-black p-2 text-xl shadow-xl duration-300 hover:shadow-2xl md:rounded-full"
-        >
-          <Icon name="mdi:category" class="text-white" />
-        </div>
-        <div
-          class="absolute -top-9 z-10 flex w-40 rounded-t-md rounded-br-md bg-black p-2 text-center text-sm break-keep text-white duration-150 group-hover:visible group-hover:scale-100 group-hover:opacity-100 md:invisible md:w-fit md:-translate-x-1/4 md:scale-80 md:justify-center md:rounded-xl md:px-1.5 md:py-1 md:opacity-0"
-        >
-          <p>ジャンル</p>
-        </div>
-      </div>
-      <p class="mt-2 ml-2 max-sm:w-1/2 md:mt-0">{frontmatter.genre}</p>
-    </div>
+    <Tooltip details="公開日">
+      <Icon name="mdi:source-branch" class="text-white" slot="icon" />
+      {frontmatter.createdAt}
+    </Tooltip>
+    <Tooltip details="ジャンル">
+      <Icon name="mdi:category" class="text-white" slot="icon" />
+      {frontmatter.genre}
+    </Tooltip>
   </div>
   <div class="flex flex-wrap justify-center gap-8">
     <ProjectLink url={frontmatter.github} title="Code">
