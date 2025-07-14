@@ -48,7 +48,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/**/*");
   </h1>
   <p class="text-center text-lg">{frontmatter.description}</p>
   <div
-    class="mt-5 flex flex-col justify-center gap-x-8 gap-y-4 sm:flex-row md:mt-8"
+    class="mt-5 flex flex-col justify-center gap-x-8 gap-y-4 max-md:pr-15 md:pr-10 sm:flex-row"
   >
     <Tooltip details="公開日">
       <Icon name="mdi:source-branch" class="text-white" slot="icon" />
