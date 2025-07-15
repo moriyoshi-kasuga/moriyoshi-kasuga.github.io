@@ -24,7 +24,7 @@ function other(url: string) {
       <slot name="icon" />
       {title}
     </h1>
-    <div class="mt-10 mb-5 flex flex-col gap-8 md:flex-row">
+    <div class="mt-10 mb-5 flex gap-8 flex-row flex-wrap justify-center">
       {
         other("/about") && (
           <a href="/about" class="btn-warning">
