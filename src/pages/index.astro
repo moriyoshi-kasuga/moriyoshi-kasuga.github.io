@@ -60,6 +60,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
                 >
                   <div class="mx-4 my-2 flex flex-col items-center justify-center rounded-2xl">
                     <Image
+                      loading="lazy"
                       src={photos[`/src/assets/projects/${p}/main.png`].default}
                       alt={`${p} image`}
                       class="aspect-square rounded-lg"
@@ -104,6 +105,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
         class="flex gap-2 flex-wrap items-center justify-center gap-x-3 md:flex-nowrap"
       >
         <Image
+          loading="lazy"
           src={Mori}
           alt="Avatar"
           class="aspect-square rounded-full"

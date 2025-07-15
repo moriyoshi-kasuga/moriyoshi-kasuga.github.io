@@ -135,12 +135,12 @@ const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/**/*");
             return (
               <ZoomDialog client:load>
                 <Image
+                  loading="lazy"
                   src={images[
                     `/src/assets/projects/${frontmatter.name}/${path}`
                   ]()}
                   alt={path}
                   class="aspect-auto object-contain"
-                  loading="lazy"
                   widths={[320, 640, 960, 1280]}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
