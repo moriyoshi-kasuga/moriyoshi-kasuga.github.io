@@ -1,5 +1,4 @@
 ---
-import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 import { ClientRouter } from "astro:transitions";
 
 import Footer from "../components/Footer.astro";
@@ -41,9 +40,6 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ClientRouter />
-    <GoogleFontsOptimizer
-      url="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@400..700&display=swap"
-    />
   </head>
   <body
     class="bg-background min-h-screen pt-[var(--header-height)] font-mono [--footer-height:40px] [--header-height:50px]"

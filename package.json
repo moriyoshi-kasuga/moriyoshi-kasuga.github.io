@@ -16,7 +16,6 @@
     "@astrojs/mdx": "4.3.0",
     "@astrojs/react": "4.3.0",
     "astro": "5.11.1",
-    "astro-google-fonts-optimizer": "^0.2.2",
     "astro-icon": "^1.1.5",
     "framer-motion": "^12.23.5",
     "react": "^19.1.0",
