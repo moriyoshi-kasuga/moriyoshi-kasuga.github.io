@@ -96,7 +96,7 @@ export function MobileMenu() {
             transition={{ duration: 0.2 }}
             className="fixed top-[var(--header-height)] right-0 left-0 rounded-b-3xl p-5 backdrop-blur-xs"
           >
-            <ul className="font-monospace grid place-content-center place-items-center gap-2 p-3">
+            <ul className="grid place-content-center place-items-center gap-2 p-3">
               {routes.map((route, idx) => {
                 const { title, href, icon } = route;
 

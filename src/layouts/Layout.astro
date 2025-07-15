@@ -18,18 +18,18 @@ const { title } = Astro.props;
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Mori's Lab - 17歳エンジニアのポートフォリオサイト。TypeScript、Java、Rustを使った開発プロジェクトを紹介。" />
-    <meta name="keywords" content="Mori, MoriLab, ポートフォリオ, エンジニア, TypeScript, Java, Rust, プログラミング" />
+    <meta name="description" content="Mori's Lab - ポートフォリオサイト。" />
+    <meta name="keywords" content="Mori, MoriLab, portfolio, ポートフォリオ" />
     <meta name="author" content="Mori" />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content="Mori's Lab - 17歳エンジニアのポートフォリオサイト" />
+    <meta property="og:description" content="Mori's Lab - ポートフォリオサイト" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://moriyoshi-kasuga.github.io" />
-    <meta property="og:image" content="https://moriyoshi-kasuga.github.io/og-image.png" />
+    <meta property="og:image" content="https://github.com/moriyoshi-kasuga.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content="Mori's Lab - 17歳エンジニアのポートフォリオサイト" />
-    <meta name="twitter:image" content="https://moriyoshi-kasuga.github.io/og-image.png" />
+    <meta name="twitter:description" content="Mori's Lab - ポートフォリオサイト" />
+    <meta name="twitter:image" content="https://github.com/moriyoshi-kasuga.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#66aaf9" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -42,10 +42,7 @@ const { title } = Astro.props;
     <title>{title}</title>
     <ClientRouter />
     <GoogleFontsOptimizer
-      url="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@100..700&display=swap"
-    />
-    <GoogleFontsOptimizer
-      url="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@100..900&display=swap"
+      url="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@400..700&display=swap"
     />
   </head>
   <body

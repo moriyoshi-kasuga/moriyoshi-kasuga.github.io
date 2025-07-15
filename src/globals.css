@@ -2,7 +2,6 @@
 
 @theme {
   --font-mono: var(--font-primary);
-  --font-monospace: var(--font-display);
 
   --color-divider: rgba(17, 17, 17, 0.15);
 
@@ -40,8 +39,7 @@
   --ease-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
   /* Typography system */
-  --font-primary: 'M PLUS 1', system-ui, sans-serif;
-  --font-display: 'M PLUS 1 Code', 'Courier New', monospace;
+  --font-primary: 'M PLUS 1 Code', 'Courier New', monospace;
 
   /* Line heights */
   --line-tight: 1.25;
@@ -223,15 +221,6 @@
 
 
 /* Typography utilities */
-@utility text-primary {
-  font-family: var(--font-primary);
-}
-
-@utility text-display {
-  font-family: var(--font-display);
-  letter-spacing: var(--tracking-tight);
-}
-
 @utility line-tight {
   line-height: var(--line-tight);
 }

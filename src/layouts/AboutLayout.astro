@@ -20,13 +20,11 @@ function other(url: string) {
 
 <Layout title={title}>
   <div class="min-h-all top-level-container full-width-col-center">
-    <h1
-      class:list={["flex-items-gap text-5xl font-bold", className]}
-    >
+    <h1 class:list={["flex-items-gap text-5xl font-bold", className]}>
       <slot name="icon" />
       {title}
     </h1>
-    <div class="font-monospace mt-10 mb-5 flex flex-col gap-8 md:flex-row">
+    <div class="mt-10 mb-5 flex flex-col gap-8 md:flex-row">
       {
         other("/about") && (
           <a href="/about" class="btn-warning">
@@ -37,10 +35,7 @@ function other(url: string) {
       }
       {
         other("/about/likes") && (
-          <a
-            href="/about/likes"
-            class="btn-danger"
-          >
+          <a href="/about/likes" class="btn-danger">
             <Icon name="mdi:like-outline" />
             Likes
           </a>
@@ -48,10 +43,7 @@ function other(url: string) {
       }
       {
         other("/about/links") && (
-          <a
-            href="/about/links"
-            class="btn-success"
-          >
+          <a href="/about/links" class="btn-success">
             <Icon name="mdi:notebook-outline" />
             Links
           </a>
@@ -59,10 +51,7 @@ function other(url: string) {
       }
       {
         other("/about/skill") && (
-          <a
-            href="/about/skill"
-            class="btn-primary"
-          >
+          <a href="/about/skill" class="btn-primary">
             <Icon name="mdi:computer" />
             Skill
           </a>
