@@ -12,7 +12,7 @@ technology:
 objective: hashを使わずにunwrapもしないsafeで高速なmapを作りたかったため。
 background: HashMapでgetでunwrapするのが嫌だし、わざわざhashを使うのもオーバーヘッドが大きいから嫌だった。
 commitment: utility関数を充実させてenumのmapとして使いやすくしました。
-galary:
+gallery:
   - main.png
   - benchmark.png
 ---
