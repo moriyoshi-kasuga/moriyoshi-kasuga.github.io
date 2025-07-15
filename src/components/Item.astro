@@ -1,32 +1,30 @@
 ---
 interface Props {
   href?: string;
-  id: string;
   value: string;
+  skillIcon?: string;
 }
 
-const { href, id, value } = Astro.props;
+const { href, value, skillIcon } = Astro.props;
+
+const iconURL = skillIcon
+  ? `https://go-skill-icons.vercel.app/api/icons?i=${skillIcon}`
+  : undefined;
 ---
 
-<div class="flex-items-gap w-full">
-  <h2 class="item-label">
-    {id}
-  </h2>
+<div>
   {
-    href
-? (
-      <a
-        href={href}
-        class="link-style item-value"
-        target="_blank"
-      >
+    iconURL && (
+      <img src={iconURL} alt={value} class="inline-block -mr-1 size-[25px]" />
+    )
+  }
+  {
+    href ? (
+      <a href={href} class="link-style font-normal" target="_blank">
         {value}
       </a>
-    )
-: (
-      <p class="item-value">
-        {value}
-      </p>
+    ) : (
+      <p>{value}</p>
     )
   }
 </div>

@@ -11,6 +11,7 @@ export default antfu(
       "import/no-self-import": "off",
       "@typescript-eslint/no-namespace": "off",
       "style/arrow-parens": "off",
+      "style/multiline-ternary": "off",
     },
     astro: true,
   },

@@ -1,7 +1,8 @@
 ---
-import Item from "@components/Item.astro";
 import List from "@components/List.astro";
+import ListItem from "@components/ListItem.astro";
 import AboutLayout from "@layouts/AboutLayout.astro";
+import Item from "@src/components/Item.astro";
 import { Icon } from "astro-icon/components";
 import { rawContent as SelfDescription } from "../../static/self-description.md";
 ---
@@ -9,13 +10,19 @@ import { rawContent as SelfDescription } from "../../static/self-description.md"
 <AboutLayout title="About" class="text-warning">
   <Icon name="mdi:search" slot="icon" />
   <List>
-    <Item id="名前" value="Mori" />
-    <Item id="年齢" value="17" />
-    <Item id="誕生日" value="2007/12/18" />
-    <Item id="言語" value="TypeScript・Java・Rust" />
-    <Item id="ツール" value="WSL2, Neovim, tmux" />
+    <ListItem title="名前" alwaysCenter>
+      <Item value="Mori" />
+    </ListItem>
+    <ListItem title="年齢" alwaysCenter>
+      <Item value="17歳" />
+    </ListItem>
+    <ListItem title="誕生日" alwaysCenter>
+      <Item value="2027/12/18" />
+    </ListItem>
   </List>
-  <p class="my-2 py-2 rounded-lg border container md:w-3/5 font-semibold text-primary text-responsive-lg line-loose measure-base">
+  <p
+    class="my-2 py-2 rounded-lg border container md:w-3/5 font-semibold text-primary text-responsive-lg line-loose measure-base"
+  >
     {SelfDescription()}
   </p>
   <div class="container pt-2 stats-grid">
