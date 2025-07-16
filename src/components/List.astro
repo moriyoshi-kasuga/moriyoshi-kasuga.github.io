@@ -1,1 +1,10 @@
-<div class="flex w-full flex-col gap-x-8 gap-y-4 px-4"><slot /></div>
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+<div class:list={["flex w-full flex-col gap-x-8 gap-y-4 px-4", className]}>
+  <slot />
+</div>
