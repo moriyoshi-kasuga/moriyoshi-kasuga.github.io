@@ -9,9 +9,9 @@ site: https://crates.io/crates/enum-table
 technology:
   - Rust
   - crate
-objective: hashを使わずにunwrapもしないsafeで高速なmapを作りたかったため。
-background: HashMapでgetでunwrapするのが嫌だし、わざわざhashを使うのもオーバーヘッドが大きいから嫌だった。
-commitment: utility関数を充実させてenumのmapとして使いやすくしました。
+objective: unwrapの必要のない安全で高速なmapを実現したいと考えました。
+background: HashMapでgetした後のResultのhandlingが気になっていました。
+commitment: enumをmapとして扱いやすくするため、utility関数を充実させました。
 gallery:
   - main.png
   - benchmark.png
