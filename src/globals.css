@@ -1,77 +1,80 @@
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@400..700&display=swap");
 @import 'tailwindcss';
 
+/* ================================================================================
+ * デザイントークン定義
+ * ================================================================================ */
+
 @theme {
+  /* フォント */
+  --font-primary: 'M PLUS 1 Code', 'Courier New', monospace;
   --font-mono: var(--font-primary);
 
+  /* カラーパレット */
   --color-divider: rgba(17, 17, 17, 0.15);
-
   --color-link: #005bc4;
 
+  /* プライマリカラー */
   --color-primary: #66aaf9;
   --color-primary-foreground: #006fee;
 
+  /* 成功カラー */
   --color-success: #74dfa2;
   --color-success-foreground: #17c964;
 
+  /* 警告カラー */
   --color-warning: #f9c97c;
   --color-warning-foreground: #f5a524;
 
+  /* エラーカラー */
   --color-danger: #f871a0;
   --color-danger-foreground: #f31260;
 
+  /* グレースケール */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
   --color-gray-200: #e5e7eb;
   --color-gray-300: #d1d5db;
-  --color-gray-100: #f3f4f6;
-  --color-gray-50: #f9fafb;
   --color-gray-400: #9ca3af;
   --color-gray-500: #6b7280;
   --color-gray-800: #1f2937;
   --color-gray-900: #111827;
 
-  /* Animation system */
+  /* アニメーション期間 */
   --duration-fast: 150ms;
   --duration-normal: 300ms;
   --duration-slow: 500ms;
   --duration-extra-slow: 1000ms;
 
+  /* イージング関数 */
   --ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
   --ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
   --ease-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-  /* Typography system */
-  --font-primary: 'M PLUS 1 Code', 'Courier New', monospace;
-
-  /* Line heights */
+  /* タイポグラフィ */
   --line-tight: 1.25;
   --line-normal: 1.5;
   --line-loose: 1.75;
 
-  /* Letter spacing */
   --tracking-tight: -0.025em;
   --tracking-normal: 0;
   --tracking-wide: 0.025em;
 
-  /* Optimal measures (line lengths) */
   --measure-short: 20ch;
   --measure-base: 66ch;
   --measure-long: 75ch;
 }
 
+/* ================================================================================
+ * ベーススタイル
+ * ================================================================================ */
+
 @utility container {
   padding-inline: 1rem;
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
+/* Tailwind CSS v4互換性のためのボーダーカラー設定 */
 @layer base {
-
   *,
   ::after,
   ::before,
@@ -81,7 +84,12 @@
   }
 }
 
+/* ================================================================================
+ * レイアウトユーティリティ
+ * ================================================================================ */
+
 @layer utilities {
+  /* 高さ計算 */
   .min-h-all {
     min-height: calc(100vh - var(--header-height) - var(--footer-height));
   }
@@ -90,6 +98,7 @@
     min-height: calc(100vh - var(--header-height));
   }
 
+  /* リンクホバーアニメーション */
   .link-hover-animation {
     position: relative;
     display: flex;
@@ -99,11 +108,11 @@
   .link-hover-animation::after {
     position: absolute;
     left: 0;
+    bottom: -1px;
     content: '';
     width: 100%;
     height: 2px;
     background: black;
-    bottom: -1px;
     border-radius: 1px;
     transform: scale(0, 1);
     transform-origin: left top;
@@ -115,13 +124,34 @@
   }
 }
 
+/* ================================================================================
+ * 再利用可能なコンポーネントユーティリティ
+ * ================================================================================ */
+
+/* ボタンベーススタイル */
 @utility base-btn {
   @apply flex items-center gap-x-2 rounded-2xl px-8 py-3 text-xl font-bold;
   transition: all var(--duration-slow) var(--ease-out);
 }
 
-/* Layout utilities */
+/* ボタンバリエーション */
+@utility btn-primary {
+  @apply base-btn text-gray-900 hover:bg-gray-900 bg-primary hover:text-primary-foreground;
+}
 
+@utility btn-success {
+  @apply base-btn text-gray-900 hover:bg-gray-900 bg-success hover:text-success-foreground;
+}
+
+@utility btn-warning {
+  @apply base-btn text-gray-900 hover:bg-gray-900 bg-warning hover:text-warning-foreground;
+}
+
+@utility btn-danger {
+  @apply base-btn text-gray-900 hover:bg-gray-900 bg-danger hover:text-danger-foreground;
+}
+
+/* レイアウトユーティリティ */
 @utility flex-items-gap {
   @apply flex items-center gap-2;
 }
@@ -134,47 +164,22 @@
   @apply w-full flex flex-col items-center;
 }
 
-/* Typography utilities */
+/* タイポグラフィユーティリティ */
 @utility text-semibold-xl {
   @apply text-xl font-semibold;
 }
 
-
-/* Button variant utilities */
-@utility btn-warning {
-  @apply base-btn text-gray-900 hover:bg-gray-900 bg-warning hover:text-warning-foreground;
-}
-
-@utility btn-danger {
-  @apply base-btn text-gray-900 hover:bg-gray-900 bg-danger hover:text-danger-foreground;
-}
-
-@utility btn-success {
-  @apply base-btn text-gray-900 hover:bg-gray-900 bg-success hover:text-success-foreground;
-}
-
-@utility btn-primary {
-  @apply base-btn text-gray-900 hover:bg-gray-900 bg-primary hover:text-primary-foreground;
-}
-
-/* Interactive utilities (deprecated - use hover-lift instead) */
-@utility hover-scale {
-  transition: transform var(--duration-normal) var(--ease-out);
-}
-
-@utility hover-scale-110 {
-  transition: transform var(--duration-normal) var(--ease-spring);
-}
-
-/* Component utilities */
-@utility tech-tag {
-  @apply bg-warning rounded-xl px-2 py-1 font-normal;
-}
-
+/* プロジェクトカード */
 @utility project-card {
   @apply ring-primary hover:ring-primary-foreground flex h-full w-full max-w-[360px] flex-col rounded-2xl px-8 py-2 ring-[3px] hover-lift;
 }
 
+/* 技術タグ */
+@utility tech-tag {
+  @apply bg-warning rounded-xl px-2 py-1 font-normal;
+}
+
+/* アイテム表示 */
 @utility item-label {
   @apply w-1/3 text-right text-2xl font-bold md:w-1/2;
 }
@@ -183,7 +188,10 @@
   @apply w-2/3 text-left text-xl font-semibold break-words md:w-1/2;
 }
 
-/* Responsive grid utilities */
+/* ================================================================================
+ * レスポンシブグリッドシステム
+ * ================================================================================ */
+
 @utility responsive-grid {
   @apply grid grid-cols-1 gap-4 place-items-center sm:grid-cols-2 sm:gap-6 md:gap-8 lg:grid-cols-3 lg:gap-10 xl:gap-12;
 }
@@ -201,7 +209,10 @@
   @apply lg:col-span-2 lg:mx-auto lg:w-[50%];
 }
 
-/* Navigation utilities */
+/* ================================================================================
+ * ナビゲーションユーティリティ
+ * ================================================================================ */
+
 @utility nav-desktop {
   @apply hidden md:flex items-center space-x-6;
 }
@@ -210,7 +221,10 @@
   @apply flex md:hidden items-center;
 }
 
-/* Animation utilities */
+/* ================================================================================
+ * アニメーションユーティリティ
+ * ================================================================================ */
+
 @utility smooth-transition {
   transition: all var(--duration-normal) var(--ease-out);
 }
@@ -219,9 +233,18 @@
   transition: transform var(--duration-normal) var(--ease-out);
 }
 
+@utility hover-scale {
+  transition: transform var(--duration-normal) var(--ease-out);
+}
 
+@utility hover-scale-110 {
+  transition: transform var(--duration-normal) var(--ease-spring);
+}
 
-/* Typography utilities */
+/* ================================================================================
+ * タイポグラフィユーティリティ
+ * ================================================================================ */
+
 @utility line-tight {
   line-height: var(--line-tight);
 }
@@ -238,17 +261,15 @@
   letter-spacing: var(--tracking-tight);
 }
 
-
 @utility measure-base {
   max-width: var(--measure-base);
 }
-
 
 @utility measure-long {
   max-width: var(--measure-long);
 }
 
-/* Responsive typography utilities */
+/* レスポンシブタイポグラフィ */
 @utility text-responsive-lg {
   font-size: clamp(1.125rem, 3vw, 1.25rem);
 }
@@ -257,6 +278,10 @@
   font-size: clamp(2rem, 8vw, 4rem);
   line-height: var(--line-tight);
 }
+
+/* ================================================================================
+ * ベース要素スタイル
+ * ================================================================================ */
 
 @layer base {
   .link-style {
@@ -267,13 +292,11 @@
     @apply base-btn text-zinc-900 hover:bg-zinc-900;
   }
 
-  /* Hover effects */
+  /* ホバーエフェクト */
   .hover-lift:hover {
     transform: scale(1.05);
   }
 
-
-  /* Backward compatibility */
   .hover-scale:hover {
     transform: scale(1.05);
   }
@@ -283,9 +306,11 @@
   }
 }
 
-/* Accessibility: Respect user's motion preferences */
-@media (prefers-reduced-motion: reduce) {
+/* ================================================================================
+ * アクセシビリティ: アニメーション削減の設定
+ * ================================================================================ */
 
+@media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
@@ -296,7 +321,10 @@
   }
 }
 
-/* Focus styles for accessibility */
+/* ================================================================================
+ * アクセシビリティ: フォーカススタイル
+ * ================================================================================ */
+
 @layer base {
   *:focus {
     outline: 2px solid var(--color-primary);
@@ -306,13 +334,13 @@
   *:focus:not(:focus-visible) {
     outline: none;
   }
-
 }
 
-/* Apply this to top level containers to fix their layout shift when scrollbar appears */
-@media (min-width: 1024px
-  /* breakpoint for desktop layout */
-) {
+/* ================================================================================
+ * レイアウトシフト対策（デスクトップ）
+ * ================================================================================ */
+
+@media (min-width: 1024px) {
   .top-level-container {
     padding-left: calc(100vw - 100%);
   }
