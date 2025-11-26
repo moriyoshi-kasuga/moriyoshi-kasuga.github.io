@@ -3,82 +3,74 @@ import type { Skill } from "../../type";
 import AboutLayout from "@layouts/AboutLayout.astro";
 import { Icon } from "astro-icon/components";
 
-const skillFiles = import.meta.glob<{ frontmatter: Skill; Content: any }>("../../static/skill/*.md", { eager: true });
+const skillFiles = import.meta.glob<{ frontmatter: Skill; Content: any }>(
+  "../../static/skill/*.md",
+  { eager: true },
+);
 const skills = Object.values(skillFiles);
 ---
 
 <AboutLayout title="Skill" class="text-primary">
   <Icon name="mdi:computer" slot="icon" />
-  <p class="text-center text-2xl">
-    完全に自分の主観でどれぐらい理解できるかを図で表しています
+  <p class="text-center text-2xl mb-8">
+    各技術への好き度を5段階で表示しています
   </p>
-  <div
-    id="techContent"
-    class="container my-4 flex flex-wrap items-center justify-center"
-  >
+  <div id="techContent" class="container my-4 flex flex-col gap-8">
     {
       skills.map((skill) => {
+        const favoriteCount = skill.frontmatter.favorite;
         return (
-          <div class="mb-12 flex flex-col w-full items-center lg:flex-row md:w-1/2">
-            <div
-              class="techStack relative flex aspect-square w-1/2 items-center justify-center rounded-full"
-              style={{
-                ["--learn" as string]: skill.frontmatter.learn,
-              }}
-            >
-              <h3 class="text-2xl font-semibold">{skill.frontmatter.title}</h3>
-              <p class="absolute top-[30%] -translate-y-1/2 text-xl font-semibold">
-                {skill.frontmatter.learn}%
-              </p>
+          <div class="flex flex-col gap-4 rounded-2xl border-2 border-primary/20 bg-gray-50 p-6 smooth-transition hover:border-primary/40 hover:shadow-lg">
+            <div class="flex items-center gap-4">
+              {/* スター表示 */}
+              <div
+                class="flex gap-1"
+                aria-label={`好き度 ${favoriteCount} / 5`}
+              >
+                {Array.from({ length: 5 }, (_, i) => (
+                  <Icon
+                    name={i < favoriteCount ? "mdi:star" : "mdi:star-outline"}
+                    class={`size-6 ${i < favoriteCount ? "text-warning-foreground" : "text-gray-300"}`}
+                  />
+                ))}
+              </div>
+              {/* 言語名 */}
+              <h3 class="text-2xl font-bold text-gray-900">
+                {skill.frontmatter.title}
+              </h3>
             </div>
-            <div class="jusify-center flex w-4/5 flex-col items-center px-4 py-2">
+            {/* コンテンツ */}
+            <div class="text-lg text-gray-700 line-loose">
               <skill.Content />
             </div>
           </div>
         );
       })
     }
-    <style>
-      #techContent :global(a) {
-        color: var(--color-link);
-        text-decoration: none;
-      }
-      #techContent :global(blockquote) {
-        border-left: 4px solid var(--color-gray-300);
-        margin: 0.5em 0;
-        padding: 0.5em 0.3em;
-        color: var(--color-link);
-        background: var(--color-gray-50);
-      }
-    </style>
   </div>
 </AboutLayout>
+
 <style>
-  @keyframes skillProgress {
-    from {
-      --percent: 0;
-    }
-    to {
-      --percent: var(--learn);
-    }
+  #techContent :global(a) {
+    color: var(--color-link);
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
-  .techStack {
-    --learn: 0;
-    --percent: 0;
-    animation: skillProgress var(--duration-extra-slow) var(--ease-out) forwards;
-    background-image: conic-gradient(
-      var(--color-primary),
-      var(--color-primary) calc(var(--percent) * 1%),
-      var(--color-gray-500) calc(var(--percent) * 1%) 100%
-    );
-    will-change: background-image;
+  #techContent :global(a:hover) {
+    text-decoration-thickness: 2px;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .techStack {
-      animation: none;
-      --percent: var(--learn);
-    }
+  #techContent :global(blockquote) {
+    border-left: 4px solid var(--color-primary);
+    margin: 1em 0;
+    padding: 0.75em 1em;
+    color: var(--color-primary-foreground);
+    background: var(--color-gray-100);
+    border-radius: 0.25rem;
+  }
+
+  #techContent :global(p) {
+    margin: 0.5em 0;
   }
 </style>

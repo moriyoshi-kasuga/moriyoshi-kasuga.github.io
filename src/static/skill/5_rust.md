@@ -1,6 +1,6 @@
 ---
 title: Rust
-learn: 70
+favorite: 5
 ---
 
 > [効率的で信頼できるソフトウェアを誰もがつくれる言語](https://www.rust-lang.org/ja)

@@ -37,6 +37,6 @@ export interface Project {
 export interface Skill {
   /** スキルのタイトル */
   title: string;
-  /** 習熟度（0-100） */
-  learn: number;
+  /** 好き度（1-5） */
+  favorite: number;
 }

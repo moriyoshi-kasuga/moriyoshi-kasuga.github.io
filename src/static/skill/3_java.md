@@ -1,6 +1,6 @@
 ---
 title: Java
-learn: 50
+favorite: 3
 ---
 
 最初に学んだプログラミング言語です。Minecraft関連で始めたため、主にその分野で使用してきました。
