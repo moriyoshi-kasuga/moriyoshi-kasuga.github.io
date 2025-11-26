@@ -3,4 +3,4 @@ title: Css
 learn: 40
 ---
 
-UI Libraryを使わないでUI構築をplain cssでやるのは厳しいです
+UI Libraryを活用することで、効率的にUI構築ができると考えています。
