@@ -2,6 +2,7 @@
 import type { ImageMetadata } from "astro";
 import type { Project } from "../../type";
 import Layout from "@layouts/Layout.astro";
+import { sortProjects } from "@src/utils/projectUtils";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 
@@ -9,40 +10,6 @@ const projectFiles = import.meta.glob<{ frontmatter: Project }>(
   "../../static/projects/*.md",
   { eager: true },
 );
-
-export function convert(date: string) {
-  const arr = date.split("/").map(Number);
-  return new Date(arr[0], arr[1] + 1, arr[2]);
-}
-
-export function sortProjects(
-  a: { frontmatter: Project },
-  b: { frontmatter: Project },
-): number {
-  const aPin = a.frontmatter.pin ?? false;
-  const bPin = b.frontmatter.pin ?? false;
-
-  if (aPin && !bPin) {
-    return -1;
-  }
-  if (!aPin && bPin) {
-    return 1;
-  }
-  if (aPin && bPin) {
-    return 0;
-  }
-
-  const aDate = convert(a.frontmatter.createdAt);
-  const bDate = convert(b.frontmatter.createdAt);
-  if (aDate.getTime() === bDate.getTime()) {
-    return 0;
-  }
-
-  if (aDate.getTime() > bDate.getTime()) {
-    return -1;
-  }
-  return 1;
-}
 
 const projects = Object.values(projectFiles).sort(sortProjects);
 

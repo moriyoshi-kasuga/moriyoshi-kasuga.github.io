@@ -3,11 +3,11 @@ import type { ImageMetadata } from "astro";
 import type { Project } from "../type";
 import IconButton from "@components/IconButton.astro";
 import Mori from "@src/assets/mori.png";
+import { sortProjects } from "@src/utils/projectUtils";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import { rawContent as SelfIntroduction } from "../static/self-introduction.md";
-import { sortProjects } from "./projects/index.astro";
 
 const projectFiles = import.meta.glob<{ frontmatter: Project }>(
   "../static/projects/*.md",
