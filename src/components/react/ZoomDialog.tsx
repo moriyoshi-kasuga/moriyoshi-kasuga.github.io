@@ -1,8 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-export function ZoomDialog({ children }: { children: React.ReactNode }) {
+interface ZoomDialogProps {
+  children: React.ReactNode;
+}
+
+export function ZoomDialog({ children }: ZoomDialogProps) {
   const [isOpen, setOpen] = useState(false);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
+  // Escapeキーで閉じる
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -13,8 +19,9 @@ export function ZoomDialog({ children }: { children: React.ReactNode }) {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  });
+  }, []);
 
+  // ダイアログが開いているときはスクロールを無効化
   useEffect(() => {
     if (isOpen) {
       const originalOverflow = document.body.style.overflow;
@@ -25,22 +32,49 @@ export function ZoomDialog({ children }: { children: React.ReactNode }) {
     }
   }, [isOpen]);
 
+  // ダイアログが開いたときにフォーカスを移動
+  useEffect(() => {
+    if (isOpen && dialogRef.current) {
+      dialogRef.current.focus();
+    }
+  }, [isOpen]);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <>
-      <div onClick={() => setOpen(true)} className="cursor-zoom-in">
+      <button
+        onClick={handleOpen}
+        className="cursor-zoom-in border-none bg-transparent p-0"
+        type="button"
+        aria-label="画像を拡大表示"
+      >
         {children}
-      </div>
+      </button>
 
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/80 shadow-lg backdrop-blur-sm">
+        <div
+          ref={dialogRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label="拡大画像表示"
+          tabIndex={-1}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-white/80 shadow-lg backdrop-blur-sm"
+          onClick={handleClose}
+        >
           <button
-            className="absolute top-1 right-1 pb-2.5 pt-1.5 px-4 bg-primary rounded-full hover:bg-primary-foreground transition-colors"
-            onClick={() => setOpen(false)}
-            aria-label="Close"
+            className="absolute top-4 right-4 flex size-10 items-center justify-center rounded-full bg-primary text-3xl text-white transition-colors hover:bg-primary-foreground focus:ring-2 focus:ring-primary-foreground focus:ring-offset-2"
+            onClick={handleClose}
+            aria-label="閉じる"
+            type="button"
           >
             ×
           </button>
-          <div className="transition-transform duration-300 transform scale-110 max-w-4xl">
+          <div
+            className="max-w-4xl transform scale-110 transition-transform duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
             {children}
           </div>
         </div>
