@@ -3,39 +3,41 @@ import Mori from "@src/assets/mori.png";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import { MobileMenu } from "./react/MobileMenu.tsx";
+
+/** ナビゲーションリンク定義 */
+const navLinks = [
+  { href: "/", label: "Home", icon: "mdi:home-outline" },
+  { href: "/about", label: "About", icon: "mdi:search" },
+  { href: "/projects", label: "Projects", icon: "mdi:source-branch" },
+] as const;
 ---
 
 <header
-  class="fixed top-0 z-50 flex h-[var(--header-height)] w-screen items-center px-4 py-2 before:absolute before:top-0 before:right-0 before:bottom-0 before:left-0 before:backdrop-blur-xs"
+  class="fixed top-0 z-50 flex h-[var(--header-height)] w-screen items-center px-4 py-2 before:absolute before:inset-0 before:backdrop-blur-xs"
 >
-  <nav class="relative container-center flex items-center justify-between">
+  <nav class="relative container-center flex items-center justify-between" aria-label="メインナビゲーション">
     <a
       href="/"
-      class="absolute aspect-square h-[calc(var(--header-height)*0.8)] -translate-x-1/2 hover-scale-110 left-1/2 md:left-auto"
+      class="absolute left-1/2 aspect-square h-[calc(var(--header-height)*0.8)] -translate-x-1/2 hover-scale-110 md:left-auto"
+      aria-label="ホームに戻る"
     >
       <Image src={Mori} alt="My Avatar" class="rounded-full object-cover" />
     </a>
 
+    <!-- デスクトップナビゲーション -->
     <div class="ml-auto nav-desktop text-semibold-xl">
-      <a href="/" class="link-hover-animation">
-        <Icon name="mdi:home-outline" />
-        <span>Home</span>
-      </a>
-      <a href="/about" class="link-hover-animation">
-        <Icon name="mdi:search" />
-        <span>About</span>
-      </a>
-      <a href="/projects" class="link-hover-animation">
-        <Icon name="mdi:source-branch" />
-        <span>Projects</span>
-      </a>
-      <!-- <a href="/about/skill" class="link-hover-animation"> -->
-      <!--   <Icon name="mdi:computer" /> -->
-      <!--   <span>Skill</span> -->
-      <!-- </a> -->
+      {navLinks.map(({ href, label, icon }) => (
+        <a href={href} class="link-hover-animation" aria-label={label}>
+          <Icon name={icon} />
+          <span>{label}</span>
+        </a>
+      ))}
     </div>
+
+    <!-- モバイルナビゲーション -->
     <div class="ml-auto nav-mobile">
       <MobileMenu client:media="(max-width: 768px)" />
     </div>
   </nav>
 </header>
+
