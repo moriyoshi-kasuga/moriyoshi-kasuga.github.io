@@ -1,12 +1,12 @@
-# This is my portfolio
+# ポートフォリオ
 
-> with Astro and TypeScript
+> Astro + TypeScript
 
-## deploy with GitHub Pages
+## 公開先（GitHub Pages）
 
 **[https://moriyoshi-kasuga.github.io](https://moriyoshi-kasuga.github.io)**
 
-## コンセプト: 柔らかく緩やかに
+## コンセプト: 柔らかく、緩やかに
 
-- 文字のフォントや色も柔らかい雰囲気に統一
-- ページ遷移などのアクションがある場所にはアニメーションを追加
+- 文字のフォントや色を柔らかい雰囲気に統一
+- ページ遷移などのアクションがある場所にアニメーションを追加
