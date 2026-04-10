@@ -18,4 +18,4 @@ gallery:
 ---
 
 EnumTableは、Rustのenumをキーとして値をマッピングするための軽量で効率的なライブラリです。
-O(log n)の時間計算量で値を取得でき、allocation freeで、getやsetなどの基本操作はconst fnとして実装されています。
+allocation freeで、通常の `get` / `set` 関数はO(1)で動作します。また、 `get_const` のようなconst関数はO(log N)で実装されており、コンパイル時にも利用できます。

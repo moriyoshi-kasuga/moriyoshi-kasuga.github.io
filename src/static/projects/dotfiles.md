@@ -1,7 +1,7 @@
 ---
 name: dotfiles
 title: dotfiles
-description: nixを使った開発環境
+description: Nixを使った開発環境
 createdAt: "2023/8/12"
 genre: "CLI"
 github: "https://github.com/moriyoshi-kasuga/dotfiles"
@@ -26,5 +26,5 @@ NixOSを使い始めてから、環境構築がとても楽になりました。
 NixOSではnixの設定ファイルを少し書くだけで、すぐにインストールと設定が完了します。
 設定が一箇所にまとまっているため、管理がとてもシンプルになりました。
 
-現在は、NixOS、mac、ubuntuの自宅サーバーなど、複数の環境で統一された開発環境を維持できています。
+現在は、NixOS、Mac、NixOS(GUIなし)の自宅サーバーなど、複数の環境で統一された開発環境を維持できています。
 NixOSの宣言的な設定の恩恵を受けながら、このリポジトリは今後も継続的に改善していく予定です。
