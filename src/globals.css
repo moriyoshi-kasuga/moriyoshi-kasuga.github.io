@@ -75,6 +75,7 @@
 
 /* Tailwind CSS v4互換性のためのボーダーカラー設定 */
 @layer base {
+
   *,
   ::after,
   ::before,
@@ -89,6 +90,7 @@
  * ================================================================================ */
 
 @layer utilities {
+
   /* 高さ計算 */
   .min-h-all {
     min-height: calc(100vh - var(--header-height) - var(--footer-height));
@@ -311,6 +313,7 @@
  * ================================================================================ */
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
