@@ -53,9 +53,11 @@
     document
       .querySelectorAll<HTMLElement>(".zoom-wrapper")
       .forEach((wrapper) => {
-        const trigger = wrapper.querySelector<HTMLButtonElement>(".zoom-trigger");
+        const trigger =
+          wrapper.querySelector<HTMLButtonElement>(".zoom-trigger");
         const dialog = wrapper.querySelector<HTMLDialogElement>(".zoom-dialog");
-        const closeBtn = wrapper.querySelector<HTMLButtonElement>(".zoom-close");
+        const closeBtn =
+          wrapper.querySelector<HTMLButtonElement>(".zoom-close");
         const content = wrapper.querySelector<HTMLDivElement>(".zoom-content");
 
         if (!trigger || !dialog || !closeBtn || !content) return;

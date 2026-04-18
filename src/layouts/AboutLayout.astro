@@ -9,13 +9,7 @@ interface Props {
 
 const { title, class: className } = Astro.props;
 const pathname = Astro.url.pathname;
-
-function other(url: string) {
-  if (pathname === url) {
-    return false;
-  }
-  return pathname !== `${url}/`;
-}
+const isOther = (url: string) => pathname !== url && pathname !== `${url}/`;
 ---
 
 <Layout title={title}>
@@ -26,7 +20,7 @@ function other(url: string) {
     </h1>
     <div class="mt-10 mb-5 flex gap-8 flex-row flex-wrap justify-center">
       {
-        other("/about") && (
+        isOther("/about") && (
           <a href="/about" class="btn-warning">
             <Icon name="mdi:search" />
             About
@@ -34,7 +28,7 @@ function other(url: string) {
         )
       }
       {
-        other("/about/likes") && (
+        isOther("/about/likes") && (
           <a href="/about/likes" class="btn-danger">
             <Icon name="mdi:like-outline" />
             Likes
@@ -42,7 +36,7 @@ function other(url: string) {
         )
       }
       {
-        other("/about/links") && (
+        isOther("/about/links") && (
           <a href="/about/links" class="btn-success">
             <Icon name="mdi:notebook-outline" />
             Links
@@ -50,7 +44,7 @@ function other(url: string) {
         )
       }
       {
-        other("/about/skill") && (
+        isOther("/about/skill") && (
           <a href="/about/skill" class="btn-primary">
             <Icon name="mdi:computer" />
             Skill

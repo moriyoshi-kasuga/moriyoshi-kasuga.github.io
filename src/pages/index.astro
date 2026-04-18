@@ -50,51 +50,46 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
           class="mx-auto flex flex-wrap lg:flex-nowrap items-center justify-center"
         >
           {
-            showProjects.map((project) => {
-              const p = project.frontmatter.name;
-              return (
-                <a
-                  href={`/projects/${p}`}
-                  class="group size-50"
-                  aria-label={`プロジェクト ${project.frontmatter.title} の詳細を見る`}
-                >
-                  <div class="mx-4 my-2 flex flex-col items-center justify-center rounded-2xl">
-                    <Image
-                      loading="lazy"
-                      src={photos[`/src/assets/projects/${p}/main.png`].default}
-                      alt={`${p} image`}
-                      class="aspect-square rounded-lg"
-                      width={160}
-                      height={160}
-                      fetchpriority="high"
-                      widths={[160, 320]}
-                      sizes="160px"
-                    />
-                    <p class="relative text-lg font-medium text-nowrap transition-all group-hover:scale-110 before:absolute before:-left-3 group-hover:before:content-['>'] after:absolute group-hover:after:content-['<'] md:text-xl">
-                      {project.frontmatter.pin && (
-                        <Icon
-                          name="mdi:pin"
-                          class="inline-block text-danger"
-                          title="ピン留めされたプロジェクト"
-                        />
-                      )}
-                      {project.frontmatter.title}
-                    </p>
-                  </div>
-                </a>
-              );
-            })
-          }
-          <div class="flex flex-col items-center justify-center w-50 h-20">
-            <div class="flex items-center justify-center">
-              <a href="/projects" aria-label="すべてのプロジェクトを見る">
-                <div
-                  class="bg-danger hover:text-danger flex rounded-xl px-4 py-3 font-medium text-black smooth-transition hover:bg-black focus:ring-2 focus:ring-offset-2 focus:ring-danger-foreground"
-                >
-                  もっと見る
+            showProjects.map(({ frontmatter: { name, title, pin } }) => (
+              <a
+                href={`/projects/${name}`}
+                class="group size-50"
+                aria-label={`プロジェクト ${title} の詳細を見る`}
+              >
+                <div class="mx-4 my-2 flex flex-col items-center justify-center rounded-2xl">
+                  <Image
+                    loading="lazy"
+                    src={photos[`/src/assets/projects/${name}/main.png`].default}
+                    alt={`${name} image`}
+                    class="aspect-square rounded-lg"
+                    width={160}
+                    height={160}
+                    fetchpriority="high"
+                    widths={[160, 320]}
+                    sizes="160px"
+                  />
+                  <p class="relative text-lg font-medium text-nowrap transition-all group-hover:scale-110 before:absolute before:-left-3 group-hover:before:content-['>'] after:absolute group-hover:after:content-['<'] md:text-xl">
+                    {pin && (
+                      <Icon
+                        name="mdi:pin"
+                        class="inline-block text-danger"
+                        title="ピン留めされたプロジェクト"
+                      />
+                    )}
+                    {title}
+                  </p>
                 </div>
               </a>
-            </div>
+            ))
+          }
+          <div class="flex w-50 items-center justify-center">
+            <a
+              href="/projects"
+              aria-label="すべてのプロジェクトを見る"
+              class="bg-danger hover:text-danger flex rounded-xl px-4 py-3 font-medium text-black smooth-transition hover:bg-black focus:ring-2 focus:ring-offset-2 focus:ring-danger-foreground"
+            >
+              もっと見る
+            </a>
           </div>
         </div>
       </div>
@@ -102,7 +97,7 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
     <div class="my-8 flex w-2/3 flex-col items-center justify-center">
       <h2 class="mb-2 w-full text-center text-5xl font-bold">About</h2>
       <div
-        class="flex gap-2 flex-wrap items-center justify-center gap-x-3 md:flex-nowrap"
+        class="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 md:flex-nowrap"
       >
         <Image
           loading="lazy"
@@ -119,12 +114,12 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
             {SelfIntroduction()}
           </p>
           <div class="mt-5 flex items-center justify-center">
-            <a href="/about" aria-label="プロフィール詳細を見る">
-              <div
-                class="bg-warning hover:text-warning flex rounded-xl px-4 py-3 font-medium text-black smooth-transition hover:bg-black focus:ring-2 focus:ring-offset-2 focus:ring-warning-foreground"
-              >
-                もっと知る
-              </div>
+            <a
+              href="/about"
+              aria-label="プロフィール詳細を見る"
+              class="bg-warning hover:text-warning flex rounded-xl px-4 py-3 font-medium text-black smooth-transition hover:bg-black focus:ring-2 focus:ring-offset-2 focus:ring-warning-foreground"
+            >
+              もっと知る
             </a>
           </div>
         </div>

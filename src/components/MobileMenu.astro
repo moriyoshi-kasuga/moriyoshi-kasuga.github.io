@@ -28,18 +28,25 @@ const routes = [
     aria-hidden="true"
   >
     <nav aria-label="モバイルメニュー">
-      <ul class="grid place-content-center place-items-center gap-2 p-3 m-0 list-none">
-        {routes.map(({ title, href, icon }, idx) => (
-          <li class="nav-item rounded-xl bg-linear-to-tr p-[0.08rem]" style={`--i:${idx}`}>
-            <a
-              href={href}
-              class="flex max-w-80 min-w-72 items-center justify-between rounded-xl bg-gray-100/90 p-5"
+      <ul
+        class="grid place-content-center place-items-center gap-2 p-3 m-0 list-none"
+      >
+        {
+          routes.map(({ title, href, icon }, idx) => (
+            <li
+              class="nav-item rounded-xl bg-linear-to-tr p-[0.08rem]"
+              style={`--i:${idx}`}
             >
-              <span class="flex gap-1 text-lg font-semibold">{title}</span>
-              <Icon name={icon} width={30} height={30} />
-            </a>
-          </li>
-        ))}
+              <a
+                href={href}
+                class="flex max-w-80 min-w-72 items-center justify-between rounded-xl bg-gray-100/90 p-5"
+              >
+                <span class="flex gap-1 text-lg font-semibold">{title}</span>
+                <Icon name={icon} width={30} height={30} />
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </nav>
   </div>
@@ -66,9 +73,15 @@ const routes = [
       opacity 0.3s ease;
   }
 
-  .top { top: 0; }
-  .mid { top: 6px; }
-  .bot { top: 12px; }
+  .top {
+    top: 0;
+  }
+  .mid {
+    top: 6px;
+  }
+  .bot {
+    top: 12px;
+  }
 
   .mobile-toggle[aria-expanded="true"] .top {
     transform: translateY(6px) rotate(45deg);
@@ -141,11 +154,15 @@ const routes = [
     for (const evt of ["mousedown", "touchstart"] as const) {
       document.addEventListener(
         evt,
-        (e) => { if (!root.contains(e.target as Node)) close(); },
+        (e) => {
+          if (!root.contains(e.target as Node)) close();
+        },
         { signal },
       );
     }
 
-    nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", close, { signal }));
+    nav
+      .querySelectorAll("a")
+      .forEach((a) => a.addEventListener("click", close, { signal }));
   });
 </script>

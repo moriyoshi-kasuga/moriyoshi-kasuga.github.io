@@ -5,7 +5,7 @@ import type { Project } from "@src/type";
  * @param date 日付文字列（形式: YYYY/MM/DD）
  * @returns Dateオブジェクト
  */
-export function parseDate(date: string): Date {
+function parseDate(date: string): Date {
   const [year, month, day] = date.split("/").map(Number);
   return new Date(year, month - 1, day);
 }

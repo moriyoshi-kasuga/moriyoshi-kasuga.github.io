@@ -26,7 +26,7 @@ const { backLink, title, description } = Astro.props;
       <p class="my-4 text-gray-500">
         {description || "お探しのページは存在しません。"}
       </p>
-      <IconButton url={backLink || "/"} self class="">
+      <IconButton url={backLink || "/"} self>
         <Icon name="mdi:arrow-left-thin" slot="icon" />
         Go back
       </IconButton>

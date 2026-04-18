@@ -2,37 +2,26 @@
 import type { Project } from "@src/type";
 import type { ImageMetadata } from "astro";
 import ProjectLink from "@components/ProjectLink.astro";
-import ZoomDialog from "@components/ZoomDialog.astro";
 import Tooltip from "@components/Tooltip.astro";
+import ZoomDialog from "@components/ZoomDialog.astro";
 import Layout from "@layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 
-type Type = {
-  params: {
-    name: string;
-  };
-  props: {
-    project: { frontmatter: Project; Content: any };
-  };
-}[];
+interface Props {
+  project: { frontmatter: Project; Content: any };
+}
 
-export async function getStaticPaths(): Promise<Type> {
+export async function getStaticPaths() {
   const projectFiles = import.meta.glob<{ frontmatter: Project; Content: any }>(
     "../../static/projects/*.md",
     { eager: true },
   );
 
-  return Object.values(projectFiles).map((project) => {
-    return {
-      params: {
-        name: project.frontmatter.name,
-      },
-      props: {
-        project,
-      },
-    };
-  });
+  return Object.values(projectFiles).map((project) => ({
+    params: { name: project.frontmatter.name },
+    props: { project },
+  }));
 }
 
 const {
