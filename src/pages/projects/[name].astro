@@ -2,7 +2,7 @@
 import type { Project } from "@src/type";
 import type { ImageMetadata } from "astro";
 import ProjectLink from "@components/ProjectLink.astro";
-import { ZoomDialog } from "@components/react/ZoomDialog";
+import ZoomDialog from "@components/ZoomDialog.astro";
 import Tooltip from "@components/Tooltip.astro";
 import Layout from "@layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
@@ -133,7 +133,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/**/*");
         {
           frontmatter.gallery?.map(async (path) => {
             return (
-              <ZoomDialog client:load>
+              <ZoomDialog>
                 <Image
                   loading="lazy"
                   src={images[

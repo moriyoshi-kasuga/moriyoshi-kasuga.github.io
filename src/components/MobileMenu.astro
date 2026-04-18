@@ -1,0 +1,151 @@
+---
+import { Icon } from "astro-icon/components";
+
+const routes = [
+  { title: "Home", href: "/", icon: "mdi:home-outline" },
+  { title: "About", href: "/about", icon: "mdi:search" },
+  { title: "Projects", href: "/projects", icon: "mdi:source-branch" },
+] as const;
+---
+
+<div class="mobile-root">
+  <button
+    class="mobile-toggle border-none bg-transparent p-1 cursor-pointer"
+    aria-label="メニューを開く"
+    aria-expanded="false"
+    type="button"
+  >
+    <span class="ham" aria-hidden="true">
+      <span class="ham-line top"></span>
+      <span class="ham-line mid"></span>
+      <span class="ham-line bot"></span>
+    </span>
+  </button>
+
+  <div
+    class="mobile-nav fixed left-0 right-0 rounded-b-3xl p-5 backdrop-blur-xs"
+    style="top: var(--header-height)"
+    aria-hidden="true"
+  >
+    <nav aria-label="モバイルメニュー">
+      <ul class="grid place-content-center place-items-center gap-2 p-3 m-0 list-none">
+        {routes.map(({ title, href, icon }, idx) => (
+          <li class="nav-item rounded-xl bg-linear-to-tr p-[0.08rem]" style={`--i:${idx}`}>
+            <a
+              href={href}
+              class="flex max-w-80 min-w-72 items-center justify-between rounded-xl bg-gray-100/90 p-5"
+            >
+              <span class="flex gap-1 text-lg font-semibold">{title}</span>
+              <Icon name={icon} width={30} height={30} />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<style>
+  .ham {
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 14px;
+  }
+
+  .ham-line {
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 2px;
+    background: #52525b;
+    border-radius: 2px;
+    transform-origin: center;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+  }
+
+  .top { top: 0; }
+  .mid { top: 6px; }
+  .bot { top: 12px; }
+
+  .mobile-toggle[aria-expanded="true"] .top {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .mobile-toggle[aria-expanded="true"] .mid {
+    opacity: 0;
+  }
+  .mobile-toggle[aria-expanded="true"] .bot {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  .mobile-nav {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .mobile-root[data-open] .mobile-nav {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-item {
+    transform: scale(0);
+    opacity: 0;
+    transition:
+      transform 0.35s var(--ease-spring),
+      opacity 0.2s ease;
+  }
+
+  .mobile-root[data-open] .nav-item {
+    transform: scale(1);
+    opacity: 1;
+    transition-delay: calc(0.05s + var(--i) * 0.1s);
+  }
+</style>
+
+<script>
+  let controller: AbortController | null = null;
+
+  document.addEventListener("astro:page-load", () => {
+    controller?.abort();
+    controller = new AbortController();
+    const { signal } = controller;
+
+    const root = document.querySelector<HTMLDivElement>(".mobile-root");
+    if (!root) return;
+
+    const toggle = root.querySelector<HTMLButtonElement>(".mobile-toggle")!;
+    const nav = root.querySelector<HTMLDivElement>(".mobile-nav")!;
+
+    const open = () => {
+      root.setAttribute("data-open", "");
+      toggle.setAttribute("aria-expanded", "true");
+      nav.removeAttribute("aria-hidden");
+    };
+
+    const close = () => {
+      root.removeAttribute("data-open");
+      toggle.setAttribute("aria-expanded", "false");
+      nav.setAttribute("aria-hidden", "true");
+    };
+
+    toggle.addEventListener(
+      "click",
+      () => (root.hasAttribute("data-open") ? close() : open()),
+      { signal },
+    );
+
+    for (const evt of ["mousedown", "touchstart"] as const) {
+      document.addEventListener(
+        evt,
+        (e) => { if (!root.contains(e.target as Node)) close(); },
+        { signal },
+      );
+    }
+
+    nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", close, { signal }));
+  });
+</script>

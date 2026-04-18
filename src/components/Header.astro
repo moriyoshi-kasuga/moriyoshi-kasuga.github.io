@@ -2,7 +2,7 @@
 import Mori from "@src/assets/mori.png";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
-import { MobileMenu } from "./react/MobileMenu.tsx";
+import MobileMenu from "./MobileMenu.astro";
 
 /** ナビゲーションリンク定義 */
 const navLinks = [
@@ -36,7 +36,7 @@ const navLinks = [
 
     <!-- モバイルナビゲーション -->
     <div class="ml-auto nav-mobile">
-      <MobileMenu client:media="(max-width: 768px)" />
+      <MobileMenu />
     </div>
   </nav>
 </header>
