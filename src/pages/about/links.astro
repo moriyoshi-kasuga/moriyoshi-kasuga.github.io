@@ -1,27 +1,28 @@
 ---
-import IconButton from "@components/IconButton.astro";
+import LinkButton from "@components/LinkButton.astro";
+import { SOCIAL_LINKS } from "@src/constants/metadata";
 import AboutLayout from "@layouts/AboutLayout.astro";
 import { Icon } from "astro-icon/components";
 ---
 
-<AboutLayout title="Links" class="text-success-foreground">
+<AboutLayout title="Links">
   <Icon name="mdi:notebook-outline" slot="icon" />
   <h2 class="my-6 text-3xl font-bold">SNS</h2>
   <div class="flex space-x-2">
-    <IconButton url="https://github.com/moriyoshi-kasuga">
+    <LinkButton url={SOCIAL_LINKS.github} variant="dark">
       <Icon name="mdi:github" slot="icon" />
       GitHub
-    </IconButton>
-    <IconButton url="https://twitter.com/MoriyoshiKasuga">
+    </LinkButton>
+    <LinkButton url={SOCIAL_LINKS.twitter} variant="dark">
       <Icon name="mdi:twitter" slot="icon" />
       旧Twitter
-    </IconButton>
+    </LinkButton>
   </div>
   <h2 class="my-6 text-3xl font-bold">サイト</h2>
   <div class="flex space-x-2">
-    <IconButton url="https://github.com/moriyoshi-kasuga/moriyoshi-kasuga.github.io">
+    <LinkButton url={SOCIAL_LINKS.repository} variant="dark">
       <Icon name="mdi:source-branch" slot="icon" />
       リポジトリ
-    </IconButton>
+    </LinkButton>
   </div>
 </AboutLayout>

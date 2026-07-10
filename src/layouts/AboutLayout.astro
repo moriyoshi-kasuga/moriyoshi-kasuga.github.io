@@ -1,55 +1,33 @@
 ---
+import LinkButton from "@components/LinkButton.astro";
+import { ABOUT_NAV } from "@src/constants/navigation";
 import { Icon } from "astro-icon/components";
 import Layout from "./Layout.astro";
 
 interface Props {
   title: string;
-  class: string;
 }
 
-const { title, class: className } = Astro.props;
+const { title } = Astro.props;
 const pathname = Astro.url.pathname;
-const isOther = (url: string) => pathname !== url && pathname !== `${url}/`;
+const isCurrentPage = (href: string) => pathname === href || pathname === `${href}/`;
+const current = ABOUT_NAV.find(({ href }) => isCurrentPage(href));
 ---
 
 <Layout title={title}>
   <div class="min-h-all top-level-container full-width-col-center">
-    <h1 class:list={["flex-items-gap text-5xl font-bold", className]}>
+    <h1 class:list={["flex-items-gap text-5xl font-bold", current?.headingClass]}>
       <slot name="icon" />
       {title}
     </h1>
     <div class="mt-10 mb-5 flex gap-8 flex-row flex-wrap justify-center">
       {
-        isOther("/about") && (
-          <a href="/about" class="btn-warning">
-            <Icon name="mdi:search" />
-            About
-          </a>
-        )
-      }
-      {
-        isOther("/about/likes") && (
-          <a href="/about/likes" class="btn-danger">
-            <Icon name="mdi:like-outline" />
-            Likes
-          </a>
-        )
-      }
-      {
-        isOther("/about/links") && (
-          <a href="/about/links" class="btn-success">
-            <Icon name="mdi:notebook-outline" />
-            Links
-          </a>
-        )
-      }
-      {
-        isOther("/about/skill") && (
-          <a href="/about/skill" class="btn-primary">
-            <Icon name="mdi:computer" />
-            Skill
-          </a>
-        )
+        ABOUT_NAV.filter(({ href }) => !isCurrentPage(href)).map(({ href, label, icon, variant }) => (
+          <LinkButton url={href} variant={variant} self>
+            <Icon name={icon} slot="icon" />
+            {label}
+          </LinkButton>
+        ))
       }
     </div>
     <slot />

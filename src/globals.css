@@ -173,7 +173,7 @@
 
 /* プロジェクトカード */
 @utility project-card {
-  @apply ring-primary hover:ring-primary-foreground flex h-full w-full max-w-[360px] flex-col rounded-2xl px-8 py-2 ring-[3px] hover-lift;
+  @apply ring-primary hover:ring-primary-foreground flex h-full w-full max-w-90 flex-col rounded-2xl px-8 py-2 ring-[3px] hover-lift;
 }
 
 /* 技術タグ */
@@ -187,7 +187,7 @@
 }
 
 @utility item-value {
-  @apply w-2/3 text-left text-xl font-semibold break-words md:w-1/2;
+  @apply w-2/3 text-left text-xl font-semibold wrap-break-word md:w-1/2;
 }
 
 /* ================================================================================
@@ -199,7 +199,7 @@
 }
 
 @utility stats-grid {
-  @apply grid grid-cols-1 gap-1 h-[600px] place-items-center items-center justify-center md:grid-cols-2 md:h-[400px] lg:grid-cols-3 lg:h-[200px];
+  @apply grid grid-cols-1 gap-1 h-150 place-items-center items-center justify-center md:grid-cols-2 md:h-100 lg:grid-cols-3 lg:h-50;
 }
 
 @utility gallery-grid {

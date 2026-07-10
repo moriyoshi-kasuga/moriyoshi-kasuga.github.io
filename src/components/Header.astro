@@ -1,15 +1,9 @@
 ---
 import Mori from "@src/assets/mori.png";
+import { MAIN_NAV } from "@src/constants/navigation";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import MobileMenu from "./MobileMenu.astro";
-
-/** ナビゲーションリンク定義 */
-const navLinks = [
-  { href: "/", label: "Home", icon: "mdi:home-outline" },
-  { href: "/about", label: "About", icon: "mdi:search" },
-  { href: "/projects", label: "Projects", icon: "mdi:source-branch" },
-] as const;
 ---
 
 <header
@@ -26,7 +20,7 @@ const navLinks = [
 
     <!-- デスクトップナビゲーション -->
     <div class="ml-auto nav-desktop text-semibold-xl">
-      {navLinks.map(({ href, label, icon }) => (
+      {MAIN_NAV.map(({ href, label, icon }) => (
         <a href={href} class="link-hover-animation" aria-label={label}>
           <Icon name={icon} />
           <span>{label}</span>

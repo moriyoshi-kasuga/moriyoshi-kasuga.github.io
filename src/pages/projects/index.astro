@@ -1,24 +1,11 @@
 ---
-import type { ImageMetadata } from "astro";
-import type { Project } from "../../type";
 import Layout from "@layouts/Layout.astro";
-import { sortProjects } from "@src/utils/projectUtils";
+import { formatDate } from "@src/lib/date";
+import { getSortedProjects } from "@src/lib/projects";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 
-const projectFiles = import.meta.glob<{ frontmatter: Project }>(
-  "../../static/projects/*.md",
-  { eager: true },
-);
-
-const projects = Object.values(projectFiles).sort(sortProjects);
-
-const photos = import.meta.glob<{ default: ImageMetadata }>(
-  `/src/assets/projects/*/main.png`,
-  {
-    eager: true,
-  },
-);
+const projects = await getSortedProjects();
 ---
 
 <Layout title="Projects">
@@ -29,48 +16,39 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
     </h1>
     <div class="container-center my-8 responsive-grid">
       {
-        projects.map(async (project) => {
-          return (
-            <a
-              href={`/projects/${project.frontmatter.name}`}
-              class="project-card"
-            >
-              <h2 class="text-center text-2xl font-semibold">
-                {project.frontmatter.pin && (
-                  <Icon
-                    name="mdi:pin"
-                    class="inline-block text-danger"
-                    title="ピン留めされたプロジェクト"
-                  />
-                )}
-                {project.frontmatter.title}
-              </h2>
-              <div class="relative my-2 aspect-video w-full">
-                <Image
-                  loading="lazy"
-                  src={
-                    photos[
-                      `/src/assets/projects/${project.frontmatter.name}/main.png`
-                    ].default
-                  }
-                  alt={project.frontmatter.title}
-                  class="rounded-xl object-cover"
+        projects.map((project) => (
+          <a href={`/projects/${project.id}`} class="project-card">
+            <h2 class="text-center text-2xl font-semibold">
+              {project.data.pin && (
+                <Icon
+                  name="mdi:pin"
+                  class="inline-block text-danger"
+                  title="ピン留めされたプロジェクト"
                 />
-              </div>
-              <div class="flex flex-wrap items-start gap-2 text-lg">
-                {project.frontmatter.technology.map((tag) => (
-                  <span class="tech-tag">{tag}</span>
-                ))}
-              </div>
-              <div class="py-2 text-xl break-words">
-                {project.frontmatter.description}
-              </div>
-              <span class="mt-auto ml-auto font-thin">
-                {project.frontmatter.createdAt}
-              </span>
-            </a>
-          );
-        })
+              )}
+              {project.data.title}
+            </h2>
+            <div class="relative my-2 aspect-video w-full">
+              <Image
+                loading="lazy"
+                src={project.data.gallery[0]}
+                alt={project.data.title}
+                class="rounded-xl object-cover"
+              />
+            </div>
+            <div class="flex flex-wrap items-start gap-2 text-lg">
+              {project.data.technology.map(tag => (
+                <span class="tech-tag">{tag}</span>
+              ))}
+            </div>
+            <div class="py-2 text-xl break-words">
+              {project.data.description}
+            </div>
+            <span class="mt-auto ml-auto font-thin">
+              {formatDate(project.data.createdAt)}
+            </span>
+          </a>
+        ))
       }
     </div>
   </div>

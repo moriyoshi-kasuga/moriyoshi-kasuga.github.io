@@ -1,51 +1,44 @@
 ---
-import type { Skill } from "../../type";
 import AboutLayout from "@layouts/AboutLayout.astro";
 import { Icon } from "astro-icon/components";
+import { getCollection, render } from "astro:content";
 
-const skillFiles = import.meta.glob<{ frontmatter: Skill; Content: any }>(
-  "../../static/skill/*.md",
-  { eager: true },
+const skills = await Promise.all(
+  (await getCollection("skills")).map(async skill => ({
+    data: skill.data,
+    Content: (await render(skill)).Content,
+  })),
 );
-const skills = Object.values(skillFiles);
 ---
 
-<AboutLayout title="Skill" class="text-primary">
+<AboutLayout title="Skill">
   <Icon name="mdi:computer" slot="icon" />
   <p class="text-center text-2xl mb-8">
     各技術への好き度を5段階で表示しています
   </p>
   <div id="techContent" class="container my-4 flex flex-col gap-8">
     {
-      skills.map((skill) => {
-        const favoriteCount = skill.frontmatter.favorite;
-        return (
-          <div class="flex flex-col gap-4 rounded-2xl border-2 border-primary/20 bg-gray-50 p-6 smooth-transition hover:border-primary/40 hover:shadow-lg">
-            <div class="flex items-center gap-4">
-              {/* スター表示 */}
-              <div
-                class="flex gap-1"
-                aria-label={`好き度 ${favoriteCount} / 5`}
-              >
-                {Array.from({ length: 5 }, (_, i) => (
-                  <Icon
-                    name={i < favoriteCount ? "mdi:star" : "mdi:star-outline"}
-                    class={`size-6 ${i < favoriteCount ? "text-warning-foreground" : "text-gray-300"}`}
-                  />
-                ))}
-              </div>
-              {/* 言語名 */}
-              <h3 class="text-2xl font-bold text-gray-900">
-                {skill.frontmatter.title}
-              </h3>
+      skills.map(({ data, Content }) => (
+        <div class="flex flex-col gap-4 rounded-2xl border-2 border-primary/20 bg-gray-50 p-6 smooth-transition hover:border-primary/40 hover:shadow-lg">
+          <div class="flex items-center gap-4">
+            {/* スター表示 */}
+            <div class="flex gap-1" aria-label={`好き度 ${data.favorite} / 5`}>
+              {Array.from({ length: 5 }, (_, i) => (
+                <Icon
+                  name={i < data.favorite ? "mdi:star" : "mdi:star-outline"}
+                  class={`size-6 ${i < data.favorite ? "text-warning-foreground" : "text-gray-300"}`}
+                />
+              ))}
             </div>
-            {/* コンテンツ */}
-            <div class="text-lg text-gray-700 line-loose">
-              <skill.Content />
-            </div>
+            {/* 言語名 */}
+            <h3 class="text-2xl font-bold text-gray-900">{data.title}</h3>
           </div>
-        );
-      })
+          {/* コンテンツ */}
+          <div class="text-lg text-gray-700 line-loose">
+            <Content />
+          </div>
+        </div>
+      ))
     }
   </div>
 </AboutLayout>

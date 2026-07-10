@@ -1,34 +1,31 @@
 ---
-import type { Project } from "@src/type";
-import type { ImageMetadata } from "astro";
-import ProjectLink from "@components/ProjectLink.astro";
+import type { CollectionEntry } from "astro:content";
+import LinkButton from "@components/LinkButton.astro";
 import Tooltip from "@components/Tooltip.astro";
 import ZoomDialog from "@components/ZoomDialog.astro";
 import Layout from "@layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
+import { render } from "astro:content";
+import { formatDate } from "@src/lib/date";
+import { getSortedProjects } from "@src/lib/projects";
 import { Image } from "astro:assets";
 
 interface Props {
-  project: { frontmatter: Project; Content: any };
+  project: CollectionEntry<"projects">;
 }
 
 export async function getStaticPaths() {
-  const projectFiles = import.meta.glob<{ frontmatter: Project; Content: any }>(
-    "../../static/projects/*.md",
-    { eager: true },
-  );
+  const projects = await getSortedProjects();
 
-  return Object.values(projectFiles).map((project) => ({
-    params: { name: project.frontmatter.name },
+  return projects.map((project) => ({
+    params: { name: project.id },
     props: { project },
   }));
 }
 
-const {
-  project: { frontmatter, Content },
-} = Astro.props;
-
-const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/**/*");
+const { project } = Astro.props;
+const { data: frontmatter } = project;
+const { Content } = await render(project);
 ---
 
 <Layout title={frontmatter.title}>
@@ -41,7 +38,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/**/*");
   >
     <Tooltip details="公開日">
       <Icon name="mdi:source-branch" class="text-white" slot="icon" />
-      {frontmatter.createdAt}
+      {formatDate(frontmatter.createdAt)}
     </Tooltip>
     <Tooltip details="ジャンル">
       <Icon name="mdi:category" class="text-white" slot="icon" />
@@ -49,12 +46,14 @@ const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/**/*");
     </Tooltip>
   </div>
   <div class="flex flex-wrap justify-center gap-8">
-    <ProjectLink url={frontmatter.github} title="Code">
-      <Icon name="mdi:github" />
-    </ProjectLink>
-    <ProjectLink url={frontmatter.site} title="Site">
-      <Icon name="mdi:link-variant" />
-    </ProjectLink>
+    <LinkButton url={frontmatter.github}>
+      <Icon name="mdi:github" slot="icon" />
+      Code
+    </LinkButton>
+    <LinkButton url={frontmatter.site}>
+      <Icon name="mdi:link-variant" slot="icon" />
+      Site
+    </LinkButton>
   </div>
   <div
     class="h-divider bg-divider relative mx-auto my-8 h-[1px] w-11/12 border-none"
@@ -120,22 +119,18 @@ const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/**/*");
       </div>
       <div class="gallery-grid">
         {
-          frontmatter.gallery?.map(async (path) => {
-            return (
-              <ZoomDialog>
-                <Image
-                  loading="lazy"
-                  src={images[
-                    `/src/assets/projects/${frontmatter.name}/${path}`
-                  ]()}
-                  alt={path}
-                  class="aspect-auto object-contain"
-                  widths={[320, 640, 960, 1280]}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-              </ZoomDialog>
-            );
-          })
+          frontmatter.gallery.map((image) => (
+            <ZoomDialog>
+              <Image
+                loading="lazy"
+                src={image}
+                alt={frontmatter.title}
+                class="aspect-auto object-contain"
+                widths={[320, 640, 960, 1280]}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
+            </ZoomDialog>
+          ))
         }
       </div>
     </div>

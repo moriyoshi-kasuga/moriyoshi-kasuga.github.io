@@ -1,11 +1,6 @@
 ---
+import { MAIN_NAV } from "@src/constants/navigation";
 import { Icon } from "astro-icon/components";
-
-const routes = [
-  { title: "Home", href: "/", icon: "mdi:home-outline" },
-  { title: "About", href: "/about", icon: "mdi:search" },
-  { title: "Projects", href: "/projects", icon: "mdi:source-branch" },
-] as const;
 ---
 
 <div class="mobile-root">
@@ -32,7 +27,7 @@ const routes = [
         class="grid place-content-center place-items-center gap-2 p-3 m-0 list-none"
       >
         {
-          routes.map(({ title, href, icon }, idx) => (
+          MAIN_NAV.map(({ label, href, icon }, idx) => (
             <li
               class="nav-item rounded-xl bg-linear-to-tr p-[0.08rem]"
               style={`--i:${idx}`}
@@ -41,7 +36,7 @@ const routes = [
                 href={href}
                 class="flex max-w-80 min-w-72 items-center justify-between rounded-xl bg-gray-100/90 p-5"
               >
-                <span class="flex gap-1 text-lg font-semibold">{title}</span>
+                <span class="flex gap-1 text-lg font-semibold">{label}</span>
                 <Icon name={icon} width={30} height={30} />
               </a>
             </li>

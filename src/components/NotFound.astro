@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import IconButton from "../components/IconButton.astro";
+import LinkButton from "../components/LinkButton.astro";
 import Layout from "../layouts/Layout.astro";
 
 interface Props {
@@ -26,10 +26,10 @@ const { backLink, title, description } = Astro.props;
       <p class="my-4 text-gray-500">
         {description || "お探しのページは存在しません。"}
       </p>
-      <IconButton url={backLink || "/"} self>
+      <LinkButton url={backLink || "/"} variant="dark" self>
         <Icon name="mdi:arrow-left-thin" slot="icon" />
         Go back
-      </IconButton>
+      </LinkButton>
     </div>
   </div>
 </Layout>

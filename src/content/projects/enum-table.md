@@ -1,5 +1,4 @@
 ---
-name: enum-table
 title: EnumTable
 description: A lightweight and efficient Rust library for mapping enums to values, providing a fast and type-safe alternative to HashMap for enum keys.
 createdAt: 2025/2/26
@@ -13,8 +12,8 @@ objective: unwrapの必要のない安全で高速なmapを実現したいと考
 background: HashMapでgetした後のResultのhandlingが気になっていました。
 commitment: enumをmapとして扱いやすくするため、utility関数を充実させました。
 gallery:
-  - main.png
-  - benchmark.png
+  - ../../assets/projects/enum-table/main.png
+  - ../../assets/projects/enum-table/benchmark.png
 ---
 
 EnumTableは、Rustのenumをキーとして値をマッピングするための軽量で効率的なライブラリです。
