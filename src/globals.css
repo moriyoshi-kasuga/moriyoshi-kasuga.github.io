@@ -9,10 +9,12 @@
   /* フォント */
   --font-primary: 'M PLUS 1 Code', 'Courier New', monospace;
   --font-mono: var(--font-primary);
+  --font-display: var(--font-primary);
 
   /* カラーパレット */
   --color-divider: rgba(17, 17, 17, 0.15);
   --color-link: #005bc4;
+  --color-background: #ffffff;
 
   /* プライマリカラー */
   --color-primary: #66aaf9;
@@ -60,7 +62,6 @@
   --tracking-normal: 0;
   --tracking-wide: 0.025em;
 
-  --measure-short: 20ch;
   --measure-base: 66ch;
   --measure-long: 75ch;
 }
@@ -121,7 +122,8 @@
     transition: transform var(--duration-normal) var(--ease-in-out);
   }
 
-  .link-hover-animation:hover::after {
+  .link-hover-animation:hover::after,
+  .link-hover-animation.current::after {
     transform: scale(1, 1);
   }
 }
@@ -173,7 +175,7 @@
 
 /* プロジェクトカード */
 @utility project-card {
-  @apply ring-primary hover:ring-primary-foreground flex h-full w-full max-w-90 flex-col rounded-2xl px-8 py-2 ring-[3px] hover-lift;
+  @apply ring-primary hover:ring-primary-foreground flex h-full w-full max-w-90 flex-col rounded-2xl px-8 py-2 ring-[3px] hover-scale;
 }
 
 /* 技術タグ */
@@ -231,16 +233,9 @@
   transition: all var(--duration-normal) var(--ease-out);
 }
 
-@utility hover-lift {
-  transition: transform var(--duration-normal) var(--ease-out);
-}
-
 @utility hover-scale {
+  --scale-amount: 1.05;
   transition: transform var(--duration-normal) var(--ease-out);
-}
-
-@utility hover-scale-110 {
-  transition: transform var(--duration-normal) var(--ease-spring);
 }
 
 /* ================================================================================
@@ -294,17 +289,8 @@
     @apply base-btn text-zinc-900 hover:bg-zinc-900;
   }
 
-  /* ホバーエフェクト */
-  .hover-lift:hover {
-    transform: scale(1.05);
-  }
-
   .hover-scale:hover {
-    transform: scale(1.05);
-  }
-
-  .hover-scale-110:hover {
-    transform: scale(1.1);
+    transform: scale(var(--scale-amount));
   }
 }
 
@@ -336,6 +322,22 @@
 
   *:focus:not(:focus-visible) {
     outline: none;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -3rem;
+    left: 1rem;
+    z-index: 100;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background: var(--color-gray-900);
+    color: white;
+    transition: top var(--duration-fast) var(--ease-out);
+  }
+
+  .skip-link:focus {
+    top: 1rem;
   }
 }
 

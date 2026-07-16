@@ -27,6 +27,7 @@ const skills = await Promise.all(
                 <Icon
                   name={i < data.favorite ? "mdi:star" : "mdi:star-outline"}
                   class={`size-6 ${i < data.favorite ? "text-warning-foreground" : "text-gray-300"}`}
+                  aria-hidden="true"
                 />
               ))}
             </div>

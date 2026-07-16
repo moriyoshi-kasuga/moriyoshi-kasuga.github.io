@@ -69,13 +69,9 @@ const featuredProjects = await getFeaturedProjects(3);
             ))
           }
           <div class="flex w-50 items-center justify-center">
-            <a
-              href="/projects"
-              aria-label="すべてのプロジェクトを見る"
-              class="bg-danger hover:text-danger flex rounded-xl px-4 py-3 font-medium text-black smooth-transition hover:bg-black focus:ring-2 focus:ring-offset-2 focus:ring-danger-foreground"
-            >
+            <LinkButton url="/projects" variant="danger" self ariaLabel="すべてのプロジェクトを見る">
               もっと見る
-            </a>
+            </LinkButton>
           </div>
         </div>
       </div>
@@ -100,13 +96,9 @@ const featuredProjects = await getFeaturedProjects(3);
             {SelfIntroduction()}
           </p>
           <div class="mt-5 flex items-center justify-center">
-            <a
-              href="/about"
-              aria-label="プロフィール詳細を見る"
-              class="bg-warning hover:text-warning flex rounded-xl px-4 py-3 font-medium text-black smooth-transition hover:bg-black focus:ring-2 focus:ring-offset-2 focus:ring-warning-foreground"
-            >
+            <LinkButton url="/about" variant="warning" self ariaLabel="プロフィール詳細を見る">
               もっと知る
-            </a>
+            </LinkButton>
           </div>
         </div>
       </div>

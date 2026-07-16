@@ -8,13 +8,16 @@ const { details } = Astro.props;
 
 <div class="flex items-center p-4 md:justify-center">
   <div class="group relative ml-auto">
-    <div
-      class="flex cursor-pointer items-center justify-center rounded-b-md bg-black p-2 text-xl shadow-xl duration-300 hover:shadow-2xl md:rounded-full"
+    <button
+      type="button"
+      class="flex cursor-pointer items-center justify-center rounded-b-md bg-black p-2 text-xl shadow-xl duration-300 hover:shadow-2xl focus-visible:shadow-2xl md:rounded-full"
+      aria-label={details}
     >
       <slot name="icon" />
-    </div>
+    </button>
     <div
-      class="absolute -top-9 z-10 flex w-40 rounded-t-md rounded-br-md bg-black p-2 text-center text-sm break-keep text-white duration-150 group-hover:visible group-hover:scale-100 group-hover:opacity-100 md:invisible md:w-fit md:-translate-x-1/4 md:scale-80 md:justify-center md:rounded-xl md:px-1.5 md:py-1 md:opacity-0"
+      role="tooltip"
+      class="absolute -top-9 z-10 flex w-40 rounded-t-md rounded-br-md bg-black p-2 text-center text-sm break-keep text-white duration-150 group-hover:visible group-hover:scale-100 group-hover:opacity-100 group-focus-within:visible group-focus-within:scale-100 group-focus-within:opacity-100 md:invisible md:w-fit md:-translate-x-1/4 md:scale-80 md:justify-center md:rounded-xl md:px-1.5 md:py-1 md:opacity-0"
     >
       <p>{details}</p>
     </div>

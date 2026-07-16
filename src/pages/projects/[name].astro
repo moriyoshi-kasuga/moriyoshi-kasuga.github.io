@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import LabeledDottedCard from "@components/LabeledDottedCard.astro";
 import LinkButton from "@components/LinkButton.astro";
 import Tooltip from "@components/Tooltip.astro";
 import ZoomDialog from "@components/ZoomDialog.astro";
@@ -56,7 +57,7 @@ const { Content } = await render(project);
     </LinkButton>
   </div>
   <div
-    class="h-divider bg-divider relative mx-auto my-8 h-[1px] w-11/12 border-none"
+    class="bg-divider relative mx-auto my-8 h-[1px] w-11/12 border-none"
   >
     <h2
       class="absolute left-[50%] -translate-x-1/2 -translate-y-1/2 justify-center bg-white text-center text-3xl"
@@ -65,44 +66,23 @@ const { Content } = await render(project);
     </h2>
   </div>
   <div class="container mx-auto my-5">
-    <div class="flex flex-wrap justify-center">
+    <div class="flex flex-wrap justify-center gap-2 text-lg">
       {
-        frontmatter.technology.map((str) => {
-          return <p class="m-1 p-1">{str}</p>;
-        })
+        frontmatter.technology.map(str => (
+          <span class="tech-tag">{str}</span>
+        ))
       }
     </div>
     <div class="my-16 flex flex-wrap items-stretch justify-center gap-y-4">
-      <div class="w-full md:w-1/2 lg:w-1/3">
-        <div
-          class="border-success-foreground relative m-2 flex h-full border-2 border-dotted"
-        >
-          <p class="my-auto p-4">{frontmatter.objective}</p>
-          <h3 class="absolute -top-6 left-4 rounded-xl bg-white p-2 text-lg">
-            目的
-          </h3>
-        </div>
-      </div>
-      <div class="w-full md:w-1/2 lg:w-1/3">
-        <div
-          class="border-warning-foreground relative m-2 flex h-full border-2 border-dotted"
-        >
-          <p class="my-auto p-4">{frontmatter.background}</p>
-          <h3 class="absolute -top-6 left-4 rounded-xl bg-white p-2 text-lg">
-            背景
-          </h3>
-        </div>
-      </div>
-      <div class="w-full md:w-1/2 lg:w-1/3">
-        <div
-          class="border-primary-foreground relative m-2 flex h-full border-2 border-dotted"
-        >
-          <p class="my-auto p-4">{frontmatter.commitment}</p>
-          <h3 class="absolute -top-6 left-4 rounded-xl bg-white p-2 text-lg">
-            こだわり
-          </h3>
-        </div>
-      </div>
+      <LabeledDottedCard label="目的" accent="success">
+        {frontmatter.objective}
+      </LabeledDottedCard>
+      <LabeledDottedCard label="背景" accent="warning">
+        {frontmatter.background}
+      </LabeledDottedCard>
+      <LabeledDottedCard label="こだわり" accent="primary">
+        {frontmatter.commitment}
+      </LabeledDottedCard>
     </div>
     <div
       class="w-full rounded-xl px-4 pt-2 pb-4 text-responsive-lg break-words shadow-lg md:px-8 lg:px-12 xl:px-24 line-loose"

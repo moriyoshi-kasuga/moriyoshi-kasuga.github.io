@@ -6,6 +6,7 @@ interface Props {
   variant?: LinkButtonVariant;
   self?: boolean;
   class?: string;
+  ariaLabel?: string;
 }
 
 const VARIANT_CLASS: Record<LinkButtonVariant, string> = {
@@ -17,7 +18,7 @@ const VARIANT_CLASS: Record<LinkButtonVariant, string> = {
   danger: "btn-danger",
 };
 
-const { url, variant = "outline", self, class: className } = Astro.props;
+const { url, variant = "outline", self, class: className, ariaLabel } = Astro.props;
 ---
 
 {
@@ -27,6 +28,7 @@ const { url, variant = "outline", self, class: className } = Astro.props;
           href={url}
           target={self ? "_self" : "_blank"}
           rel={self ? undefined : "noopener noreferrer"}
+          aria-label={ariaLabel}
           class:list={[VARIANT_CLASS[variant], className]}
         >
           <slot name="icon" />
