@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@400..700&display=swap");
-@import 'tailwindcss';
+@import "tailwindcss";
 
 /* ================================================================================
  * デザイントークン定義
@@ -7,12 +7,14 @@
 
 @theme {
   /* フォント */
-  --font-primary: 'M PLUS 1 Code', 'Courier New', monospace;
+  --font-primary: "M PLUS 1 Code", "Courier New", monospace;
   --font-mono: var(--font-primary);
+  --font-display: var(--font-primary);
 
   /* カラーパレット */
   --color-divider: rgba(17, 17, 17, 0.15);
   --color-link: #005bc4;
+  --color-background: #ffffff;
 
   /* プライマリカラー */
   --color-primary: #66aaf9;
@@ -60,7 +62,6 @@
   --tracking-normal: 0;
   --tracking-wide: 0.025em;
 
-  --measure-short: 20ch;
   --measure-base: 66ch;
   --measure-long: 75ch;
 }
@@ -75,7 +76,6 @@
 
 /* Tailwind CSS v4互換性のためのボーダーカラー設定 */
 @layer base {
-
   *,
   ::after,
   ::before,
@@ -90,7 +90,6 @@
  * ================================================================================ */
 
 @layer utilities {
-
   /* 高さ計算 */
   .min-h-all {
     min-height: calc(100vh - var(--header-height) - var(--footer-height));
@@ -111,7 +110,7 @@
     position: absolute;
     left: 0;
     bottom: -1px;
-    content: '';
+    content: "";
     width: 100%;
     height: 2px;
     background: black;
@@ -121,7 +120,8 @@
     transition: transform var(--duration-normal) var(--ease-in-out);
   }
 
-  .link-hover-animation:hover::after {
+  .link-hover-animation:hover::after,
+  .link-hover-animation.current::after {
     transform: scale(1, 1);
   }
 }
@@ -138,19 +138,19 @@
 
 /* ボタンバリエーション */
 @utility btn-primary {
-  @apply base-btn text-gray-900 hover:bg-gray-900 bg-primary hover:text-primary-foreground;
+  @apply base-btn bg-primary text-gray-900 hover:bg-gray-900 hover:text-primary-foreground;
 }
 
 @utility btn-success {
-  @apply base-btn text-gray-900 hover:bg-gray-900 bg-success hover:text-success-foreground;
+  @apply base-btn bg-success text-gray-900 hover:bg-gray-900 hover:text-success-foreground;
 }
 
 @utility btn-warning {
-  @apply base-btn text-gray-900 hover:bg-gray-900 bg-warning hover:text-warning-foreground;
+  @apply base-btn bg-warning text-gray-900 hover:bg-gray-900 hover:text-warning-foreground;
 }
 
 @utility btn-danger {
-  @apply base-btn text-gray-900 hover:bg-gray-900 bg-danger hover:text-danger-foreground;
+  @apply base-btn bg-danger text-gray-900 hover:bg-gray-900 hover:text-danger-foreground;
 }
 
 /* レイアウトユーティリティ */
@@ -163,7 +163,7 @@
 }
 
 @utility full-width-col-center {
-  @apply w-full flex flex-col items-center;
+  @apply flex w-full flex-col items-center;
 }
 
 /* タイポグラフィユーティリティ */
@@ -173,12 +173,12 @@
 
 /* プロジェクトカード */
 @utility project-card {
-  @apply ring-primary hover:ring-primary-foreground flex h-full w-full max-w-[360px] flex-col rounded-2xl px-8 py-2 ring-[3px] hover-lift;
+  @apply flex h-full w-full max-w-90 flex-col rounded-2xl px-8 py-2 ring-[3px] ring-primary hover-scale hover:ring-primary-foreground;
 }
 
 /* 技術タグ */
 @utility tech-tag {
-  @apply bg-warning rounded-xl px-2 py-1 font-normal;
+  @apply rounded-xl bg-warning px-2 py-1 font-normal;
 }
 
 /* アイテム表示 */
@@ -187,7 +187,7 @@
 }
 
 @utility item-value {
-  @apply w-2/3 text-left text-xl font-semibold break-words md:w-1/2;
+  @apply w-2/3 text-left text-xl font-semibold wrap-break-word md:w-1/2;
 }
 
 /* ================================================================================
@@ -195,11 +195,11 @@
  * ================================================================================ */
 
 @utility responsive-grid {
-  @apply grid grid-cols-1 gap-4 place-items-center sm:grid-cols-2 sm:gap-6 md:gap-8 lg:grid-cols-3 lg:gap-10 xl:gap-12;
+  @apply grid grid-cols-1 place-items-center gap-4 sm:grid-cols-2 sm:gap-6 md:gap-8 lg:grid-cols-3 lg:gap-10 xl:gap-12;
 }
 
 @utility stats-grid {
-  @apply grid grid-cols-1 gap-1 h-[600px] place-items-center items-center justify-center md:grid-cols-2 md:h-[400px] lg:grid-cols-3 lg:h-[200px];
+  @apply grid h-150 grid-cols-1 place-items-center items-center justify-center gap-1 md:h-100 md:grid-cols-2 lg:h-50 lg:grid-cols-3;
 }
 
 @utility gallery-grid {
@@ -207,7 +207,7 @@
 }
 
 /* ギャラリーグリッドで奇数の要素がある場合、最後の要素を中央に配置 */
-.gallery-grid>*:last-child:nth-child(odd) {
+.gallery-grid > *:last-child:nth-child(odd) {
   @apply lg:col-span-2 lg:mx-auto lg:w-[50%];
 }
 
@@ -216,11 +216,11 @@
  * ================================================================================ */
 
 @utility nav-desktop {
-  @apply hidden md:flex items-center space-x-6;
+  @apply hidden items-center space-x-6 md:flex;
 }
 
 @utility nav-mobile {
-  @apply flex md:hidden items-center;
+  @apply flex items-center md:hidden;
 }
 
 /* ================================================================================
@@ -231,16 +231,9 @@
   transition: all var(--duration-normal) var(--ease-out);
 }
 
-@utility hover-lift {
-  transition: transform var(--duration-normal) var(--ease-out);
-}
-
 @utility hover-scale {
+  --scale-amount: 1.05;
   transition: transform var(--duration-normal) var(--ease-out);
-}
-
-@utility hover-scale-110 {
-  transition: transform var(--duration-normal) var(--ease-spring);
 }
 
 /* ================================================================================
@@ -294,17 +287,8 @@
     @apply base-btn text-zinc-900 hover:bg-zinc-900;
   }
 
-  /* ホバーエフェクト */
-  .hover-lift:hover {
-    transform: scale(1.05);
-  }
-
   .hover-scale:hover {
-    transform: scale(1.05);
-  }
-
-  .hover-scale-110:hover {
-    transform: scale(1.1);
+    transform: scale(var(--scale-amount));
   }
 }
 
@@ -313,7 +297,6 @@
  * ================================================================================ */
 
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
@@ -336,6 +319,22 @@
 
   *:focus:not(:focus-visible) {
     outline: none;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -3rem;
+    left: 1rem;
+    z-index: 100;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background: var(--color-gray-900);
+    color: white;
+    transition: top var(--duration-fast) var(--ease-out);
+  }
+
+  .skip-link:focus {
+    top: 1rem;
   }
 }
 

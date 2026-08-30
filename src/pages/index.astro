@@ -1,66 +1,52 @@
 ---
-import type { ImageMetadata } from "astro";
-import type { Project } from "../type";
-import IconButton from "@components/IconButton.astro";
+import LinkButton from "@components/LinkButton.astro";
 import Mori from "@src/assets/mori.png";
-import { sortProjects } from "@src/utils/projectUtils";
+import { SOCIAL_LINKS } from "@src/constants/metadata";
+import { getFeaturedProjects } from "@src/lib/projects";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import { rawContent as SelfIntroduction } from "../static/self-introduction.md";
 
-const projectFiles = import.meta.glob<{ frontmatter: Project }>(
-  "../static/projects/*.md",
-  { eager: true },
-);
-const showProjects = Object.values(projectFiles).sort(sortProjects).slice(0, 3);
-
-const photos = import.meta.glob<{ default: ImageMetadata }>(
-  `/src/assets/projects/*/main.png`,
-  {
-    eager: true,
-  },
-);
+const featuredProjects = await getFeaturedProjects(3);
 ---
 
 <Layout title="MoriLab">
-  <div class="min-h-all bg-primary full-width-col-center text-white">
+  <div class="min-h-all full-width-col-center bg-primary text-white">
     <div class="flex flex-col items-center">
       <h1 class="text-responsive-display font-semibold">MoriLab</h1>
       <h2 class="text-3xl">Mori’s tiny dev lab.</h2>
-      <div class="mt-6 flex flex-wrap items-center justify-center gap-2 px-4">
-        <IconButton url="https://github.com/moriyoshi-kasuga">
+      <div class="mt-6 flex-items-gap flex-wrap justify-center px-4">
+        <LinkButton url={SOCIAL_LINKS.github} variant="dark">
           <Icon name="mdi:github" slot="icon" />
           GitHub
-        </IconButton>
-        <IconButton
-          url="https://github.com/moriyoshi-kasuga/moriyoshi-kasuga.github.io"
-        >
+        </LinkButton>
+        <LinkButton url={SOCIAL_LINKS.repository} variant="dark">
           <Icon name="mdi:source-branch" slot="icon" />
           Repository
-        </IconButton>
-        <IconButton url="https://twitter.com/MoriyoshiKasuga">
+        </LinkButton>
+        <LinkButton url={SOCIAL_LINKS.twitter} variant="dark">
           <Icon name="mdi:twitter" slot="icon" />
           旧Twitter
-        </IconButton>
+        </LinkButton>
       </div>
       <div class="container mt-10 flex max-w-[1200px] flex-wrap">
         <h2 class="mb-10 w-full text-center text-5xl font-medium">Projects</h2>
         <div
-          class="mx-auto flex flex-wrap lg:flex-nowrap items-center justify-center"
+          class="mx-auto flex flex-wrap items-center justify-center lg:flex-nowrap"
         >
           {
-            showProjects.map(({ frontmatter: { name, title, pin } }) => (
+            featuredProjects.map((project) => (
               <a
-                href={`/projects/${name}`}
+                href={`/projects/${project.id}`}
                 class="group size-50"
-                aria-label={`プロジェクト ${title} の詳細を見る`}
+                aria-label={`プロジェクト ${project.data.title} の詳細を見る`}
               >
                 <div class="mx-4 my-2 flex flex-col items-center justify-center rounded-2xl">
                   <Image
                     loading="lazy"
-                    src={photos[`/src/assets/projects/${name}/main.png`].default}
-                    alt={`${name} image`}
+                    src={project.data.gallery[0]}
+                    alt={`${project.data.title} image`}
                     class="aspect-square rounded-lg"
                     width={160}
                     height={160}
@@ -69,27 +55,28 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
                     sizes="160px"
                   />
                   <p class="relative text-lg font-medium text-nowrap transition-all group-hover:scale-110 before:absolute before:-left-3 group-hover:before:content-['>'] after:absolute group-hover:after:content-['<'] md:text-xl">
-                    {pin && (
+                    {project.data.pin && (
                       <Icon
                         name="mdi:pin"
                         class="inline-block text-danger"
                         title="ピン留めされたプロジェクト"
                       />
                     )}
-                    {title}
+                    {project.data.title}
                   </p>
                 </div>
               </a>
             ))
           }
           <div class="flex w-50 items-center justify-center">
-            <a
-              href="/projects"
-              aria-label="すべてのプロジェクトを見る"
-              class="bg-danger hover:text-danger flex rounded-xl px-4 py-3 font-medium text-black smooth-transition hover:bg-black focus:ring-2 focus:ring-offset-2 focus:ring-danger-foreground"
+            <LinkButton
+              url="/projects"
+              variant="danger"
+              self
+              ariaLabel="すべてのプロジェクトを見る"
             >
               もっと見る
-            </a>
+            </LinkButton>
           </div>
         </div>
       </div>
@@ -109,18 +96,19 @@ const photos = import.meta.glob<{ default: ImageMetadata }>(
         />
         <div>
           <p
-            class="measure-base font-semibold text-white text-responsive-lg line-loose"
+            class="measure-base text-responsive-lg line-loose font-semibold text-white"
           >
             {SelfIntroduction()}
           </p>
           <div class="mt-5 flex items-center justify-center">
-            <a
-              href="/about"
-              aria-label="プロフィール詳細を見る"
-              class="bg-warning hover:text-warning flex rounded-xl px-4 py-3 font-medium text-black smooth-transition hover:bg-black focus:ring-2 focus:ring-offset-2 focus:ring-warning-foreground"
+            <LinkButton
+              url="/about"
+              variant="warning"
+              self
+              ariaLabel="プロフィール詳細を見る"
             >
               もっと知る
-            </a>
+            </LinkButton>
           </div>
         </div>
       </div>

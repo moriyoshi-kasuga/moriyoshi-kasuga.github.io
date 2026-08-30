@@ -1,24 +1,28 @@
 ---
 import Mori from "@src/assets/mori.png";
+import { MAIN_NAV } from "@src/constants/navigation";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import MobileMenu from "./MobileMenu.astro";
 
-/** ナビゲーションリンク定義 */
-const navLinks = [
-  { href: "/", label: "Home", icon: "mdi:home-outline" },
-  { href: "/about", label: "About", icon: "mdi:search" },
-  { href: "/projects", label: "Projects", icon: "mdi:source-branch" },
-] as const;
+const pathname = Astro.url.pathname;
+const isCurrentPage = (href: string) =>
+  href === "/"
+    ? pathname === "/"
+    : pathname === href || pathname.startsWith(`${href}/`);
 ---
 
 <header
   class="fixed top-0 z-50 flex h-(--header-height) w-screen items-center px-4 py-2 before:absolute before:inset-0 before:backdrop-blur-xs"
 >
-  <nav class="relative container-center flex items-center justify-between" aria-label="メインナビゲーション">
+  <nav
+    class="relative container-center flex items-center justify-between"
+    aria-label="メインナビゲーション"
+  >
     <a
       href="/"
-      class="absolute left-1/2 aspect-square h-[calc(var(--header-height)*0.8)] -translate-x-1/2 hover-scale-110 md:left-auto"
+      class="absolute left-1/2 aspect-square h-[calc(var(--header-height)*0.8)] -translate-x-1/2 hover-scale md:left-auto"
+      style="--scale-amount: 1.1"
       aria-label="ホームに戻る"
     >
       <Image src={Mori} alt="My Avatar" class="rounded-full object-cover" />
@@ -26,12 +30,21 @@ const navLinks = [
 
     <!-- デスクトップナビゲーション -->
     <div class="ml-auto nav-desktop text-semibold-xl">
-      {navLinks.map(({ href, label, icon }) => (
-        <a href={href} class="link-hover-animation" aria-label={label}>
-          <Icon name={icon} />
-          <span>{label}</span>
-        </a>
-      ))}
+      {
+        MAIN_NAV.map(({ href, label, icon }) => {
+          const current = isCurrentPage(href);
+          return (
+            <a
+              href={href}
+              class:list={["link-hover-animation", { current }]}
+              aria-current={current ? "page" : undefined}
+            >
+              <Icon name={icon} aria-hidden="true" />
+              <span>{label}</span>
+            </a>
+          );
+        })
+      }
     </div>
 
     <!-- モバイルナビゲーション -->
@@ -40,4 +53,3 @@ const navLinks = [
     </div>
   </nav>
 </header>
-

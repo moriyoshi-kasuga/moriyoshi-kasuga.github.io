@@ -1,5 +1,4 @@
 ---
-name: dotfiles
 title: dotfiles
 description: Nixを使った開発環境
 createdAt: "2023/8/12"
@@ -15,8 +14,8 @@ objective: "WSL2環境を初期化する際に、スムーズに開発環境を�
 background: "最初はWSL2上での環境管理から始めましたが、nixの便利さに魅了され、最終的にはWindowsを離れてNixOSをメインOSとして使うようになりました。"
 commitment: "当初はshellscriptで実装していましたが、nixを導入することでより宣言的で管理しやすい構成にできました。"
 gallery:
-  - "main.png"
-  - "zoxide.png"
+  - "../../assets/projects/dotfiles/main.png"
+  - "../../assets/projects/dotfiles/zoxide.png"
 pin: true
 ---
 

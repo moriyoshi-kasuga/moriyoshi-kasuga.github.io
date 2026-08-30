@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import IconButton from "../components/IconButton.astro";
+import LinkButton from "../components/LinkButton.astro";
 import Layout from "../layouts/Layout.astro";
 
 interface Props {
@@ -16,7 +16,7 @@ const { backLink, title, description } = Astro.props;
   <div class="min-h-all container-center flex items-center px-6 py-12">
     <div class="mx-auto flex max-w-sm flex-col items-center text-center">
       <p
-        class="bg-primary text-primary-foreground rounded-full p-3 text-3xl font-medium"
+        class="rounded-full bg-primary p-3 text-3xl font-medium text-primary-foreground"
       >
         <Icon name="mdi:warning-decagram-outline" />
       </p>
@@ -26,10 +26,10 @@ const { backLink, title, description } = Astro.props;
       <p class="my-4 text-gray-500">
         {description || "お探しのページは存在しません。"}
       </p>
-      <IconButton url={backLink || "/"} self>
+      <LinkButton url={backLink || "/"} variant="dark" self>
         <Icon name="mdi:arrow-left-thin" slot="icon" />
         Go back
-      </IconButton>
+      </LinkButton>
     </div>
   </div>
 </Layout>

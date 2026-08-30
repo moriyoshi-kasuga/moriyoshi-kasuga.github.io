@@ -1,18 +1,20 @@
 ---
+import { MAIN_NAV } from "@src/constants/navigation";
 import { Icon } from "astro-icon/components";
 
-const routes = [
-  { title: "Home", href: "/", icon: "mdi:home-outline" },
-  { title: "About", href: "/about", icon: "mdi:search" },
-  { title: "Projects", href: "/projects", icon: "mdi:source-branch" },
-] as const;
+const pathname = Astro.url.pathname;
+const isCurrentPage = (href: string) =>
+  href === "/"
+    ? pathname === "/"
+    : pathname === href || pathname.startsWith(`${href}/`);
 ---
 
 <div class="mobile-root">
   <button
-    class="mobile-toggle border-none bg-transparent p-1 cursor-pointer"
+    class="mobile-toggle flex min-h-11 min-w-11 cursor-pointer items-center justify-center border-none bg-transparent"
     aria-label="メニューを開く"
     aria-expanded="false"
+    aria-controls="mobile-nav"
     type="button"
   >
     <span class="ham" aria-hidden="true">
@@ -23,16 +25,17 @@ const routes = [
   </button>
 
   <div
-    class="mobile-nav fixed left-0 right-0 rounded-b-3xl p-5 backdrop-blur-xs"
+    id="mobile-nav"
+    class="mobile-nav fixed inset-x-0 rounded-b-3xl p-5 backdrop-blur-xs"
     style="top: var(--header-height)"
     aria-hidden="true"
   >
     <nav aria-label="モバイルメニュー">
       <ul
-        class="grid place-content-center place-items-center gap-2 p-3 m-0 list-none"
+        class="m-0 grid list-none place-content-center place-items-center gap-2 p-3"
       >
         {
-          routes.map(({ title, href, icon }, idx) => (
+          MAIN_NAV.map(({ label, href, icon }, idx) => (
             <li
               class="nav-item rounded-xl bg-linear-to-tr p-[0.08rem]"
               style={`--i:${idx}`}
@@ -40,9 +43,10 @@ const routes = [
               <a
                 href={href}
                 class="flex max-w-80 min-w-72 items-center justify-between rounded-xl bg-gray-100/90 p-5"
+                aria-current={isCurrentPage(href) ? "page" : undefined}
               >
-                <span class="flex gap-1 text-lg font-semibold">{title}</span>
-                <Icon name={icon} width={30} height={30} />
+                <span class="flex gap-1 text-lg font-semibold">{label}</span>
+                <Icon name={icon} width={30} height={30} aria-hidden="true" />
               </a>
             </li>
           ))
@@ -65,7 +69,7 @@ const routes = [
     left: 0;
     width: 20px;
     height: 2px;
-    background: #52525b;
+    background: var(--color-gray-500);
     border-radius: 2px;
     transform-origin: center;
     transition:
@@ -116,6 +120,11 @@ const routes = [
     transform: scale(1);
     opacity: 1;
     transition-delay: calc(0.05s + var(--i) * 0.1s);
+  }
+
+  .nav-item a[aria-current="page"] {
+    background: var(--color-primary);
+    color: white;
   }
 </style>
 

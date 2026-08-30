@@ -15,7 +15,14 @@ const iconURL = skillIcon
 <div>
   {
     iconURL && (
-      <img src={iconURL} alt={value} class="inline-block -mr-1 size-[25px]" />
+      <img
+        src={iconURL}
+        alt=""
+        loading="lazy"
+        width="25"
+        height="25"
+        class="mr-1 inline-block size-6.25"
+      />
     )
   }
   {
