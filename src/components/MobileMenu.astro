@@ -4,7 +4,9 @@ import { Icon } from "astro-icon/components";
 
 const pathname = Astro.url.pathname;
 const isCurrentPage = (href: string) =>
-  href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
+  href === "/"
+    ? pathname === "/"
+    : pathname === href || pathname.startsWith(`${href}/`);
 ---
 
 <div class="mobile-root">

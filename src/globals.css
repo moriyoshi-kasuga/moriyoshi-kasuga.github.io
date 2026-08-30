@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@400..700&display=swap");
-@import 'tailwindcss';
+@import "tailwindcss";
 
 /* ================================================================================
  * デザイントークン定義
@@ -7,7 +7,7 @@
 
 @theme {
   /* フォント */
-  --font-primary: 'M PLUS 1 Code', 'Courier New', monospace;
+  --font-primary: "M PLUS 1 Code", "Courier New", monospace;
   --font-mono: var(--font-primary);
   --font-display: var(--font-primary);
 
@@ -76,7 +76,6 @@
 
 /* Tailwind CSS v4互換性のためのボーダーカラー設定 */
 @layer base {
-
   *,
   ::after,
   ::before,
@@ -91,7 +90,6 @@
  * ================================================================================ */
 
 @layer utilities {
-
   /* 高さ計算 */
   .min-h-all {
     min-height: calc(100vh - var(--header-height) - var(--footer-height));
@@ -112,7 +110,7 @@
     position: absolute;
     left: 0;
     bottom: -1px;
-    content: '';
+    content: "";
     width: 100%;
     height: 2px;
     background: black;
@@ -209,7 +207,7 @@
 }
 
 /* ギャラリーグリッドで奇数の要素がある場合、最後の要素を中央に配置 */
-.gallery-grid>*:last-child:nth-child(odd) {
+.gallery-grid > *:last-child:nth-child(odd) {
   @apply lg:col-span-2 lg:mx-auto lg:w-[50%];
 }
 
@@ -299,7 +297,6 @@
  * ================================================================================ */
 
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {

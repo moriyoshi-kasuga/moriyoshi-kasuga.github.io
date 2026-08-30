@@ -10,24 +10,29 @@ interface Props {
 
 const { title } = Astro.props;
 const pathname = Astro.url.pathname;
-const isCurrentPage = (href: string) => pathname === href || pathname === `${href}/`;
+const isCurrentPage = (href: string) =>
+  pathname === href || pathname === `${href}/`;
 const current = ABOUT_NAV.find(({ href }) => isCurrentPage(href));
 ---
 
 <Layout title={title}>
   <div class="min-h-all top-level-container full-width-col-center">
-    <h1 class:list={["flex-items-gap text-5xl font-bold", current?.headingClass]}>
+    <h1
+      class:list={["flex-items-gap text-5xl font-bold", current?.headingClass]}
+    >
       <slot name="icon" />
       {title}
     </h1>
     <div class="mt-10 mb-5 flex gap-8 flex-row flex-wrap justify-center">
       {
-        ABOUT_NAV.filter(({ href }) => !isCurrentPage(href)).map(({ href, label, icon, variant }) => (
-          <LinkButton url={href} variant={variant} self>
-            <Icon name={icon} slot="icon" />
-            {label}
-          </LinkButton>
-        ))
+        ABOUT_NAV.filter(({ href }) => !isCurrentPage(href)).map(
+          ({ href, label, icon, variant }) => (
+            <LinkButton url={href} variant={variant} self>
+              <Icon name={icon} slot="icon" />
+              {label}
+            </LinkButton>
+          ),
+        )
       }
     </div>
     <slot />

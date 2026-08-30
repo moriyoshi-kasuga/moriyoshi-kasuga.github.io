@@ -7,13 +7,18 @@ import MobileMenu from "./MobileMenu.astro";
 
 const pathname = Astro.url.pathname;
 const isCurrentPage = (href: string) =>
-  href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
+  href === "/"
+    ? pathname === "/"
+    : pathname === href || pathname.startsWith(`${href}/`);
 ---
 
 <header
   class="fixed top-0 z-50 flex h-(--header-height) w-screen items-center px-4 py-2 before:absolute before:inset-0 before:backdrop-blur-xs"
 >
-  <nav class="relative container-center flex items-center justify-between" aria-label="メインナビゲーション">
+  <nav
+    class="relative container-center flex items-center justify-between"
+    aria-label="メインナビゲーション"
+  >
     <a
       href="/"
       class="absolute left-1/2 aspect-square h-[calc(var(--header-height)*0.8)] -translate-x-1/2 hover-scale md:left-auto"
@@ -25,19 +30,21 @@ const isCurrentPage = (href: string) =>
 
     <!-- デスクトップナビゲーション -->
     <div class="ml-auto nav-desktop text-semibold-xl">
-      {MAIN_NAV.map(({ href, label, icon }) => {
-        const current = isCurrentPage(href);
-        return (
-          <a
-            href={href}
-            class:list={["link-hover-animation", { current }]}
-            aria-current={current ? "page" : undefined}
-          >
-            <Icon name={icon} aria-hidden="true" />
-            <span>{label}</span>
-          </a>
-        );
-      })}
+      {
+        MAIN_NAV.map(({ href, label, icon }) => {
+          const current = isCurrentPage(href);
+          return (
+            <a
+              href={href}
+              class:list={["link-hover-animation", { current }]}
+              aria-current={current ? "page" : undefined}
+            >
+              <Icon name={icon} aria-hidden="true" />
+              <span>{label}</span>
+            </a>
+          );
+        })
+      }
     </div>
 
     <!-- モバイルナビゲーション -->
@@ -46,4 +53,3 @@ const isCurrentPage = (href: string) =>
     </div>
   </nav>
 </header>
-

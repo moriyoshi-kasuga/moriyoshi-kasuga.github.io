@@ -12,10 +12,7 @@ interface Props {
   description?: string;
 }
 
-const {
-  title,
-  description = SITE_METADATA.description,
-} = Astro.props;
+const { title, description = SITE_METADATA.description } = Astro.props;
 ---
 
 <!doctype html>
@@ -72,7 +69,8 @@ const {
         line-height: var(--line-normal);
       }
 
-      p, article {
+      p,
+      article {
         line-height: var(--line-loose);
       }
     </style>

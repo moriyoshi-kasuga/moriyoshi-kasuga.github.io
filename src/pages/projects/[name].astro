@@ -5,11 +5,11 @@ import LinkButton from "@components/LinkButton.astro";
 import Tooltip from "@components/Tooltip.astro";
 import ZoomDialog from "@components/ZoomDialog.astro";
 import Layout from "@layouts/Layout.astro";
-import { Icon } from "astro-icon/components";
-import { render } from "astro:content";
 import { formatDate } from "@src/lib/date";
 import { getSortedProjects } from "@src/lib/projects";
+import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
+import { render } from "astro:content";
 
 interface Props {
   project: CollectionEntry<"projects">;
@@ -56,9 +56,7 @@ const { Content } = await render(project);
       Site
     </LinkButton>
   </div>
-  <div
-    class="bg-divider relative mx-auto my-8 h-[1px] w-11/12 border-none"
-  >
+  <div class="bg-divider relative mx-auto my-8 h-[1px] w-11/12 border-none">
     <h2
       class="absolute left-[50%] -translate-x-1/2 -translate-y-1/2 justify-center bg-white text-center text-3xl"
     >
@@ -67,11 +65,7 @@ const { Content } = await render(project);
   </div>
   <div class="container mx-auto my-5">
     <div class="flex flex-wrap justify-center gap-2 text-lg">
-      {
-        frontmatter.technology.map(str => (
-          <span class="tech-tag">{str}</span>
-        ))
-      }
+      {frontmatter.technology.map((str) => <span class="tech-tag">{str}</span>)}
     </div>
     <div class="my-16 flex flex-wrap items-stretch justify-center gap-y-4">
       <LabeledDottedCard label="目的" accent="success">

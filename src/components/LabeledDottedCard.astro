@@ -16,8 +16,15 @@ const { label, accent } = Astro.props;
 ---
 
 <div class="w-full md:w-1/2 lg:w-1/3">
-  <div class:list={["relative m-2 flex h-full border-2 border-dotted", ACCENT_BORDER_CLASS[accent]]}>
+  <div
+    class:list={[
+      "relative m-2 flex h-full border-2 border-dotted",
+      ACCENT_BORDER_CLASS[accent],
+    ]}
+  >
     <p class="my-auto p-4"><slot /></p>
-    <h3 class="absolute -top-6 left-4 rounded-xl bg-white p-2 text-lg">{label}</h3>
+    <h3 class="absolute -top-6 left-4 rounded-xl bg-white p-2 text-lg">
+      {label}
+    </h3>
   </div>
 </div>

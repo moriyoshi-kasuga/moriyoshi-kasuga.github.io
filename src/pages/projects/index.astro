@@ -37,7 +37,7 @@ const projects = await getSortedProjects();
               />
             </div>
             <div class="flex flex-wrap items-start gap-2 text-lg">
-              {project.data.technology.map(tag => (
+              {project.data.technology.map((tag) => (
                 <span class="tech-tag">{tag}</span>
               ))}
             </div>

@@ -4,7 +4,7 @@ import { Icon } from "astro-icon/components";
 import { getCollection, render } from "astro:content";
 
 const skills = await Promise.all(
-  (await getCollection("skills")).map(async skill => ({
+  (await getCollection("skills")).map(async (skill) => ({
     data: skill.data,
     Content: (await render(skill)).Content,
   })),

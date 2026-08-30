@@ -36,7 +36,7 @@ const featuredProjects = await getFeaturedProjects(3);
           class="mx-auto flex flex-wrap lg:flex-nowrap items-center justify-center"
         >
           {
-            featuredProjects.map(project => (
+            featuredProjects.map((project) => (
               <a
                 href={`/projects/${project.id}`}
                 class="group size-50"
@@ -69,7 +69,12 @@ const featuredProjects = await getFeaturedProjects(3);
             ))
           }
           <div class="flex w-50 items-center justify-center">
-            <LinkButton url="/projects" variant="danger" self ariaLabel="すべてのプロジェクトを見る">
+            <LinkButton
+              url="/projects"
+              variant="danger"
+              self
+              ariaLabel="すべてのプロジェクトを見る"
+            >
               もっと見る
             </LinkButton>
           </div>
@@ -96,7 +101,12 @@ const featuredProjects = await getFeaturedProjects(3);
             {SelfIntroduction()}
           </p>
           <div class="mt-5 flex items-center justify-center">
-            <LinkButton url="/about" variant="warning" self ariaLabel="プロフィール詳細を見る">
+            <LinkButton
+              url="/about"
+              variant="warning"
+              self
+              ariaLabel="プロフィール詳細を見る"
+            >
               もっと知る
             </LinkButton>
           </div>

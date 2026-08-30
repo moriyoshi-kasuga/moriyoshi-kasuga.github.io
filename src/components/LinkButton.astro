@@ -1,5 +1,6 @@
 ---
-export type LinkButtonVariant = "dark" | "outline" | "primary" | "success" | "warning" | "danger";
+export type LinkButtonVariant =
+  "dark" | "outline" | "primary" | "success" | "warning" | "danger";
 
 interface Props {
   url?: string;
@@ -18,27 +19,40 @@ const VARIANT_CLASS: Record<LinkButtonVariant, string> = {
   danger: "btn-danger",
 };
 
-const { url, variant = "outline", self, class: className, ariaLabel } = Astro.props;
+const {
+  url,
+  variant = "outline",
+  self,
+  class: className,
+  ariaLabel,
+} = Astro.props;
 ---
 
 {
-  url
-    ? (
-        <a
-          href={url}
-          target={self ? "_self" : "_blank"}
-          rel={self ? undefined : "noopener noreferrer"}
-          aria-label={ariaLabel}
-          class:list={[VARIANT_CLASS[variant], className]}
-        >
-          <slot name="icon" />
-          <span><slot /></span>
-        </a>
-      )
-    : (
-        <div class:list={["base-btn cursor-not-allowed bg-gray-400 line-through", className]}>
-          <slot name="icon" />
-          <span><slot /></span>
-        </div>
-      )
+  url ? (
+    <a
+      href={url}
+      target={self ? "_self" : "_blank"}
+      rel={self ? undefined : "noopener noreferrer"}
+      aria-label={ariaLabel}
+      class:list={[VARIANT_CLASS[variant], className]}
+    >
+      <slot name="icon" />
+      <span>
+        <slot />
+      </span>
+    </a>
+  ) : (
+    <div
+      class:list={[
+        "base-btn cursor-not-allowed bg-gray-400 line-through",
+        className,
+      ]}
+    >
+      <slot name="icon" />
+      <span>
+        <slot />
+      </span>
+    </div>
+  )
 }

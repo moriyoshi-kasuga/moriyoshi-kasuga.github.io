@@ -3,7 +3,7 @@ title: TaggedFileFlow
 description: Efficient File Management with Tagging - A Rust CLI App
 createdAt: 2024/7/22
 genre: CLI
-github: 'https://github.com/moriyoshi-kasuga/TaggedFileFlow'
+github: "https://github.com/moriyoshi-kasuga/TaggedFileFlow"
 technology:
   - Rust
   - CLI
