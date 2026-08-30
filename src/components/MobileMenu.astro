@@ -11,7 +11,7 @@ const isCurrentPage = (href: string) =>
 
 <div class="mobile-root">
   <button
-    class="mobile-toggle flex min-h-11 min-w-11 items-center justify-center border-none bg-transparent cursor-pointer"
+    class="mobile-toggle flex min-h-11 min-w-11 cursor-pointer items-center justify-center border-none bg-transparent"
     aria-label="メニューを開く"
     aria-expanded="false"
     aria-controls="mobile-nav"
@@ -26,13 +26,13 @@ const isCurrentPage = (href: string) =>
 
   <div
     id="mobile-nav"
-    class="mobile-nav fixed left-0 right-0 rounded-b-3xl p-5 backdrop-blur-xs"
+    class="mobile-nav fixed inset-x-0 rounded-b-3xl p-5 backdrop-blur-xs"
     style="top: var(--header-height)"
     aria-hidden="true"
   >
     <nav aria-label="モバイルメニュー">
       <ul
-        class="grid place-content-center place-items-center gap-2 p-3 m-0 list-none"
+        class="m-0 grid list-none place-content-center place-items-center gap-2 p-3"
       >
         {
           MAIN_NAV.map(({ label, href, icon }, idx) => (

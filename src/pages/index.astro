@@ -12,11 +12,11 @@ const featuredProjects = await getFeaturedProjects(3);
 ---
 
 <Layout title="MoriLab">
-  <div class="min-h-all bg-primary full-width-col-center text-white">
+  <div class="min-h-all full-width-col-center bg-primary text-white">
     <div class="flex flex-col items-center">
       <h1 class="text-responsive-display font-semibold">MoriLab</h1>
       <h2 class="text-3xl">Mori’s tiny dev lab.</h2>
-      <div class="mt-6 flex flex-wrap items-center justify-center gap-2 px-4">
+      <div class="mt-6 flex-items-gap flex-wrap justify-center px-4">
         <LinkButton url={SOCIAL_LINKS.github} variant="dark">
           <Icon name="mdi:github" slot="icon" />
           GitHub
@@ -33,7 +33,7 @@ const featuredProjects = await getFeaturedProjects(3);
       <div class="container mt-10 flex max-w-[1200px] flex-wrap">
         <h2 class="mb-10 w-full text-center text-5xl font-medium">Projects</h2>
         <div
-          class="mx-auto flex flex-wrap lg:flex-nowrap items-center justify-center"
+          class="mx-auto flex flex-wrap items-center justify-center lg:flex-nowrap"
         >
           {
             featuredProjects.map((project) => (
@@ -96,7 +96,7 @@ const featuredProjects = await getFeaturedProjects(3);
         />
         <div>
           <p
-            class="measure-base font-semibold text-white text-responsive-lg line-loose"
+            class="measure-base text-responsive-lg line-loose font-semibold text-white"
           >
             {SelfIntroduction()}
           </p>

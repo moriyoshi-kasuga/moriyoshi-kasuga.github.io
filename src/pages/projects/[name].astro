@@ -35,7 +35,7 @@ const { Content } = await render(project);
   </h1>
   <p class="text-center text-lg">{frontmatter.description}</p>
   <div
-    class="mt-5 flex flex-col justify-center gap-x-8 gap-y-4 max-md:pr-15 md:pr-10 sm:flex-row"
+    class="mt-5 flex flex-col justify-center gap-x-8 gap-y-4 max-md:pr-15 sm:flex-row md:pr-10"
   >
     <Tooltip details="公開日">
       <Icon name="mdi:source-branch" class="text-white" slot="icon" />
@@ -56,14 +56,14 @@ const { Content } = await render(project);
       Site
     </LinkButton>
   </div>
-  <div class="bg-divider relative mx-auto my-8 h-[1px] w-11/12 border-none">
+  <div class="relative mx-auto my-8 h-px w-11/12 border-none bg-divider">
     <h2
-      class="absolute left-[50%] -translate-x-1/2 -translate-y-1/2 justify-center bg-white text-center text-3xl"
+      class="absolute left-[50%] -translate-1/2 justify-center bg-white text-center text-3xl"
     >
       技術
     </h2>
   </div>
-  <div class="container mx-auto my-5">
+  <div class="container-center my-5">
     <div class="flex flex-wrap justify-center gap-2 text-lg">
       {frontmatter.technology.map((str) => <span class="tech-tag">{str}</span>)}
     </div>
@@ -79,7 +79,7 @@ const { Content } = await render(project);
       </LabeledDottedCard>
     </div>
     <div
-      class="w-full rounded-xl px-4 pt-2 pb-4 text-responsive-lg break-words shadow-lg md:px-8 lg:px-12 xl:px-24 line-loose"
+      class="w-full rounded-xl px-4 pt-2 pb-4 text-responsive-lg line-loose wrap-break-word shadow-lg md:px-8 lg:px-12 xl:px-24"
     >
       <Content />
     </div>

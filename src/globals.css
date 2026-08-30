@@ -138,19 +138,19 @@
 
 /* ボタンバリエーション */
 @utility btn-primary {
-  @apply base-btn text-gray-900 hover:bg-gray-900 bg-primary hover:text-primary-foreground;
+  @apply base-btn bg-primary text-gray-900 hover:bg-gray-900 hover:text-primary-foreground;
 }
 
 @utility btn-success {
-  @apply base-btn text-gray-900 hover:bg-gray-900 bg-success hover:text-success-foreground;
+  @apply base-btn bg-success text-gray-900 hover:bg-gray-900 hover:text-success-foreground;
 }
 
 @utility btn-warning {
-  @apply base-btn text-gray-900 hover:bg-gray-900 bg-warning hover:text-warning-foreground;
+  @apply base-btn bg-warning text-gray-900 hover:bg-gray-900 hover:text-warning-foreground;
 }
 
 @utility btn-danger {
-  @apply base-btn text-gray-900 hover:bg-gray-900 bg-danger hover:text-danger-foreground;
+  @apply base-btn bg-danger text-gray-900 hover:bg-gray-900 hover:text-danger-foreground;
 }
 
 /* レイアウトユーティリティ */
@@ -163,7 +163,7 @@
 }
 
 @utility full-width-col-center {
-  @apply w-full flex flex-col items-center;
+  @apply flex w-full flex-col items-center;
 }
 
 /* タイポグラフィユーティリティ */
@@ -173,12 +173,12 @@
 
 /* プロジェクトカード */
 @utility project-card {
-  @apply ring-primary hover:ring-primary-foreground flex h-full w-full max-w-90 flex-col rounded-2xl px-8 py-2 ring-[3px] hover-scale;
+  @apply flex h-full w-full max-w-90 flex-col rounded-2xl px-8 py-2 ring-[3px] ring-primary hover-scale hover:ring-primary-foreground;
 }
 
 /* 技術タグ */
 @utility tech-tag {
-  @apply bg-warning rounded-xl px-2 py-1 font-normal;
+  @apply rounded-xl bg-warning px-2 py-1 font-normal;
 }
 
 /* アイテム表示 */
@@ -195,11 +195,11 @@
  * ================================================================================ */
 
 @utility responsive-grid {
-  @apply grid grid-cols-1 gap-4 place-items-center sm:grid-cols-2 sm:gap-6 md:gap-8 lg:grid-cols-3 lg:gap-10 xl:gap-12;
+  @apply grid grid-cols-1 place-items-center gap-4 sm:grid-cols-2 sm:gap-6 md:gap-8 lg:grid-cols-3 lg:gap-10 xl:gap-12;
 }
 
 @utility stats-grid {
-  @apply grid grid-cols-1 gap-1 h-150 place-items-center items-center justify-center md:grid-cols-2 md:h-100 lg:grid-cols-3 lg:h-50;
+  @apply grid h-150 grid-cols-1 place-items-center items-center justify-center gap-1 md:h-100 md:grid-cols-2 lg:h-50 lg:grid-cols-3;
 }
 
 @utility gallery-grid {
@@ -216,11 +216,11 @@
  * ================================================================================ */
 
 @utility nav-desktop {
-  @apply hidden md:flex items-center space-x-6;
+  @apply hidden items-center space-x-6 md:flex;
 }
 
 @utility nav-mobile {
-  @apply flex md:hidden items-center;
+  @apply flex items-center md:hidden;
 }
 
 /* ================================================================================

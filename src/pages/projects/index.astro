@@ -10,7 +10,7 @@ const projects = await getSortedProjects();
 
 <Layout title="Projects">
   <div class="min-h-all pb-10">
-    <h1 class="text-danger flex justify-center gap-x-2 text-5xl font-bold">
+    <h1 class="flex justify-center gap-x-2 text-5xl font-bold text-danger">
       <Icon name="mdi:source-branch" />
       Projects
     </h1>
@@ -41,7 +41,7 @@ const projects = await getSortedProjects();
                 <span class="tech-tag">{tag}</span>
               ))}
             </div>
-            <div class="py-2 text-xl break-words">
+            <div class="py-2 text-xl wrap-break-word">
               {project.data.description}
             </div>
             <span class="mt-auto ml-auto font-thin">

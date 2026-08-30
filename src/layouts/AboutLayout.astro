@@ -23,7 +23,7 @@ const current = ABOUT_NAV.find(({ href }) => isCurrentPage(href));
       <slot name="icon" />
       {title}
     </h1>
-    <div class="mt-10 mb-5 flex gap-8 flex-row flex-wrap justify-center">
+    <div class="mt-10 mb-5 flex flex-row flex-wrap justify-center gap-8">
       {
         ABOUT_NAV.filter(({ href }) => !isCurrentPage(href)).map(
           ({ href, label, icon, variant }) => (
