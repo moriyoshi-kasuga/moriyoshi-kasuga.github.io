@@ -10,7 +10,9 @@
     "astro": "astro",
     "check": "astro check && tsc --noEmit",
     "lint": "eslint",
-    "lint:fix": "eslint --fix"
+    "lint:fix": "eslint --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@astrojs/mdx": "7.0.2",
@@ -27,6 +29,8 @@
     "eslint": "^10.6.0",
     "eslint-plugin-astro": "^2.1.1",
     "globals": "^17.7.0",
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^0.14.1",
     "typescript": "^7.0.2"
   }
 }

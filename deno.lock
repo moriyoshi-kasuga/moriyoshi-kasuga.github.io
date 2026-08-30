@@ -1,8 +1,8 @@
 {
   "version": "5",
   "specifiers": {
-    "npm:@antfu/eslint-config@^9.1.0": "9.1.0_eslint@10.6.0_eslint-plugin-astro@2.1.1__@typescript-eslint+parser@8.63.0___eslint@10.6.0___typescript@7.0.2__eslint@10.6.0__typescript@7.0.2_@typescript-eslint+rule-tester@8.63.0__eslint@10.6.0__typescript@7.0.2_@typescript-eslint+typescript-estree@8.63.0__typescript@7.0.2_@typescript-eslint+utils@8.63.0__eslint@10.6.0__typescript@7.0.2_@vue+compiler-sfc@3.5.39_typescript@7.0.2",
-    "npm:@astrojs/check@0.9.9": "0.9.9_typescript@7.0.2",
+    "npm:@antfu/eslint-config@^9.1.0": "9.1.0_eslint@10.6.0_eslint-plugin-astro@2.1.1__@typescript-eslint+parser@8.63.0___eslint@10.6.0___typescript@7.0.2__eslint@10.6.0__typescript@7.0.2_prettier-plugin-astro@0.14.1",
+    "npm:@astrojs/check@0.9.9": "0.9.9_typescript@7.0.2_prettier@3.9.6_prettier-plugin-astro@0.14.1",
     "npm:@astrojs/mdx@7.0.2": "7.0.2_astro@7.0.7__@astrojs+markdown-remark@7.2.1__@emnapi+core@1.11.1__@emnapi+runtime@1.11.1_@emnapi+core@1.11.1_@emnapi+runtime@1.11.1",
     "npm:@astrojs/ts-plugin@1.10.10": "1.10.10",
     "npm:@iconify-json/mdi@^1.2.3": "1.2.3",
@@ -12,11 +12,13 @@
     "npm:eslint-plugin-astro@^2.1.1": "2.1.1_@typescript-eslint+parser@8.63.0__eslint@10.6.0__typescript@7.0.2_eslint@10.6.0_typescript@7.0.2",
     "npm:eslint@^10.6.0": "10.6.0",
     "npm:globals@^17.7.0": "17.7.0",
+    "npm:prettier-plugin-astro@~0.14.1": "0.14.1",
+    "npm:prettier@^3.9.6": "3.9.6",
     "npm:tailwindcss@^4.3.2": "4.3.2",
     "npm:typescript@^7.0.2": "7.0.2"
   },
   "npm": {
-    "@antfu/eslint-config@9.1.0_eslint@10.6.0_eslint-plugin-astro@2.1.1__@typescript-eslint+parser@8.63.0___eslint@10.6.0___typescript@7.0.2__eslint@10.6.0__typescript@7.0.2_@typescript-eslint+rule-tester@8.63.0__eslint@10.6.0__typescript@7.0.2_@typescript-eslint+typescript-estree@8.63.0__typescript@7.0.2_@typescript-eslint+utils@8.63.0__eslint@10.6.0__typescript@7.0.2_@vue+compiler-sfc@3.5.39_typescript@7.0.2": {
+    "@antfu/eslint-config@9.1.0_eslint@10.6.0_eslint-plugin-astro@2.1.1__@typescript-eslint+parser@8.63.0___eslint@10.6.0___typescript@7.0.2__eslint@10.6.0__typescript@7.0.2_prettier-plugin-astro@0.14.1": {
       "integrity": "sha512-Vtjt+W/6/bV9hgQG8AiWG66OpAeLKmpo5bZaAmUdRvZsMyirVvIJeHnbM4XUJf4urIuLvK0gGSvXD74PI3ZnGQ==",
       "dependencies": [
         "@antfu/install-pkg",
@@ -54,12 +56,14 @@
         "globals@17.7.0",
         "local-pkg",
         "parse-gitignore",
+        "prettier-plugin-astro",
         "toml-eslint-parser",
         "vue-eslint-parser",
         "yaml-eslint-parser"
       ],
       "optionalPeers": [
-        "eslint-plugin-astro"
+        "eslint-plugin-astro",
+        "prettier-plugin-astro"
       ],
       "bin": true
     },
@@ -73,7 +77,7 @@
     "@antfu/utils@8.1.1": {
       "integrity": "sha512-Mex9nXf9vR6AhcXmMrlz/HVgYYZpVGJ6YlPgwl7UnaFpnshXs6EK/oa5Gpf3CzENMjkvEx2tQtntGnb7UtSTOQ=="
     },
-    "@astrojs/check@0.9.9_typescript@7.0.2": {
+    "@astrojs/check@0.9.9_typescript@7.0.2_prettier@3.9.6_prettier-plugin-astro@0.14.1": {
       "integrity": "sha512-A5UW8uIuErLWEoRQvzgXpO1gTjUFtK8r7nU2Z7GewAMxUb7bPvpk11qaKKgxqXlHJWlAvaaxy+Xg28A6bmQ1Tg==",
       "dependencies": [
         "@astrojs/language-server",
@@ -170,7 +174,7 @@
         "unified"
       ]
     },
-    "@astrojs/language-server@2.16.11_typescript@7.0.2": {
+    "@astrojs/language-server@2.16.11_prettier@3.9.6_prettier-plugin-astro@0.14.1": {
       "integrity": "sha512-sJ/EfnFp0+gurTrkvONtd9qRqmMZLT9bHelfI1SA35CaQVTrRrA74qteOcNT/al1b9Atg3IiH1Jk/qfckyC+fg==",
       "dependencies": [
         "@astrojs/compiler@2.13.1",
@@ -181,6 +185,8 @@
         "@volar/language-server",
         "@volar/language-service",
         "muggle-string",
+        "prettier",
+        "prettier-plugin-astro",
         "tinyglobby",
         "volar-service-css",
         "volar-service-emmet",
@@ -191,6 +197,10 @@
         "volar-service-yaml",
         "vscode-html-languageservice",
         "vscode-uri"
+      ],
+      "optionalPeers": [
+        "prettier",
+        "prettier-plugin-astro"
       ],
       "bin": true
     },
@@ -1592,7 +1602,7 @@
         "emmet",
         "jsonc-parser@2.3.1",
         "vscode-languageserver-textdocument",
-        "vscode-languageserver-types@3.18.0",
+        "vscode-languageserver-types",
         "vscode-uri"
       ]
     },
@@ -4072,8 +4082,16 @@
     "prelude-ls@1.2.1": {
       "integrity": "sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g=="
     },
-    "prettier@3.9.5": {
-      "integrity": "sha512-/FVl766LpUfB5vXgCYOYa0MeV/441Ia99AeICQIQFTY/Nw0roZwULcXpku5i1/m5kt/baz+s4Zogspd839HSMg==",
+    "prettier-plugin-astro@0.14.1": {
+      "integrity": "sha512-RiBETaaP9veVstE4vUwSIcdATj6dKmXljouXc/DDNwBSPTp8FRkLGDSGFClKsAFeeg+13SB0Z1JZvbD76bigJw==",
+      "dependencies": [
+        "@astrojs/compiler@2.13.1",
+        "prettier",
+        "sass-formatter"
+      ]
+    },
+    "prettier@3.9.6": {
+      "integrity": "sha512-OpN0zzVdiaiAhxpuuj5efpIS4sY9j7bY6uR5mnj5yPzGkdkjNKSJeUThPb60Jw29QuAZgA4o+/iB49kFiaBX6g==",
       "bin": true
     },
     "prismjs@1.30.0": {
@@ -4333,8 +4351,17 @@
       ],
       "bin": true
     },
+    "s.color@0.0.15": {
+      "integrity": "sha512-AUNrbEUHeKY8XsYr/DYpl+qk5+aM+DChopnWOPEzn8YKzOhv4l2zH6LzZms3tOZP3wwdOyc0RmTciyi46HLIuA=="
+    },
     "safer-buffer@2.1.2": {
       "integrity": "sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg=="
+    },
+    "sass-formatter@0.7.9": {
+      "integrity": "sha512-CWZ8XiSim+fJVG0cFLStwDvft1VI7uvXdCNJYXhDvowiv+DsbD1nXLiQ4zrE5UBvj5DWZJ93cwN0NX5PMsr1Pw==",
+      "dependencies": [
+        "suf-log"
+      ]
     },
     "satteri@0.9.5": {
       "integrity": "sha512-ZuWVl+vnM64y+/TtX8Kosv2c00W+hLQiiwnEL6H0UKVVrxFqMw4D2CJHHQaouVd89OAhtBBfjWLqhKi3TVUV4w==",
@@ -4490,6 +4517,12 @@
       "integrity": "sha512-LIN7rULI0jBscWQYaSswptyderlarFkjQ+t79nzty8tcIAceVomEVlLzH5VP4Cmsv6MtKhs7qaAiwlcp+Mgaxw==",
       "dependencies": [
         "inline-style-parser"
+      ]
+    },
+    "suf-log@2.5.3": {
+      "integrity": "sha512-KvC8OPjzdNOe+xQ4XWJV2whQA0aM1kGVczMQ8+dStAO6KfEB140JEVQ9dE76ONZ0/Ylf67ni4tILPJB41U0eow==",
+      "dependencies": [
+        "s.color"
       ]
     },
     "svgo@3.3.3": {
@@ -4842,14 +4875,16 @@
         "@volar/language-service"
       ]
     },
-    "volar-service-prettier@0.0.71_@volar+language-service@2.4.28": {
+    "volar-service-prettier@0.0.71_@volar+language-service@2.4.28_prettier@3.9.6": {
       "integrity": "sha512-Rz7JVH3qD108UCdmIEiZvOBNljMt2nLFdbN8AXcDfn7xD9F5I2aCIsDVqBbXw21PsnxG0b7MfwtNF+zPS/NKUg==",
       "dependencies": [
         "@volar/language-service",
+        "prettier",
         "vscode-uri"
       ],
       "optionalPeers": [
-        "@volar/language-service"
+        "@volar/language-service",
+        "prettier"
       ]
     },
     "volar-service-typescript-twoslash-queries@0.0.71_@volar+language-service@2.4.28": {
@@ -4893,7 +4928,7 @@
       "dependencies": [
         "@vscode/l10n",
         "vscode-languageserver-textdocument",
-        "vscode-languageserver-types@3.17.5",
+        "vscode-languageserver-types",
         "vscode-uri"
       ]
     },
@@ -4902,7 +4937,7 @@
       "dependencies": [
         "@vscode/l10n",
         "vscode-languageserver-textdocument",
-        "vscode-languageserver-types@3.18.0",
+        "vscode-languageserver-types",
         "vscode-uri"
       ]
     },
@@ -4911,7 +4946,7 @@
       "dependencies": [
         "jsonc-parser@3.3.1",
         "vscode-languageserver-textdocument",
-        "vscode-languageserver-types@3.18.0",
+        "vscode-languageserver-types",
         "vscode-nls",
         "vscode-uri"
       ]
@@ -4923,7 +4958,7 @@
       "integrity": "sha512-mb1bvRJN8SVznADSGWM9u/b07H7Ecg0I3OgXDuLdn307rl/J3A9YD6/eYOssqhecL27hK1IPZAsaqh00i/Jljg==",
       "dependencies": [
         "vscode-jsonrpc",
-        "vscode-languageserver-types@3.17.5"
+        "vscode-languageserver-types"
       ]
     },
     "vscode-languageserver-textdocument@1.0.12": {
@@ -4931,9 +4966,6 @@
     },
     "vscode-languageserver-types@3.17.5": {
       "integrity": "sha512-Ld1VelNuX9pdF39h2Hgaeb5hEZM2Z3jUrrMgWQAu82jMtZp7p3vJT3BzToKtZI7NgQssZje5o0zryOrhQvzQAg=="
-    },
-    "vscode-languageserver-types@3.18.0": {
-      "integrity": "sha512-8TsGPNMIMiiBdkORgRSvLjuiEIiAFtO+KssmYWxQ+uSVvlf7RjK8YKCOjPzZ+YA04jXEV7+7LvkSmHkhpNS99g=="
     },
     "vscode-languageserver@9.0.1": {
       "integrity": "sha512-woByF3PDpkHFUreUa7Hos7+pUWdeWMXRd26+ZX2A8cFx6v/JPTtd4/uN0/jB6XQHYaOlHbio03NTHCqrgG5n7g==",
@@ -5025,7 +5057,7 @@
         "vscode-json-languageservice",
         "vscode-languageserver",
         "vscode-languageserver-textdocument",
-        "vscode-languageserver-types@3.18.0",
+        "vscode-languageserver-types",
         "vscode-uri",
         "yaml@2.8.3"
       ],
@@ -5091,6 +5123,8 @@
         "npm:eslint-plugin-astro@^2.1.1",
         "npm:eslint@^10.6.0",
         "npm:globals@^17.7.0",
+        "npm:prettier-plugin-astro@~0.14.1",
+        "npm:prettier@^3.9.6",
         "npm:tailwindcss@^4.3.2",
         "npm:typescript@^7.0.2"
       ]
