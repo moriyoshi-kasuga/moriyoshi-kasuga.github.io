@@ -3,8 +3,12 @@ import List from "@components/List.astro";
 import ListItem from "@components/ListItem.astro";
 import AboutLayout from "@layouts/AboutLayout.astro";
 import Item from "@src/components/Item.astro";
+import { calcAge, formatDate } from "@src/lib/date";
 import { Icon } from "astro-icon/components";
 import { rawContent as SelfDescription } from "../../static/self-description.md";
+
+// 年齢はビルド時に計算する。誕生日にも再ビルドされるよう workflow に schedule を設定している
+const BIRTHDAY = new Date(2007, 11, 18);
 ---
 
 <AboutLayout title="About">
@@ -14,10 +18,10 @@ import { rawContent as SelfDescription } from "../../static/self-description.md"
       <Item value="Mori" />
     </ListItem>
     <ListItem title="年齢" alwaysCenter>
-      <Item value="18歳" />
+      <Item value={`${calcAge(BIRTHDAY)}歳`} />
     </ListItem>
     <ListItem title="誕生日" alwaysCenter>
-      <Item value="2007/12/18" />
+      <Item value={formatDate(BIRTHDAY)} />
     </ListItem>
   </List>
   <p
