@@ -9,6 +9,7 @@ technology:
   - Astro
   - TailwindCSS
   - TypeScript
+  - Deno
 objective: 自分のことを知ってもらえるきっかけになればと思い作成しました
 background: Next.jsは必要以上に高機能だったため、よりシンプルなAstroに移行しました
 commitment: 全体的に統一感のある雰囲気を出すため、フォントや色選びに気を配りました
