@@ -18,8 +18,8 @@ import { Icon } from "astro-icon/components";
     </ListItem>
     <ListItem title="テーマ">
       <Item
-        href="https://github.com/catppuccin/nvim"
-        value="Catppuccin Mocha"
+        href="https://github.com/catppuccin/catppuccin"
+        value="Catppuccin Macchiato"
         skillIcon="catppuccin"
       />
     </ListItem>
@@ -39,25 +39,37 @@ import { Icon } from "astro-icon/components";
       />
     </ListItem>
     <ListItem title="フォント">
-      <Item href="https://www.jetbrains.com/lp/mono/" value="JetBrains Mono" />
+      <Item
+        href="https://github.com/subframe7536/maple-font"
+        value="Maple Mono"
+      />
     </ListItem>
     <ListItem title="プログラミング言語">
       <Item href="https://www.rust-lang.org/" value="Rust" skillIcon="rust" />
+      <Item href="https://www.lua.org/" value="Lua" skillIcon="lua" />
       <Item
         href="https://www.typescriptlang.org/"
         value="TypeScript"
         skillIcon="typescript"
       />
     </ListItem>
-    <ListItem title="開発環境">
-      <Item href="https://nixos.org/" value="Nix" skillIcon="nixos" />
+    <ListItem title="OS">
+      <Item href="https://nixos.org/" value="NixOS" skillIcon="nixos" />
       <Item
-        href="https://github.com/catppuccin/nvim"
-        value="Catppuccin Mocha"
-        skillIcon="catppuccin"
+        href="https://www.apple.com/macos/"
+        value="macOS"
+        skillIcon="apple"
       />
-      <Item value="neovim" skillIcon="neovim" href="https://neovim.io/" />
+    </ListItem>
+    <ListItem title="ウィンドウマネージャー">
+      <Item href="https://github.com/niri-wm/niri" value="Niri (NixOS)" />
+      <Item href="https://github.com/OmniNull/OmniWM" value="OmniWM (macOS)" />
+    </ListItem>
+    <ListItem title="開発環境">
+      <Item value="WezTerm" href="https://wezterm.org" skillIcon="wezterm" />
+      <Item value="Neovim" href="https://neovim.io/" skillIcon="neovim" />
       <Item value="tmux" href="https://github.com/tmux/tmux" skillIcon="tmux" />
+      <Item value="Fish" href="https://fishshell.com" />
     </ListItem>
   </List>
 </AboutLayout>
