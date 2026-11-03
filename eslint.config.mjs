@@ -4,10 +4,6 @@ import betterTailwindcss from "eslint-plugin-better-tailwindcss";
 export default antfu(
   {
     stylistic: false,
-    rules: {
-      "import/no-self-import": "off",
-      "@typescript-eslint/no-namespace": "off",
-    },
     astro: true,
   },
   betterTailwindcss.configs.recommended,

@@ -10,25 +10,30 @@ const projects = await getSortedProjects();
 
 <Layout title="Projects">
   <div class="min-h-all pb-10">
-    <h1 class="flex justify-center gap-x-2 text-5xl font-bold text-danger">
+    <h1 class="flex justify-center gap-x-2 text-5xl font-bold text-danger-300">
       <Icon name="mdi:source-branch" />
       Projects
     </h1>
-    <div class="container-center my-8 responsive-grid">
+    <div
+      class="container mx-auto my-8 grid grid-cols-1 place-items-center gap-4 sm:grid-cols-2 sm:gap-6 md:gap-8 lg:grid-cols-3 lg:gap-10 xl:gap-12"
+    >
       {
         projects.map((project) => (
-          <a href={`/projects/${project.id}`} class="project-card">
+          <a
+            href={`/projects/${project.id}`}
+            class="flex size-full max-w-90 flex-col rounded-2xl px-8 py-2 ring-[3px] ring-primary-300 hover:ring-primary-500"
+          >
             <h2 class="text-center text-2xl font-semibold">
               {project.data.pin && (
                 <Icon
                   name="mdi:pin"
-                  class="inline-block text-danger"
+                  class="inline-block text-danger-300"
                   title="ピン留めされたプロジェクト"
                 />
               )}
               {project.data.title}
             </h2>
-            <div class="relative my-2 aspect-video w-full">
+            <div class="my-2 aspect-video w-full">
               <Image
                 loading="lazy"
                 src={project.data.gallery[0]}

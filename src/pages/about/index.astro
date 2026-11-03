@@ -1,11 +1,11 @@
 ---
+import Item from "@components/Item.astro";
 import List from "@components/List.astro";
 import ListItem from "@components/ListItem.astro";
 import AboutLayout from "@layouts/AboutLayout.astro";
-import Item from "@src/components/Item.astro";
 import { calcAge, formatDate } from "@src/lib/date";
+import { rawContent as SelfDescription } from "@src/static/self-description.md";
 import { Icon } from "astro-icon/components";
-import { rawContent as SelfDescription } from "../../static/self-description.md";
 
 // 年齢はビルド時に計算する。誕生日にも再ビルドされるよう workflow に schedule を設定している
 const BIRTHDAY = new Date(2007, 11, 18);
@@ -25,37 +25,34 @@ const BIRTHDAY = new Date(2007, 11, 18);
     </ListItem>
   </List>
   <p
-    class="container my-2 w-9/10 measure-base rounded-lg border-2 text-responsive-lg line-loose font-semibold text-primary md:w-3/5"
+    class="container my-2 w-9/10 max-w-[66ch] rounded-lg border-2 border-gray-200 text-responsive-lg font-semibold text-primary-300 md:w-3/5"
   >
     {SelfDescription()}
   </p>
-  <div class="container mb-10 stats-grid pt-2">
-    <div class="relative h-[150px] rounded-xs">
+  <div
+    class="container mb-10 grid h-150 grid-cols-1 place-items-center justify-center gap-1 pt-2 md:h-100 md:grid-cols-2 lg:h-50 lg:grid-cols-3"
+  >
+    <div class="h-37.5">
       <img
         alt="GitHub Stats"
         src="https://github-stats-extended.vercel.app/api?username=moriyoshi-kasuga&theme=catppuccin_mocha"
-        class="object-fit aspect-auto h-[150px]"
-        height="100%"
+        class="h-37.5"
       />
     </div>
 
-    <div
-      class="relative order-0 h-[200px] rounded-xs md:order-1 md:max-lg:col-span-2 lg:order-0"
-    >
+    <div class="order-0 h-50 md:order-1 md:max-lg:col-span-2 lg:order-0">
       <img
         alt="Top Langs"
         src="https://github-stats-extended.vercel.app/api/top-langs?username=moriyoshi-kasuga&layout=compact&langs_count=8&theme=catppuccin_mocha"
-        class="object-fit aspect-auto h-[200px]"
-        height="100%"
+        class="h-50"
       />
     </div>
 
-    <div class="relative h-[150px] rounded-xs">
+    <div class="h-37.5">
       <img
         alt="GitHub Streak"
         src="https://streak-stats.demolab.com?user=moriyoshi-kasuga&theme=catppuccin_mocha"
-        class="object-fit aspect-auto h-[150px]"
-        height="100%"
+        class="h-37.5"
       />
     </div>
   </div>

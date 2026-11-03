@@ -19,14 +19,14 @@ const skills = await Promise.all(
   <div id="techContent" class="container my-4 flex flex-col gap-8">
     {
       skills.map(({ data, Content }) => (
-        <div class="flex flex-col gap-4 rounded-2xl border-2 border-primary/20 bg-gray-50 p-6 smooth-transition hover:border-primary/40 hover:shadow-lg">
+        <div class="flex flex-col gap-4 rounded-2xl border-2 border-primary-300/20 bg-gray-50 p-6 transition-all duration-300 ease-out hover:border-primary-300/40 hover:shadow-lg">
           <div class="flex items-center gap-4">
             {/* スター表示 */}
             <div class="flex gap-1" aria-label={`好き度 ${data.favorite} / 5`}>
               {Array.from({ length: 5 }, (_, i) => (
                 <Icon
                   name={i < data.favorite ? "mdi:star" : "mdi:star-outline"}
-                  class={`size-6 ${i < data.favorite ? "text-warning-foreground" : "text-gray-300"}`}
+                  class={`size-6 ${i < data.favorite ? "text-warning-500" : "text-gray-300"}`}
                   aria-hidden="true"
                 />
               ))}
@@ -35,7 +35,7 @@ const skills = await Promise.all(
             <h3 class="text-2xl font-bold text-gray-900">{data.title}</h3>
           </div>
           {/* コンテンツ */}
-          <div class="text-lg line-loose text-gray-700">
+          <div class="text-lg/loose text-gray-700">
             <Content />
           </div>
         </div>
@@ -56,10 +56,10 @@ const skills = await Promise.all(
   }
 
   #techContent :global(blockquote) {
-    border-left: 4px solid var(--color-primary);
+    border-left: 4px solid var(--color-primary-300);
     margin: 1em 0;
     padding: 0.75em 1em;
-    color: var(--color-primary-foreground);
+    color: var(--color-primary-500);
     background: var(--color-gray-100);
     border-radius: 0.25rem;
   }

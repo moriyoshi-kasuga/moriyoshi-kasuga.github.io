@@ -16,9 +16,3 @@ export async function getSortedProjects(): Promise<
   const projects = await getCollection("projects");
   return projects.sort(compareProjects);
 }
-
-export async function getFeaturedProjects(
-  limit: number,
-): Promise<CollectionEntry<"projects">[]> {
-  return (await getSortedProjects()).slice(0, limit);
-}

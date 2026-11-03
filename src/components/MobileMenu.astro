@@ -1,12 +1,7 @@
 ---
 import { MAIN_NAV } from "@src/constants/navigation";
+import { isCurrentSection } from "@src/lib/navigation";
 import { Icon } from "astro-icon/components";
-
-const pathname = Astro.url.pathname;
-const isCurrentPage = (href: string) =>
-  href === "/"
-    ? pathname === "/"
-    : pathname === href || pathname.startsWith(`${href}/`);
 ---
 
 <div class="mobile-root">
@@ -26,8 +21,7 @@ const isCurrentPage = (href: string) =>
 
   <div
     id="mobile-nav"
-    class="mobile-nav fixed inset-x-0 rounded-b-3xl p-5 backdrop-blur-xs"
-    style="top: var(--header-height)"
+    class="mobile-nav fixed inset-x-0 top-(--header-height) rounded-b-3xl p-5 backdrop-blur-xs"
     aria-hidden="true"
   >
     <nav aria-label="モバイルメニュー">
@@ -36,16 +30,17 @@ const isCurrentPage = (href: string) =>
       >
         {
           MAIN_NAV.map(({ label, href, icon }, idx) => (
-            <li
-              class="nav-item rounded-xl bg-linear-to-tr p-[0.08rem]"
-              style={`--i:${idx}`}
-            >
+            <li class="nav-item p-[0.08rem]" style={`--i:${idx}`}>
               <a
                 href={href}
                 class="flex max-w-80 min-w-72 items-center justify-between rounded-xl bg-gray-100/90 p-5"
-                aria-current={isCurrentPage(href) ? "page" : undefined}
+                aria-current={
+                  isCurrentSection(Astro.url.pathname, href)
+                    ? "page"
+                    : undefined
+                }
               >
-                <span class="flex gap-1 text-lg font-semibold">{label}</span>
+                <span class="text-lg font-semibold">{label}</span>
                 <Icon name={icon} width={30} height={30} aria-hidden="true" />
               </a>
             </li>
@@ -123,7 +118,7 @@ const isCurrentPage = (href: string) =>
   }
 
   .nav-item a[aria-current="page"] {
-    background: var(--color-primary);
+    background: var(--color-primary-300);
     color: white;
   }
 </style>

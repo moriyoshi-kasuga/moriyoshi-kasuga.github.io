@@ -6,33 +6,24 @@
  * ================================================================================ */
 
 @theme {
-  /* フォント */
-  --font-primary: "M PLUS 1 Code", "Courier New", monospace;
-  --font-mono: var(--font-primary);
-  --font-display: var(--font-primary);
+  --font-mono: "M PLUS 1 Code", "Courier New", monospace;
 
-  /* カラーパレット */
   --color-divider: rgba(17, 17, 17, 0.15);
   --color-link: #005bc4;
-  --color-background: #ffffff;
 
-  /* プライマリカラー */
-  --color-primary: #66aaf9;
-  --color-primary-foreground: #006fee;
+  --color-primary-300: #66aaf9;
+  --color-primary-500: #006fee;
 
-  /* 成功カラー */
-  --color-success: #74dfa2;
-  --color-success-foreground: #17c964;
+  --color-success-300: #74dfa2;
+  --color-success-500: #17c964;
 
-  /* 警告カラー */
-  --color-warning: #f9c97c;
-  --color-warning-foreground: #f5a524;
+  --color-warning-300: #f9c97c;
+  --color-warning-500: #f5a524;
 
-  /* エラーカラー */
-  --color-danger: #f871a0;
-  --color-danger-foreground: #f31260;
+  --color-danger-300: #f871a0;
+  --color-danger-500: #f31260;
 
-  /* グレースケール */
+  /* Tailwind v3 のグレー */
   --color-gray-50: #f9fafb;
   --color-gray-100: #f3f4f6;
   --color-gray-200: #e5e7eb;
@@ -42,259 +33,43 @@
   --color-gray-800: #1f2937;
   --color-gray-900: #111827;
 
-  /* アニメーション期間 */
-  --duration-fast: 150ms;
-  --duration-normal: 300ms;
-  --duration-slow: 500ms;
-  --duration-extra-slow: 1000ms;
-
-  /* イージング関数 */
   --ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
   --ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
   --ease-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-  /* タイポグラフィ */
-  --line-tight: 1.25;
-  --line-normal: 1.5;
-  --line-loose: 1.75;
-
-  --tracking-tight: -0.025em;
-  --tracking-normal: 0;
-  --tracking-wide: 0.025em;
-
-  --measure-base: 66ch;
-  --measure-long: 75ch;
+  --leading-loose: 1.75;
 }
 
 /* ================================================================================
  * ベーススタイル
  * ================================================================================ */
 
-@utility container {
-  padding-inline: 1rem;
-}
-
-/* Tailwind CSS v4互換性のためのボーダーカラー設定 */
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
-}
-
-/* ================================================================================
- * レイアウトユーティリティ
- * ================================================================================ */
-
-@layer utilities {
-  /* 高さ計算 */
-  .min-h-all {
-    min-height: calc(100vh - var(--header-height) - var(--footer-height));
-  }
-
-  .min-h-content {
-    min-height: calc(100vh - var(--header-height));
-  }
-
-  /* リンクホバーアニメーション */
-  .link-hover-animation {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-
-  .link-hover-animation::after {
-    position: absolute;
-    left: 0;
-    bottom: -1px;
-    content: "";
-    width: 100%;
-    height: 2px;
-    background: black;
-    border-radius: 1px;
-    transform: scale(0, 1);
-    transform-origin: left top;
-    transition: transform var(--duration-normal) var(--ease-in-out);
-  }
-
-  .link-hover-animation:hover::after,
-  .link-hover-animation.current::after {
-    transform: scale(1, 1);
-  }
-}
-
-/* ================================================================================
- * 再利用可能なコンポーネントユーティリティ
- * ================================================================================ */
-
-/* ボタンベーススタイル */
-@utility base-btn {
-  @apply flex items-center gap-x-2 rounded-2xl px-8 py-3 text-xl font-bold;
-  transition: all var(--duration-slow) var(--ease-out);
-}
-
-/* ボタンバリエーション */
-@utility btn-primary {
-  @apply base-btn bg-primary text-gray-900 hover:bg-gray-900 hover:text-primary-foreground;
-}
-
-@utility btn-success {
-  @apply base-btn bg-success text-gray-900 hover:bg-gray-900 hover:text-success-foreground;
-}
-
-@utility btn-warning {
-  @apply base-btn bg-warning text-gray-900 hover:bg-gray-900 hover:text-warning-foreground;
-}
-
-@utility btn-danger {
-  @apply base-btn bg-danger text-gray-900 hover:bg-gray-900 hover:text-danger-foreground;
-}
-
-/* レイアウトユーティリティ */
-@utility flex-items-gap {
-  @apply flex items-center gap-2;
-}
-
-@utility container-center {
-  @apply container mx-auto;
-}
-
-@utility full-width-col-center {
-  @apply flex w-full flex-col items-center;
-}
-
-/* タイポグラフィユーティリティ */
-@utility text-semibold-xl {
-  @apply text-xl font-semibold;
-}
-
-/* プロジェクトカード */
-@utility project-card {
-  @apply flex h-full w-full max-w-90 flex-col rounded-2xl px-8 py-2 ring-[3px] ring-primary hover-scale hover:ring-primary-foreground;
-}
-
-/* 技術タグ */
-@utility tech-tag {
-  @apply rounded-xl bg-warning px-2 py-1 font-normal;
-}
-
-/* アイテム表示 */
-@utility item-label {
-  @apply w-1/3 text-right text-2xl font-bold md:w-1/2;
-}
-
-@utility item-value {
-  @apply w-2/3 text-left text-xl font-semibold wrap-break-word md:w-1/2;
-}
-
-/* ================================================================================
- * レスポンシブグリッドシステム
- * ================================================================================ */
-
-@utility responsive-grid {
-  @apply grid grid-cols-1 place-items-center gap-4 sm:grid-cols-2 sm:gap-6 md:gap-8 lg:grid-cols-3 lg:gap-10 xl:gap-12;
-}
-
-@utility stats-grid {
-  @apply grid h-150 grid-cols-1 place-items-center items-center justify-center gap-1 md:h-100 md:grid-cols-2 lg:h-50 lg:grid-cols-3;
-}
-
-@utility gallery-grid {
-  @apply grid grid-cols-1 gap-4 p-4 lg:grid-cols-2;
-}
-
-/* ギャラリーグリッドで奇数の要素がある場合、最後の要素を中央に配置 */
-.gallery-grid > *:last-child:nth-child(odd) {
-  @apply lg:col-span-2 lg:mx-auto lg:w-[50%];
-}
-
-/* ================================================================================
- * ナビゲーションユーティリティ
- * ================================================================================ */
-
-@utility nav-desktop {
-  @apply hidden items-center space-x-6 md:flex;
-}
-
-@utility nav-mobile {
-  @apply flex items-center md:hidden;
-}
-
-/* ================================================================================
- * アニメーションユーティリティ
- * ================================================================================ */
-
-@utility smooth-transition {
-  transition: all var(--duration-normal) var(--ease-out);
-}
-
-@utility hover-scale {
-  --scale-amount: 1.05;
-  transition: transform var(--duration-normal) var(--ease-out);
-}
-
-/* ================================================================================
- * タイポグラフィユーティリティ
- * ================================================================================ */
-
-@utility line-tight {
-  line-height: var(--line-tight);
-}
-
-@utility line-normal {
-  line-height: var(--line-normal);
-}
-
-@utility line-loose {
-  line-height: var(--line-loose);
-}
-
-@utility tracking-tight {
+/* 見出しと本文の行間はユーティリティより優先させるため、レイヤーの外に置く */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
 }
 
-@utility measure-base {
-  max-width: var(--measure-base);
+p,
+article {
+  line-height: var(--leading-loose);
 }
-
-@utility measure-long {
-  max-width: var(--measure-long);
-}
-
-/* レスポンシブタイポグラフィ */
-@utility text-responsive-lg {
-  font-size: clamp(1.125rem, 3vw, 1.25rem);
-}
-
-@utility text-responsive-display {
-  font-size: clamp(2rem, 8vw, 4rem);
-  line-height: var(--line-tight);
-}
-
-/* ================================================================================
- * ベース要素スタイル
- * ================================================================================ */
 
 @layer base {
-  .link-style {
-    @apply text-link underline underline-offset-[3px];
+  *:focus {
+    outline: 2px solid var(--color-primary-300);
+    outline-offset: 2px;
   }
 
-  .btn {
-    @apply base-btn text-zinc-900 hover:bg-zinc-900;
-  }
-
-  .hover-scale:hover {
-    transform: scale(var(--scale-amount));
+  *:focus:not(:focus-visible) {
+    outline: none;
   }
 }
-
-/* ================================================================================
- * アクセシビリティ: アニメーション削減の設定
- * ================================================================================ */
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -308,42 +83,73 @@
 }
 
 /* ================================================================================
- * アクセシビリティ: フォーカススタイル
+ * ユーティリティ
  * ================================================================================ */
 
-@layer base {
-  *:focus {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-  }
+@utility container {
+  padding-inline: 1rem;
+}
 
-  *:focus:not(:focus-visible) {
-    outline: none;
-  }
+@utility min-h-all {
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+}
 
-  .skip-link {
-    position: absolute;
-    top: -3rem;
-    left: 1rem;
-    z-index: 100;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    background: var(--color-gray-900);
-    color: white;
-    transition: top var(--duration-fast) var(--ease-out);
-  }
+@utility btn {
+  @apply flex items-center gap-x-2 rounded-2xl px-8 py-3 text-xl font-bold;
+  transition: all 500ms var(--ease-out);
+}
 
-  .skip-link:focus {
-    top: 1rem;
+/* --scale-amount で拡大率を上書きできる */
+@utility hover-scale {
+  transition: transform 300ms var(--ease-out);
+
+  &:hover {
+    transform: scale(var(--scale-amount, 1.05));
   }
 }
 
-/* ================================================================================
- * レイアウトシフト対策（デスクトップ）
- * ================================================================================ */
+@utility link-hover-animation {
+  position: relative;
+  display: flex;
+  align-items: center;
 
-@media (min-width: 1024px) {
-  .top-level-container {
-    padding-left: calc(100vw - 100%);
+  &::after {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: black;
+    border-radius: 1px;
+    transform: scale(0, 1);
+    transform-origin: left top;
+    transition: transform 300ms var(--ease-in-out);
   }
+
+  &:hover::after,
+  &[aria-current="page"]::after {
+    transform: scale(1, 1);
+  }
+}
+
+@utility tech-tag {
+  @apply rounded-xl bg-warning-300 px-2 py-1 font-normal;
+}
+
+@utility text-responsive-lg {
+  font-size: clamp(1.125rem, 3vw, 1.25rem);
+}
+
+@utility text-responsive-display {
+  font-size: clamp(2rem, 8vw, 4rem);
+}
+
+@utility gallery-grid {
+  @apply grid grid-cols-1 gap-4 p-4 lg:grid-cols-2;
+}
+
+/* 要素数が奇数なら最後の要素を中央に配置 */
+.gallery-grid > *:last-child:nth-child(odd) {
+  @apply lg:col-span-2 lg:mx-auto lg:w-[50%];
 }

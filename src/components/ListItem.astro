@@ -1,11 +1,10 @@
 ---
 interface Props {
   title: string;
-  class?: string;
   alwaysCenter?: boolean;
 }
 
-const { title, class: className, alwaysCenter } = Astro.props;
+const { title, alwaysCenter } = Astro.props;
 ---
 
 <div
@@ -25,10 +24,7 @@ const { title, class: className, alwaysCenter } = Astro.props;
     {title}
   </h2>
   <div
-    class:list={[
-      "flex flex-wrap gap-2 text-left text-semibold-xl wrap-break-word",
-      className,
-    ]}
+    class="flex flex-wrap gap-2 text-left text-xl font-semibold wrap-break-word"
   >
     <slot />
   </div>

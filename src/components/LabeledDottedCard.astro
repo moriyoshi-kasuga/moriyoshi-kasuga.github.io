@@ -1,5 +1,5 @@
 ---
-export type LabeledDottedCardAccent = "primary" | "success" | "warning";
+type LabeledDottedCardAccent = "primary" | "success" | "warning";
 
 interface Props {
   label: string;
@@ -7,9 +7,9 @@ interface Props {
 }
 
 const ACCENT_BORDER_CLASS: Record<LabeledDottedCardAccent, string> = {
-  primary: "border-primary-foreground",
-  success: "border-success-foreground",
-  warning: "border-warning-foreground",
+  primary: "border-primary-500",
+  success: "border-success-500",
+  warning: "border-warning-500",
 };
 
 const { label, accent } = Astro.props;

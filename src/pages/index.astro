@@ -1,22 +1,24 @@
 ---
 import LinkButton from "@components/LinkButton.astro";
+import Layout from "@layouts/Layout.astro";
 import Mori from "@src/assets/mori.png";
 import { SOCIAL_LINKS } from "@src/constants/metadata";
-import { getFeaturedProjects } from "@src/lib/projects";
+import { getSortedProjects } from "@src/lib/projects";
+import { rawContent as SelfIntroduction } from "@src/static/self-introduction.md";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
-import Layout from "../layouts/Layout.astro";
-import { rawContent as SelfIntroduction } from "../static/self-introduction.md";
 
-const featuredProjects = await getFeaturedProjects(3);
+const featuredProjects = (await getSortedProjects()).slice(0, 3);
 ---
 
 <Layout title="MoriLab">
-  <div class="min-h-all full-width-col-center bg-primary text-white">
+  <div
+    class="flex min-h-all w-full flex-col items-center bg-primary-300 text-white"
+  >
     <div class="flex flex-col items-center">
       <h1 class="text-responsive-display font-semibold">MoriLab</h1>
       <h2 class="text-3xl">Mori’s tiny dev lab.</h2>
-      <div class="mt-6 flex-items-gap flex-wrap justify-center px-4">
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-2 px-4">
         <LinkButton url={SOCIAL_LINKS.github} variant="dark">
           <Icon name="mdi:github" slot="icon" />
           GitHub
@@ -42,7 +44,7 @@ const featuredProjects = await getFeaturedProjects(3);
                 class="group size-50"
                 aria-label={`プロジェクト ${project.data.title} の詳細を見る`}
               >
-                <div class="mx-4 my-2 flex flex-col items-center justify-center rounded-2xl">
+                <div class="mx-4 my-2 flex flex-col items-center justify-center">
                   <Image
                     loading="lazy"
                     src={project.data.gallery[0]}
@@ -58,7 +60,7 @@ const featuredProjects = await getFeaturedProjects(3);
                     {project.data.pin && (
                       <Icon
                         name="mdi:pin"
-                        class="inline-block text-danger"
+                        class="inline-block text-danger-300"
                         title="ピン留めされたプロジェクト"
                       />
                     )}
@@ -95,9 +97,7 @@ const featuredProjects = await getFeaturedProjects(3);
           height={150}
         />
         <div>
-          <p
-            class="measure-base text-responsive-lg line-loose font-semibold text-white"
-          >
+          <p class="max-w-[66ch] text-responsive-lg font-semibold">
             {SelfIntroduction()}
           </p>
           <div class="mt-5 flex items-center justify-center">
