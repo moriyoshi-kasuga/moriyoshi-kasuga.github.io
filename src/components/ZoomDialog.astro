@@ -1,6 +1,18 @@
+---
+interface Props {
+  // ラッパーは display: contents なので、親のレイアウトに並ぶのはこのボタンになる
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
 <span class="zoom-wrapper contents">
   <button
-    class="zoom-trigger cursor-zoom-in border-none bg-transparent p-0"
+    class:list={[
+      "zoom-trigger cursor-zoom-in border-none bg-transparent p-0",
+      className,
+    ]}
     type="button"
     aria-label="画像を拡大表示"
   >

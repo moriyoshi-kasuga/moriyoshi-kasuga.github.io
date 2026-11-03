@@ -21,7 +21,7 @@ const projects = await getSortedProjects();
         projects.map((project) => (
           <a
             href={`/projects/${project.id}`}
-            class="flex size-full max-w-90 flex-col rounded-2xl px-8 py-2 ring-[3px] ring-primary-300 hover:ring-primary-500"
+            class="flex size-full max-w-90 hover-scale flex-col rounded-2xl px-8 py-2 ring-[3px] ring-primary-300 hover:ring-primary-500"
           >
             <h2 class="text-center text-2xl font-semibold">
               {project.data.pin && (

@@ -88,10 +88,17 @@ const { Content } = await render(project);
           ギャラリー
         </h3>
       </div>
-      <div class="gallery-grid">
+      <div class="grid grid-cols-1 gap-4 p-4 lg:grid-cols-2">
         {
-          frontmatter.gallery.map((image) => (
-            <ZoomDialog>
+          frontmatter.gallery.map((image, i, gallery) => (
+            <ZoomDialog
+              class={
+                // 枚数が奇数なら、最後の1枚を2列分の中央に配置する
+                gallery.length % 2 === 1 && i === gallery.length - 1
+                  ? "lg:col-span-2 lg:mx-auto lg:w-1/2"
+                  : undefined
+              }
+            >
               <Image
                 loading="lazy"
                 src={image}

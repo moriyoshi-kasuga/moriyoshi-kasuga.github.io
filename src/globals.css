@@ -144,12 +144,3 @@ article {
 @utility text-responsive-display {
   font-size: clamp(2rem, 8vw, 4rem);
 }
-
-@utility gallery-grid {
-  @apply grid grid-cols-1 gap-4 p-4 lg:grid-cols-2;
-}
-
-/* 要素数が奇数なら最後の要素を中央に配置 */
-.gallery-grid > *:last-child:nth-child(odd) {
-  @apply lg:col-span-2 lg:mx-auto lg:w-[50%];
-}
