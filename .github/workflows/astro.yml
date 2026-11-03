@@ -7,6 +7,9 @@ on:
     branches: [v2]
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
+  # 誕生日 (12/18) に再ビルドして About の年齢を更新する
+  schedule:
+    - cron: "0 0 18 12 *"
 
 # Allow this job to clone the repo and create a page deployment
 permissions:
